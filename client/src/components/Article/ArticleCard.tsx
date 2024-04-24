@@ -24,7 +24,6 @@ export default function ArticleCard() {
       <Flex
         direction={{ base: "column", sm: "row" }}
         justifyContent="space-between"
-        mt={{ base: "1", sm: "5" }}
       >
         <Flex
           flex="2"
@@ -37,7 +36,6 @@ export default function ArticleCard() {
             ratio={1}
             width={{ base: "80%", sm: "70%" }}
             ml={{ base: "0", sm: "5%" }}
-            mt="5%"
             zIndex="2"
           >
             <Image
@@ -61,7 +59,7 @@ export default function ArticleCard() {
           />
         </Flex>
         <Flex flex="3" direction="column" justifyContent="center">
-          <CardHeader marginTop="1">
+          <CardHeader>
             <BlogAuthor
               name="John Doe"
               date={new Date("2021-04-06T19:01:27Z")}
