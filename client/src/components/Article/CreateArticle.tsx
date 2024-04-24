@@ -14,10 +14,10 @@ export default function CreateArticle() {
   return (
     <Card as="form" p="4" w="full" h="auto">
       <Box mb="4">
-        <FormControl id="email">
+        <FormControl id="title">
           <VisuallyHidden as={FormLabel}>Article Title</VisuallyHidden>
           <Input
-            type="email"
+            type="text"
             placeholder="Enter the title of the article..."
             fontSize="lg"
           />
