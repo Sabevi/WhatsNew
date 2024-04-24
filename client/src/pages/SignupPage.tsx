@@ -19,13 +19,13 @@ export default function SignupPage() {
           alignItems="center"
         >
           <Avatar bg={_blue} />
-          <Heading color={_blue}>Welcome</Heading>
+          <Heading color={_blue}>Sign Up</Heading>
           <SignUp />
         </Stack>
         <Box>
-          New to us?{" "}
+         Already registered ?{" "}
           <Link color={_blue} href="#">
-            Sign Up
+            Login
           </Link>
         </Box>
       </Flex>

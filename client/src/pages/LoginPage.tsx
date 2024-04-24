@@ -19,7 +19,7 @@ export default function LoginPage() {
           alignItems="center"
         >
           <Avatar bg={_blue} />
-          <Heading color={_blue}>Welcome</Heading>
+          <Heading color={_blue}>Login</Heading>
           <Login />
         </Stack>
         <Box>
