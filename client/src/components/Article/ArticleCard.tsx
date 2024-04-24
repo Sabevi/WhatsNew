@@ -27,16 +27,13 @@ export default function ArticleCard() {
       >
         <Flex
           flex="2"
-          mr="3"
           position="relative"
           alignItems="center"
           direction={{ base: "column", sm: "row" }}
         >
           <AspectRatio
-            ratio={1}
             width={{ base: "80%", sm: "70%" }}
             ml={{ base: "0", sm: "5%" }}
-            zIndex="2"
           >
             <Image
               borderRadius="lg"
@@ -46,7 +43,6 @@ export default function ArticleCard() {
             />
           </AspectRatio>
           <Box
-            zIndex="1"
             width="90%"
             position="absolute"
             height="100%"
@@ -68,7 +64,6 @@ export default function ArticleCard() {
               <Text
                 textDecoration="none"
                 _hover={{ textDecoration: "none" }}
-                as="h2"
                 fontSize="3xl"
               >
                 Blog article title

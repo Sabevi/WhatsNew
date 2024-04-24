@@ -1,7 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import ArticleList from "../components/Article/ArticleList";
 import Menu from "../components/Menu/Menu";
-import SelectArticles from "../components/Select/SelectArticles";
+import SelectArticles from "../components/Article/SelectArticles";
 
 export default function Home() {
   return (
