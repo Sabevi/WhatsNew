@@ -3,7 +3,7 @@ import ArticleList from "../components/Article/ArticleList";
 import Menu from "../components/Menu/Menu";
 import SelectArticles from "../components/Article/SelectArticles";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div>
       <Flex gap={30} justifyContent="space-between" mt="10" ml="10" mr="10">
