@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import SignupPage from './pages/SignupPage'
 import CreateArticlePage from './pages/CreateArticlePage'
 import Layout from './components/Layout/Layout'
+import MyArticlesPage from './pages/MyArticlesPage'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="create" element={<CreateArticlePage />} />
+            <Route path="my-articles" element={<MyArticlesPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
