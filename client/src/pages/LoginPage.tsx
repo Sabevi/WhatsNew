@@ -23,11 +23,11 @@ export default function LoginPage() {
           <Login />
         </Stack>
         <Box>
-        New to us?{" "}
-        <Link color={_blue} href="#">
-          Sign Up
-        </Link>
-      </Box>
+          New to us?{" "}
+          <Link color={_blue} href="#">
+            Sign Up
+          </Link>
+        </Box>
       </Flex>
     </>
   );
