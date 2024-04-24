@@ -1,6 +1,8 @@
 import { Container, Heading, Text } from "@chakra-ui/react";
 import { _blue } from "../assets/colors";
 import Article from "../components/Article/Article";
+import CommentList from "../components/Comment/CommentList";
+import CreateComment from "../components/Comment/CreateComment";
 
 export default function ShowArticlePage() {
   return (
@@ -9,6 +11,8 @@ export default function ShowArticlePage() {
         What's New - Article{" "}
       </Heading>
       <Article />
+      <CommentList />
+      <CreateComment />
     </Container>
   );
 }

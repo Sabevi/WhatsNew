@@ -1,9 +1,7 @@
 import { ChatIcon } from "@chakra-ui/icons";
 import {
-  Box,
   Image,
   Text,
-  useColorModeValue,
   Flex,
   AspectRatio,
   Card,
@@ -11,7 +9,6 @@ import {
   CardBody,
   CardFooter,
   Heading,
-  Button,
   Icon,
   Stack,
   IconButton,

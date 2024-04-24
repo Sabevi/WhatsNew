@@ -17,8 +17,11 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineLike } from "react-icons/ai";
 import BlogAuthor from "./ArticleAuthor";
+import { useNavigate } from "react-router-dom";
 
 export default function ArticleCard() {
+  const navigate = useNavigate();
+
   return (
     <Card mt={10}>
       <Flex
@@ -89,7 +92,7 @@ export default function ArticleCard() {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Button variant="solid" colorScheme="blue">
+              <Button variant="solid" colorScheme="blue" onClick={() => navigate("/article")}>
                 Show full article
               </Button>
               <Stack direction="row" spacing={4} align="center">
