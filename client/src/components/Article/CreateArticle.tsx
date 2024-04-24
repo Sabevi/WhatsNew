@@ -15,8 +15,12 @@ export default function CreateArticle() {
     <Card as="form" p="4" w="full" h="auto">
       <Box mb="4">
         <FormControl id="email">
-          <VisuallyHidden as={FormLabel}>Email address</VisuallyHidden>
-          <Input type="email" placeholder="Enter the title of the article..." />
+          <VisuallyHidden as={FormLabel}>Article Title</VisuallyHidden>
+          <Input
+            type="email"
+            placeholder="Enter the title of the article..."
+            fontSize="lg"
+          />
         </FormControl>
       </Box>
       <Box mb="4">
@@ -25,6 +29,7 @@ export default function CreateArticle() {
           <Textarea
             placeholder="Enter the text of your article here..."
             h="300px"
+            fontSize="lg"
           />
         </FormControl>
         <CardFooter>
