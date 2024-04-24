@@ -1,17 +1,15 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Container, Heading, Text } from "@chakra-ui/react";
 import ArticleList from "../components/Article/ArticleList";
-import Menu from "../components/Menu/Menu";
-import SelectArticles from "../components/Article/SelectArticles";
+import { _blue } from "../assets/colors";
 
 export default function HomePage() {
   return (
-    <div>
-      <Flex gap={30} justifyContent="space-between" mt="10" ml="10" mr="10">
-        <Menu />
-        <SelectArticles />
-      </Flex>
+    <Container maxW="7xl" p="12">
+      <Heading textAlign="center" as="h1" color={_blue}>
+        What's New - Articles{" "}
+      </Heading>
       <ArticleList />
       <Text textAlign="center">PAGINATION</Text>
-    </div>
+    </Container>
   );
 }
