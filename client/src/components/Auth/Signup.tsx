@@ -75,12 +75,9 @@ export default function SignUp() {
             {/* use FormHelperText for message errors*/}
           </FormControl>
           <Button
-            borderRadius={0}
-            type="submit"
             variant="solid"
-            bg={_blue}
-            color={_white}
-            width="full"
+            colorScheme="blue"
+            m="0 auto"
             onClick={() => navigate("/")}
           >
             Sign up
