@@ -8,6 +8,7 @@ import CreateArticlePage from './pages/CreateArticlePage'
 import Layout from './components/Layout/Layout'
 import MyArticlesPage from './pages/MyArticlesPage'
 import UpdateArticlePage from './pages/UpdateArticlePage'
+import ShowArticlePage from './pages/ShowArticlePage'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/create" element={<CreateArticlePage />} />
             <Route path="/edit" element={<UpdateArticlePage />} />
             <Route path="/my-articles" element={<MyArticlesPage />} />
+            <Route path="/article" element={<ShowArticlePage />} />
           </Route>
         </Routes>
       </BrowserRouter>

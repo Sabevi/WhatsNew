@@ -41,9 +41,8 @@ export default function EditArticle() {
           />
         </FormControl>
         <CardFooter>
-          <Button variant="solid" colorScheme="blue" m="0 auto">
-            Update article
-          </Button>
+         
+         
         </CardFooter>
       </Box>
     </Card>
