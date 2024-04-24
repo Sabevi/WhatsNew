@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { _blue, _gray, _white } from "../../assets/colors";
+import { useNavigate } from "react-router-dom";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -19,6 +20,7 @@ const CFaLock = chakra(FaLock);
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -79,6 +81,7 @@ export default function SignUp() {
             bg={_blue}
             color={_white}
             width="full"
+            onClick={() => navigate("/")}
           >
             Sign up
           </Button>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Input,
   Button,
@@ -18,6 +19,7 @@ const CFaLock = chakra(FaLock);
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -60,6 +62,7 @@ export default function Login() {
             bg={_blue}
             color={_white}
             width="full"
+            onClick={() => navigate("/")}
           >
             Login
           </Button>

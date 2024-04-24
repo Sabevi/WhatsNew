@@ -1,4 +1,4 @@
-import { ChatIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import {
   Box,
   Image,
@@ -11,15 +11,14 @@ import {
   CardBody,
   CardFooter,
   Heading,
-  Button,
   Icon,
-  Stack,
   IconButton,
 } from "@chakra-ui/react";
-import { AiOutlineLike } from "react-icons/ai";
-import BlogAuthor from "./ArticleAuthor";
+import { useNavigate } from "react-router-dom";
 
 export default function MyArticleCard() {
+  const navigate = useNavigate();
+
   return (
     <Card mt={10}>
       <Flex
@@ -62,6 +61,7 @@ export default function MyArticleCard() {
                 icon={<Icon as={EditIcon} w={10} />}
                 variant="ghost"
                 aria-label="Delete"
+                onClick={() => navigate("/edit")}
               />
             </Flex>
             <Heading>

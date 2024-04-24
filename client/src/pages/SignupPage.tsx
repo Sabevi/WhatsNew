@@ -24,7 +24,7 @@ export default function SignupPage() {
         </Stack>
         <Box>
          Already registered ?{" "}
-          <Link color={_blue} href="#">
+          <Link color={_blue} href="/login">
             Login
           </Link>
         </Box>

@@ -3,7 +3,6 @@ import {
   ExternalLinkIcon,
   HamburgerIcon,
   StarIcon,
-  ViewIcon,
 } from "@chakra-ui/icons";
 import {
   Menu as MenuComponent,
@@ -12,6 +11,7 @@ import {
   MenuItem,
   IconButton,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   return (
@@ -25,10 +25,18 @@ export default function Menu() {
         p={6}
       />
       <MenuList>
-        <MenuItem icon={<StarIcon />} fontSize="lg">Go to Home</MenuItem>
-        <MenuItem icon={<EditIcon />} fontSize="lg">Create new article</MenuItem>
-        <MenuItem icon={<ViewIcon />} fontSize="lg">Manage your articles</MenuItem>
-        <MenuItem icon={<ExternalLinkIcon />} fontSize="lg">Sign out</MenuItem>
+        <MenuItem as={Link} to="/" icon={<StarIcon />} fontSize="lg">
+          Home
+        </MenuItem>
+        <MenuItem as={Link} to="/create" icon={<EditIcon />} fontSize="lg">
+          Create a new article
+        </MenuItem>
+        <MenuItem as={Link} to="/my-articles" icon={<EditIcon />} fontSize="lg">
+          Manage your articles
+        </MenuItem>
+        <MenuItem as={Link} to="/" icon={<ExternalLinkIcon />} fontSize="lg">
+          Sign out
+        </MenuItem>
       </MenuList>
     </MenuComponent>
   );

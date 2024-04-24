@@ -18,9 +18,9 @@ export default function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="create" element={<CreateArticlePage />} />
-            <Route path="edit" element={<UpdateArticlePage />} />
-            <Route path="my-articles" element={<MyArticlesPage />} />
+            <Route path="/create" element={<CreateArticlePage />} />
+            <Route path="/edit" element={<UpdateArticlePage />} />
+            <Route path="/my-articles" element={<MyArticlesPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
