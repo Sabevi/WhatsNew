@@ -13,10 +13,8 @@ import BlogAuthor from "./ArticleAuthor";
 import { grey_color } from "../../../assets/customColors";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
-import { useNavigate } from "react-router-dom";
 
-export default function ArticleCard() {
-  const navigate = useNavigate();
+export default function ArticleCard(): JSX.Element {
   return (
     <Card mt={10}>
       <Flex

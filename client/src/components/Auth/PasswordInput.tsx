@@ -14,7 +14,7 @@ import { light_grey_color } from "../../assets/customColors";
 
 const CFaLock = chakra(FaLock);
 
-export default function PasswordInput() {
+export default function PasswordInput(): JSX.Element {
   return (
     <FormControl id="Password">
       <VisuallyHidden as={FormLabel}>Username</VisuallyHidden>

@@ -3,7 +3,7 @@ import ArticleList from "../components/Article/Lists/ArticleList";
 import { blue_color } from "../assets/customColors";
 import SelectArticles from "../components/Article/Actions/SelectArticles";
 
-export default function HomePage() {
+export default function HomePage(): JSX.Element {
   return (
     <Container maxW="7xl" p="12">
       <Heading textAlign="center" as="h1" color={blue_color}>

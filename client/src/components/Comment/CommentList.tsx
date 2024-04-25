@@ -1,7 +1,7 @@
 import { Text, Flex, Card, CardHeader, Heading } from "@chakra-ui/react";
 import { Comment } from "./Comment";
 
-export default function CommentList() {
+export default function CommentList(): JSX.Element {
   return (
     <Card mt="10" mb="10">
       <Flex

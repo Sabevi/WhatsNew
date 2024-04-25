@@ -19,7 +19,7 @@ import PasswordInput from "./PasswordInput";
 
 const CFaLock = chakra(FaLock);
 
-export default function SignUp() {
+export default function SignUp(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();

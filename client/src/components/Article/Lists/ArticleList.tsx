@@ -1,6 +1,6 @@
 import ArticleCard from "../Content/ArticleCard";
 
-const ArticleList = () => {
+const ArticleList = (): JSX.Element => {
   return (
     <>
       <ArticleCard />

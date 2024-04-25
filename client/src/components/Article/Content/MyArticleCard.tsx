@@ -17,7 +17,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { grey_color } from "../../../assets/customColors";
 
-export default function MyArticleCard() {
+export default function MyArticleCard(): JSX.Element {
   const navigate = useNavigate();
 
   return (

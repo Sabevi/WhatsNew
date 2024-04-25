@@ -2,7 +2,7 @@ import { Avatar, Box, Flex, Heading, Link, Stack } from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
 import SignUp from "../components/Auth/Signup";
 
-export default function SignupPage() {
+export default function SignupPage(): JSX.Element {
   return (
     <>
       <Flex

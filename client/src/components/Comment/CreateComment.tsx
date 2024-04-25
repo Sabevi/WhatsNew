@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import BlueButton from "../Button/BlueButton";
 
-export default function CreateComment() {
+export default function CreateComment(): JSX.Element {
   return (
     <Card as="form" p="4" w="full" h="auto" mt={10}>
       <Flex

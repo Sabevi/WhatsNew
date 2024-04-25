@@ -5,7 +5,7 @@ import BlueButton from "../Button/BlueButton";
 import UsernameInput from "./UsernameInput";
 import PasswordInput from "./PasswordInput";
 
-export default function Login() {
+export default function Login(): JSX.Element {
   const navigate = useNavigate();
 
   return (

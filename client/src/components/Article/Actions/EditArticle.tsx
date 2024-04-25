@@ -2,7 +2,7 @@ import { Card, CardFooter } from "@chakra-ui/react";
 import BlueButton from "../../Button/BlueButton";
 import FormArticle from "./FormArticle";
 
-export default function EditArticle() {
+export default function EditArticle(): JSX.Element {
   return (
     <Card as="form" p="4" w="full" h="auto">
       <FormArticle

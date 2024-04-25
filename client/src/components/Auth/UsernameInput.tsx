@@ -12,7 +12,7 @@ import { light_grey_color } from "../../assets/customColors";
 
 const CFaUserAlt = chakra(FaUserAlt);
 
-export default function UsernameInput() {
+export default function UsernameInput(): JSX.Element {
   return (
     <FormControl id="Username">
       <VisuallyHidden as={FormLabel}>Username</VisuallyHidden>

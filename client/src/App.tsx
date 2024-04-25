@@ -10,7 +10,7 @@ import MyArticlesPage from './pages/MyArticlesPage'
 import UpdateArticlePage from './pages/UpdateArticlePage'
 import ShowArticlePage from './pages/ShowArticlePage'
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <ChakraProvider>
       <BrowserRouter>

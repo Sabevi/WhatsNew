@@ -2,7 +2,7 @@ import { Avatar, Box, Flex, Heading, Link, Stack } from "@chakra-ui/react";
 import Login from "../components/Auth/Login";
 import { blue_color } from "../assets/customColors";
 
-export default function LoginPage() {
+export default function LoginPage(): JSX.Element {
   return (
     <>
       <Flex

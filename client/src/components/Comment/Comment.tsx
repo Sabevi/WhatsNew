@@ -9,7 +9,7 @@ import BlogAuthor from "../Article/Content/ArticleAuthor";
 import { grey_color } from "../../assets/customColors";
 
 
-export function Comment() {
+export function Comment(): JSX.Element {
   return (
     <Card mt={10}>
       <Flex

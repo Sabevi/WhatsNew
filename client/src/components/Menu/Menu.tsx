@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-export default function Menu() {
+export default function Menu(): JSX.Element {
   return (
     <MenuComponent>
       <MenuButton

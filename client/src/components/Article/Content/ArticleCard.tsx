@@ -18,7 +18,7 @@ import BlueButton from "../../Button/BlueButton";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
 
-export default function ArticleCard() {
+export default function ArticleCard(): JSX.Element {
   const navigate = useNavigate();
 
   return (
