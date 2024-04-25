@@ -20,6 +20,7 @@ export default function CommentList() {
           </Heading>
           <Comment />
           <Comment />
+          PAGINATION
         </CardHeader>
       </Flex>
     </Card>

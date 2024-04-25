@@ -16,7 +16,7 @@ import { blue_color, white_color } from "../../assets/customColors";
 
 export default function CreateComment() {
   return (
-    <Card as="form" p="4" w="full" h="auto">
+    <Card as="form" p="4" w="full" h="auto" mt={10}>
       <Flex
         direction={{ base: "column", sm: "row" }}
         justifyContent="space-between"

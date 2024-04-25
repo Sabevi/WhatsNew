@@ -11,8 +11,8 @@ export default function ShowArticlePage() {
         What's New - Article{" "}
       </Heading>
       <Article />
-      <CommentList />
       <CreateComment />
+      <CommentList />
     </Container>
   );
 }
