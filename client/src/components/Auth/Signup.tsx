@@ -10,12 +10,13 @@ import {
   FormControl,
   InputRightElement,
 } from "@chakra-ui/react";
-import { FaUserAlt, FaLock } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
 import { light_grey_color, white_color } from "../../assets/customColors";
 import { useNavigate } from "react-router-dom";
 import BlueButton from "../Button/BlueButton";
+import UsernameInput from "./UsernameInput";
+import PasswordInput from "./PasswordInput";
 
-const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
 export default function SignUp() {
@@ -34,33 +35,8 @@ export default function SignUp() {
           backgroundColor={white_color}
           boxShadow="md"
         >
-          <FormControl>
-            <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<CFaUserAlt color={light_grey_color} />}
-              />
-              <Input type="email" placeholder="email address" />
-            </InputGroup>
-          </FormControl>
-          <FormControl>
-            <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-                color={light_grey_color}
-                children={<CFaLock color={light_grey_color} />}
-              />
-              <Input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-              />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                  {showPassword ? "Hide" : "Show"}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </FormControl>
+          <UsernameInput />
+          <PasswordInput />
           <FormControl>
             <InputGroup>
               <InputLeftElement
