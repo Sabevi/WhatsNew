@@ -33,23 +33,23 @@ export default function ArticleCard(): JSX.Element {
                 _hover={{ textDecoration: "none" }}
                 fontSize="3xl"
                 as="h2"
+                mt="10"
               >
                 Blog article title
               </Text>
             </Heading>
           </CardHeader>
           <CardBody>
-            <AspectRatio
-              width={{ base: "80%", sm: "70%" }}
-              ml={{ base: "0", sm: "5%" }}
-            >
-              <Image
-                borderRadius="lg"
-                src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-                alt="some good alt text"
-                objectFit="cover"
-              />
-            </AspectRatio>
+            <Flex justifyContent="center">
+              <AspectRatio width={{ sm: "40%" }}>
+                <Image
+                  borderRadius="lg"
+                  src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
+                  alt="some good alt text"
+                  objectFit="cover"
+                />
+              </AspectRatio>
+            </Flex>
             <Text
               as="p"
               marginTop="2"
@@ -82,11 +82,11 @@ export default function ArticleCard(): JSX.Element {
           <CardFooter>
             <Flex width="100%" justifyContent="flex-end" gap="20px">
               <CommentButton
-                onClickAction={() => (console.log("Comment button clicked"))}
+                onClickAction={() => console.log("Comment button clicked")}
                 number={3}
               />
               <LikeButton
-                onClickAction={() => (console.log("Like button clicked"))}
+                onClickAction={() => console.log("Like button clicked")}
                 number={6}
               />
             </Flex>
