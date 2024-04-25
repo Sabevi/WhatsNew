@@ -32,7 +32,7 @@ export default function CreateComment(): JSX.Element {
           </Heading>
         </CardHeader>
       </Flex>
-      <Box mb="4">
+      <form>
         <FormControl id="article">
           <VisuallyHidden as={FormLabel}>Article</VisuallyHidden>
           <Textarea
@@ -41,10 +41,14 @@ export default function CreateComment(): JSX.Element {
             fontSize="lg"
           />
         </FormControl>
-        <CardFooter>
-          <BlueButton text="Publish comment" onClickAction={() => {}} margin="0 auto" />
-        </CardFooter>
-      </Box>
+      </form>
+      <CardFooter>
+        <BlueButton
+          text="Publish comment"
+          onClickAction={() => {}}
+          margin="0 auto"
+        />
+      </CardFooter>
     </Card>
   );
 }

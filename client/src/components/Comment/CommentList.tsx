@@ -1,28 +1,29 @@
-import { Text, Flex, Card, CardHeader, Heading } from "@chakra-ui/react";
+import {
+  Card,
+  CardHeader,
+  Heading,
+  CardFooter,
+  CardBody,
+} from "@chakra-ui/react";
 import { Comment } from "./Comment";
 
 export default function CommentList(): JSX.Element {
   return (
-    <Card mt="10" mb="10">
-      <Flex
-        direction={{ base: "column", sm: "row" }}
-        justifyContent="space-between"
-      >
-        <CardHeader>
-          <Heading>
-            <Text
-              textDecoration="none"
-              _hover={{ textDecoration: "none" }}
-              fontSize="3xl"
-            >
-              Comments:
-            </Text>
-          </Heading>
-          <Comment />
-          <Comment />
-          PAGINATION
-        </CardHeader>
-      </Flex>
+    <Card mt="10">
+      <CardHeader>
+        <Heading
+          textDecoration="none"
+          _hover={{ textDecoration: "none" }}
+          fontSize="3xl"
+        >
+          Comments:
+        </Heading>
+      </CardHeader>
+      <CardBody>
+        <Comment />
+        <Comment />
+      </CardBody>
+      <CardFooter>PAGINATION</CardFooter>
     </Card>
   );
 }

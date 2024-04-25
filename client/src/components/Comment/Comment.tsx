@@ -11,7 +11,7 @@ import { grey_color } from "../../assets/customColors";
 
 export function Comment(): JSX.Element {
   return (
-    <Card mt={10}>
+    <Card mb={10}>
       <Flex
         direction={{ base: "column", sm: "row" }}
         justifyContent="space-between"
