@@ -1,11 +1,7 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
+import { BlogAuthorProps } from "../../../types/ComponentTypes";
 
-interface BlogAuthorProps {
-  date: Date;
-  name: string;
-}
-
-export default function BlogAuthor(props: BlogAuthorProps): JSX.Element {
+export default function BlogAuthor({name, date}: BlogAuthorProps): JSX.Element {
   return (
     <HStack
       marginTop="2"
@@ -18,11 +14,11 @@ export default function BlogAuthor(props: BlogAuthorProps): JSX.Element {
         borderRadius="full"
         boxSize="40px"
         src="https://100k-faces.glitch.me/random-image"
-        alt={`Avatar of ${props.name}`}
+        alt={`Avatar of ${name}`}
       />
-      <Text fontWeight="medium">{props.name}</Text>
+      <Text fontWeight="medium">{name}</Text>
       <Text>—</Text>
-      <Text>{props.date.toLocaleDateString()}</Text>
+      <Text>{date.toLocaleDateString()}</Text>
     </HStack>
   );
 };

@@ -17,3 +17,9 @@ export interface FormArticleProps {
   title: string;
   article: string;
 }
+
+// OTHER COMPONENTS
+export interface BlogAuthorProps {
+  date: Date;
+  name: string;
+}
