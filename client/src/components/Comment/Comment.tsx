@@ -6,6 +6,7 @@ import {
   CardBody,
 } from "@chakra-ui/react";
 import BlogAuthor from "../Article/ArticleAuthor";
+import { grey_color } from "../../assets/customColors";
 
 
 export function Comment() {
@@ -20,7 +21,7 @@ export function Comment() {
           <BlogAuthor name="John Doe" date={new Date("2021-04-06T19:01:27Z")} />
         </CardHeader>
         <CardBody>
-          <Text marginTop="2" fontSize="lg">
+          <Text marginTop="2" fontSize="lg" color={grey_color}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy
             text ever since the 1500s, when an unknown printer took a galley of

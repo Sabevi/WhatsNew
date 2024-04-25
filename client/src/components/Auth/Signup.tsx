@@ -11,7 +11,7 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { _blue, _gray, _white } from "../../assets/colors";
+import { blue_color, light_grey_color, white_color } from "../../assets/customColors";
 import { useNavigate } from "react-router-dom";
 
 const CFaUserAlt = chakra(FaUserAlt);
@@ -27,12 +27,12 @@ export default function SignUp() {
   return (
     <Box minW={{ base: "90%", md: "468px" }}>
       <form>
-        <Stack spacing={4} p="1rem" backgroundColor={_white} boxShadow="md">
+        <Stack spacing={4} p="1rem" backgroundColor={white_color} boxShadow="md">
           <FormControl>
             <InputGroup>
               <InputLeftElement
                 pointerEvents="none"
-                children={<CFaUserAlt color={_gray} />}
+                children={<CFaUserAlt color={light_grey_color} />}
               />
               <Input type="email" placeholder="email address" />
             </InputGroup>
@@ -41,8 +41,8 @@ export default function SignUp() {
             <InputGroup>
               <InputLeftElement
                 pointerEvents="none"
-                color="gray.300"
-                children={<CFaLock color={_gray} />}
+                color={light_grey_color}
+                children={<CFaLock color={light_grey_color} />}
               />
               <Input
                 type={showPassword ? "text" : "password"}
@@ -59,8 +59,8 @@ export default function SignUp() {
             <InputGroup>
               <InputLeftElement
                 pointerEvents="none"
-                color="gray.300"
-                children={<CFaLock color={_gray} />}
+                color={light_grey_color}
+                children={<CFaLock color={light_grey_color} />}
               />
               <Input
                 type={showConfirmPassword ? "text" : "password"}
@@ -76,7 +76,8 @@ export default function SignUp() {
           </FormControl>
           <Button
             variant="solid"
-            colorScheme="blue"
+            bg={blue_color}
+            color={white_color}
             m="0 auto"
             onClick={() => navigate("/")}
           >

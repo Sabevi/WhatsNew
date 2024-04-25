@@ -12,6 +12,7 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
+import { blue_color, white_color } from "../../assets/customColors";
 
 export default function CreateComment() {
   return (
@@ -42,7 +43,12 @@ export default function CreateComment() {
           />
         </FormControl>
         <CardFooter>
-          <Button variant="solid" colorScheme="blue" m="0 auto">
+          <Button
+            variant="solid"
+            bg={blue_color}
+            color={white_color}
+            m="0 auto"
+          >
             Publish comment
           </Button>
         </CardFooter>

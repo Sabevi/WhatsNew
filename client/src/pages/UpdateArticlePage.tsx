@@ -1,11 +1,11 @@
 import { Container, Heading } from "@chakra-ui/react";
-import { _blue } from "../assets/colors";
+import { blue_color } from "../assets/customColors";
 import EditArticle from "../components/Article/EditArticle";
 
 export default function UpdateArticlePage() {
   return (
     <Container maxW="7xl" p="12">
-      <Heading textAlign="center" as="h1" color={_blue}>
+      <Heading textAlign="center" as="h1" color={blue_color}>
         What's New - Edit Article{" "}
       </Heading>
       <EditArticle />

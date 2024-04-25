@@ -18,6 +18,7 @@ import {
 import { AiOutlineLike } from "react-icons/ai";
 import BlogAuthor from "./ArticleAuthor";
 import { useNavigate } from "react-router-dom";
+import { blue_color, grey_color, white_color } from "../../assets/customColors";
 
 export default function ArticleCard() {
   const navigate = useNavigate();
@@ -74,12 +75,7 @@ export default function ArticleCard() {
             </Heading>
           </CardHeader>
           <CardBody>
-            <Text
-              as="p"
-              marginTop="2"
-              color="grey"
-              fontSize="lg"
-            >
+            <Text as="p" marginTop="2" color={grey_color} fontSize="lg">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley
@@ -92,7 +88,12 @@ export default function ArticleCard() {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Button variant="solid" colorScheme="blue" onClick={() => navigate("/article")}>
+              <Button
+                variant="solid"
+                bg={blue_color}
+                color={white_color}
+                onClick={() => navigate("/article")}
+              >
                 Show full article
               </Button>
               <Stack direction="row" spacing={4} align="center">

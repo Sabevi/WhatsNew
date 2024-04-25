@@ -1,6 +1,6 @@
 import { Avatar, Box, Flex, Heading, Link, Stack } from "@chakra-ui/react";
 import Login from "../components/Auth/Login";
-import { _blue } from "../assets/colors";
+import { blue_color } from "../assets/customColors";
 
 export default function LoginPage() {
   return (
@@ -18,13 +18,13 @@ export default function LoginPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <Avatar bg={_blue} />
-          <Heading color={_blue}>Login</Heading>
+          <Avatar bg={blue_color} />
+          <Heading color={blue_color}>Login</Heading>
           <Login />
         </Stack>
         <Box>
           New to us?{" "}
-          <Link color={_blue} href="/signup">
+          <Link color={blue_color} href="/signup">
             Sign Up
           </Link>
         </Box>

@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineLike } from "react-icons/ai";
 import BlogAuthor from "./ArticleAuthor";
-import { _blue } from "../../assets/colors";
+import { blue_color, grey_color, light_grey_color, white_color } from "../../assets/customColors";
 
 export default function ArticleCard() {
   return (
@@ -52,7 +52,7 @@ export default function ArticleCard() {
                 objectFit="cover"
               />
             </AspectRatio>
-            <Text as="p" marginTop="2" color="grey" fontSize="lg" padding="10">
+            <Text as="p" marginTop="2" fontSize="lg" padding="10" color={grey_color}>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley
@@ -95,14 +95,14 @@ export default function ArticleCard() {
                 <IconButton
                   aria-label="Icon button 1"
                   icon={<Icon as={AiOutlineLike} />}
-                  backgroundColor={_blue}
-                  color="white"
+                  backgroundColor={blue_color}
+                  color={white_color}
                 />
                 <IconButton
                   aria-label="Icon button 2"
                   icon={<Icon as={ChatIcon} />}
-                  backgroundColor={_blue}
-                  color="white"
+                  backgroundColor={blue_color}
+                  color={white_color}
                 />
               </Stack>
             </Flex>

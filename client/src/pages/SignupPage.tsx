@@ -1,5 +1,5 @@
 import { Avatar, Box, Flex, Heading, Link, Stack } from "@chakra-ui/react";
-import { _blue } from "../assets/colors";
+import { blue_color } from "../assets/customColors";
 import SignUp from "../components/Auth/Signup";
 
 export default function SignupPage() {
@@ -18,13 +18,13 @@ export default function SignupPage() {
           justifyContent="center"
           alignItems="center"
         >
-          <Avatar bg={_blue} />
-          <Heading color={_blue}>Sign Up</Heading>
+          <Avatar bg={blue_color} />
+          <Heading color={blue_color}>Sign Up</Heading>
           <SignUp />
         </Stack>
         <Box>
          Already registered ?{" "}
-          <Link color={_blue} href="/login">
+          <Link color={blue_color} href="/login">
             Login
           </Link>
         </Box>

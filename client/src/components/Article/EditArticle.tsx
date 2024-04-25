@@ -10,6 +10,7 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
+import { blue_color, white_color } from "../../assets/customColors";
 
 export default function EditArticle() {
   const [title, setTitle] = useState("This is a dummy title");
@@ -43,7 +44,12 @@ export default function EditArticle() {
           />
         </FormControl>
         <CardFooter>
-          <Button variant="solid" colorScheme="blue" m="0 auto">
+          <Button
+            variant="solid"
+            bg={blue_color}
+            color={white_color}
+            m="0 auto"
+          >
             Save article
           </Button>
         </CardFooter>

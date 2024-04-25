@@ -9,6 +9,7 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
+import { blue_color, white_color } from "../../assets/customColors";
 
 export default function CreateArticle() {
   return (
@@ -33,7 +34,12 @@ export default function CreateArticle() {
           />
         </FormControl>
         <CardFooter>
-          <Button variant="solid" colorScheme="blue" m="0 auto">
+          <Button
+            variant="solid"
+            bg={blue_color}
+            color={white_color}
+            m="0 auto"
+          >
             Publish article
           </Button>
         </CardFooter>

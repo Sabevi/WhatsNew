@@ -15,6 +15,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { grey_color } from "../../assets/customColors";
 
 export default function MyArticleCard() {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ export default function MyArticleCard() {
             </Heading>
           </CardHeader>
           <CardBody>
-            <Text as="p" marginTop="2" color="grey" fontSize="lg">
+            <Text as="p" marginTop="2" color={grey_color} fontSize="lg">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley
