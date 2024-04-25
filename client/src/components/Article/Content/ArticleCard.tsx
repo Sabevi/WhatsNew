@@ -67,6 +67,7 @@ export default function ArticleCard(): JSX.Element {
                 textDecoration="none"
                 _hover={{ textDecoration: "none" }}
                 fontSize="3xl"
+                as="h2"
               >
                 Blog article title
               </Text>

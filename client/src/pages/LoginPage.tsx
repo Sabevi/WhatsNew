@@ -1,10 +1,10 @@
-import { Avatar, Box, Flex, Heading, Link, Stack } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Heading, Link, Stack, } from "@chakra-ui/react";
 import Login from "../components/Auth/Login";
 import { blue_color } from "../assets/customColors";
 
 export default function LoginPage(): JSX.Element {
   return (
-    <>
+    <Box as="main">
       <Flex
         flexDirection="column"
         width="100wh"
@@ -19,7 +19,7 @@ export default function LoginPage(): JSX.Element {
           alignItems="center"
         >
           <Avatar bg={blue_color} />
-          <Heading color={blue_color}>Login</Heading>
+          <Heading as="h1" color={blue_color}>Login</Heading>
           <Login />
         </Stack>
         <Box>
@@ -29,6 +29,6 @@ export default function LoginPage(): JSX.Element {
           </Link>
         </Box>
       </Flex>
-    </>
+    </Box>
   );
 }

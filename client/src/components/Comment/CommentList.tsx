@@ -15,6 +15,7 @@ export default function CommentList(): JSX.Element {
           textDecoration="none"
           _hover={{ textDecoration: "none" }}
           fontSize="3xl"
+          as="h2"
         >
           Comments:
         </Heading>

@@ -4,7 +4,7 @@ import SignUp from "../components/Auth/Signup";
 
 export default function SignupPage(): JSX.Element {
   return (
-    <>
+    <Box as="main">
       <Flex
         flexDirection="column"
         width="100wh"
@@ -19,7 +19,7 @@ export default function SignupPage(): JSX.Element {
           alignItems="center"
         >
           <Avatar bg={blue_color} />
-          <Heading color={blue_color}>Sign Up</Heading>
+          <Heading as="h1" color={blue_color}>Sign Up</Heading>
           <SignUp />
         </Stack>
         <Box>
@@ -29,6 +29,6 @@ export default function SignupPage(): JSX.Element {
           </Link>
         </Box>
       </Flex>
-    </>
+    </Box>
   );
 }

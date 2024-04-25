@@ -26,6 +26,7 @@ export default function CreateComment(): JSX.Element {
               textDecoration="none"
               _hover={{ textDecoration: "none" }}
               fontSize="3xl"
+              as="h2"
             >
               Add your comment:
             </Text>
