@@ -11,3 +11,9 @@ export interface BlueButtonProps extends ButtonProps {
 export interface ActionButtonProps extends ButtonProps {
   number: number;
 }
+
+// FORMS
+export interface FormArticleProps {
+  title: string;
+  article: string;
+}
