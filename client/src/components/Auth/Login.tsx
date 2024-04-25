@@ -12,7 +12,8 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { blue_color, light_grey_color, white_color } from "../../assets/customColors";
+import { light_grey_color, white_color } from "../../assets/customColors";
+import BlueButton from "../Button/BlueButton";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -26,7 +27,12 @@ export default function Login() {
   return (
     <Box minW={{ base: "90%", md: "468px" }}>
       <form>
-        <Stack spacing={4} p="1rem" backgroundColor={white_color} boxShadow="md">
+        <Stack
+          spacing={4}
+          p="1rem"
+          backgroundColor={white_color}
+          boxShadow="md"
+        >
           <FormControl>
             <InputGroup>
               <InputLeftElement
@@ -55,15 +61,11 @@ export default function Login() {
             </InputGroup>
             {/* use FormHelperText for message errors*/}
           </FormControl>
-          <Button
-            variant="solid"
-            bg={blue_color}
-            color={white_color}
-            m="0 auto"
-            onClick={() => navigate("/")}
-          >
-            Login
-          </Button>
+          <BlueButton
+            text="Login"
+            onClickAction={() => navigate("/")}
+            margin="0 auto"
+          />
         </Stack>
       </form>
     </Box>

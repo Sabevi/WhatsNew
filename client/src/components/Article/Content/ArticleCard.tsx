@@ -11,14 +11,14 @@ import {
   CardBody,
   CardFooter,
   Heading,
-  Button,
   Icon,
   Stack,
 } from "@chakra-ui/react";
 import { AiOutlineLike } from "react-icons/ai";
 import BlogAuthor from "./ArticleAuthor";
 import { useNavigate } from "react-router-dom";
-import { blue_color, grey_color, white_color } from "../../../assets/customColors";
+import { grey_color } from "../../../assets/customColors";
+import BlueButton from "../../Button/BlueButton";
 
 export default function ArticleCard() {
   const navigate = useNavigate();
@@ -88,14 +88,7 @@ export default function ArticleCard() {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Button
-                variant="solid"
-                bg={blue_color}
-                color={white_color}
-                onClick={() => navigate("/article")}
-              >
-                Show full article
-              </Button>
+              <BlueButton text="Show full article" onClickAction={() => navigate("/article")}/>
               <Stack direction="row" spacing={4} align="center">
                 <Stack direction="row" spacing={1} align="center">
                   <Text>9</Text>

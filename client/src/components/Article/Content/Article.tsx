@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineLike } from "react-icons/ai";
 import BlogAuthor from "./ArticleAuthor";
-import { blue_color, grey_color, light_grey_color, white_color } from "../../../assets/customColors";
+import { blue_color, grey_color, white_color } from "../../../assets/customColors";
 
 export default function ArticleCard() {
   return (

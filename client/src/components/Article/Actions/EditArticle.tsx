@@ -8,9 +8,8 @@ import {
   Box,
   VisuallyHidden,
   CardFooter,
-  Button,
 } from "@chakra-ui/react";
-import { blue_color, white_color } from "../../../assets/customColors";
+import BlueButton from "../../Button/BlueButton";
 
 export default function EditArticle() {
   const [title, setTitle] = useState("This is a dummy title");
@@ -44,14 +43,7 @@ export default function EditArticle() {
           />
         </FormControl>
         <CardFooter>
-          <Button
-            variant="solid"
-            bg={blue_color}
-            color={white_color}
-            m="0 auto"
-          >
-            Save article
-          </Button>
+          <BlueButton text="Save article" onClickAction={() => {}} margin="0 auto" />
         </CardFooter>
       </Box>
     </Card>

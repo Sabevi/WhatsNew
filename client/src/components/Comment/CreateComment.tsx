@@ -6,13 +6,12 @@ import {
   Box,
   VisuallyHidden,
   CardFooter,
-  Button,
   Flex,
   CardHeader,
   Heading,
   Text,
 } from "@chakra-ui/react";
-import { blue_color, white_color } from "../../assets/customColors";
+import BlueButton from "../Button/BlueButton";
 
 export default function CreateComment() {
   return (
@@ -43,14 +42,7 @@ export default function CreateComment() {
           />
         </FormControl>
         <CardFooter>
-          <Button
-            variant="solid"
-            bg={blue_color}
-            color={white_color}
-            m="0 auto"
-          >
-            Publish comment
-          </Button>
+          <BlueButton text="Publish comment" onClickAction={() => {}} margin="0 auto" />
         </CardFooter>
       </Box>
     </Card>

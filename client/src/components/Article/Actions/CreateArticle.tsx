@@ -7,9 +7,8 @@ import {
   Box,
   VisuallyHidden,
   CardFooter,
-  Button,
 } from "@chakra-ui/react";
-import { blue_color, white_color } from "../../../assets/customColors";
+import BlueButton from "../../Button/BlueButton";
 
 export default function CreateArticle() {
   return (
@@ -34,14 +33,7 @@ export default function CreateArticle() {
           />
         </FormControl>
         <CardFooter>
-          <Button
-            variant="solid"
-            bg={blue_color}
-            color={white_color}
-            m="0 auto"
-          >
-            Publish article
-          </Button>
+          <BlueButton text="Publish article" onClickAction={() => {}} margin="0 auto" />
         </CardFooter>
       </Box>
     </Card>
