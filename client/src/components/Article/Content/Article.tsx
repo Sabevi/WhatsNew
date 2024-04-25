@@ -1,4 +1,3 @@
-import { ChatIcon } from "@chakra-ui/icons";
 import {
   Image,
   Text,
@@ -9,15 +8,15 @@ import {
   CardBody,
   CardFooter,
   Heading,
-  Icon,
-  Stack,
-  IconButton,
 } from "@chakra-ui/react";
-import { AiOutlineLike } from "react-icons/ai";
 import BlogAuthor from "./ArticleAuthor";
-import { blue_color, grey_color, white_color } from "../../../assets/customColors";
+import { grey_color } from "../../../assets/customColors";
+import CommentButton from "../../Button/CommentButton";
+import LikeButton from "../../Button/LikeButton";
+import { useNavigate } from "react-router-dom";
 
 export default function ArticleCard() {
+  const navigate = useNavigate();
   return (
     <Card mt={10}>
       <Flex
@@ -52,7 +51,13 @@ export default function ArticleCard() {
                 objectFit="cover"
               />
             </AspectRatio>
-            <Text as="p" marginTop="2" fontSize="lg" padding="10" color={grey_color}>
+            <Text
+              as="p"
+              marginTop="2"
+              fontSize="lg"
+              padding="10"
+              color={grey_color}
+            >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry&apos;s standard dummy
               text ever since the 1500s, when an unknown printer took a galley
@@ -76,35 +81,15 @@ export default function ArticleCard() {
             </Text>
           </CardBody>
           <CardFooter>
-            <Flex
-              width="100%"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Stack direction="row" spacing={4} align="center">
-                <Stack direction="row" spacing={1} align="center">
-                  <Text>9</Text>
-                  <Icon as={AiOutlineLike} boxSize={5} />
-                </Stack>
-                <Stack direction="row" spacing={1} align="center">
-                  <Text>3</Text>
-                  <Icon as={ChatIcon} w={10} />
-                </Stack>
-              </Stack>
-              <Stack direction="row" spacing={4}>
-                <IconButton
-                  aria-label="Icon button 1"
-                  icon={<Icon as={AiOutlineLike} />}
-                  backgroundColor={blue_color}
-                  color={white_color}
-                />
-                <IconButton
-                  aria-label="Icon button 2"
-                  icon={<Icon as={ChatIcon} />}
-                  backgroundColor={blue_color}
-                  color={white_color}
-                />
-              </Stack>
+            <Flex width="100%" justifyContent="flex-end" gap="20px">
+              <CommentButton
+                onClickAction={() => (console.log("Comment button clicked"))}
+                number={3}
+              />
+              <LikeButton
+                onClickAction={() => (console.log("Like button clicked"))}
+                number={6}
+              />
             </Flex>
           </CardFooter>
         </Flex>

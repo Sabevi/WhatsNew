@@ -1,4 +1,3 @@
-import { ChatIcon } from "@chakra-ui/icons";
 import {
   Box,
   Image,
@@ -11,14 +10,13 @@ import {
   CardBody,
   CardFooter,
   Heading,
-  Icon,
-  Stack,
 } from "@chakra-ui/react";
-import { AiOutlineLike } from "react-icons/ai";
 import BlogAuthor from "./ArticleAuthor";
 import { useNavigate } from "react-router-dom";
 import { grey_color } from "../../../assets/customColors";
 import BlueButton from "../../Button/BlueButton";
+import CommentButton from "../../Button/CommentButton";
+import LikeButton from "../../Button/LikeButton";
 
 export default function ArticleCard() {
   const navigate = useNavigate();
@@ -88,17 +86,20 @@ export default function ArticleCard() {
               justifyContent="space-between"
               alignItems="center"
             >
-              <BlueButton text="Show full article" onClickAction={() => navigate("/article")}/>
-              <Stack direction="row" spacing={4} align="center">
-                <Stack direction="row" spacing={1} align="center">
-                  <Text>9</Text>
-                  <Icon as={AiOutlineLike} boxSize={5} />
-                </Stack>
-                <Stack direction="row" spacing={1} align="center">
-                  <Text>3</Text>
-                  <Icon as={ChatIcon} w={10} />
-                </Stack>
-              </Stack>
+              <BlueButton
+                text="Show full article"
+                onClickAction={() => navigate("/article")}
+              />
+              <Flex width="18%" justifyContent="space-between">
+                <CommentButton
+                  onClickAction={() => navigate("/article")}
+                  number={3}
+                />
+                <LikeButton
+                  onClickAction={() => navigate("/article")}
+                  number={6}
+                />
+              </Flex>
             </Flex>
           </CardFooter>
         </Flex>
