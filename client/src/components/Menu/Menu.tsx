@@ -34,7 +34,7 @@ export default function Menu() {
         <MenuItem as={Link} to="/my-articles" icon={<EditIcon />} fontSize="lg">
           Manage your articles
         </MenuItem>
-        <MenuItem as={Link} to="/" icon={<ExternalLinkIcon />} fontSize="lg">
+        <MenuItem as={Link} to="/login" icon={<ExternalLinkIcon />} fontSize="lg">
           Sign out
         </MenuItem>
       </MenuList>
