@@ -9,7 +9,7 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
-import { blue_color, white_color } from "../../assets/customColors";
+import { blue_color, white_color } from "../../../assets/customColors";
 
 export default function CreateArticle() {
   return (

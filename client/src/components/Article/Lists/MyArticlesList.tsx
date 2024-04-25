@@ -1,4 +1,4 @@
-import MyArticleCard from "./MyArticleCard";
+import MyArticleCard from "../Content/MyArticleCard";
 
 export default function MyArticlesList () {
   return (

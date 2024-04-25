@@ -1,5 +1,5 @@
 import { Container, Heading } from "@chakra-ui/react";
-import CreateArticle from "../components/Article/CreateArticle";
+import CreateArticle from "../components/Article/Actions/CreateArticle";
 import { blue_color } from "../assets/customColors";
 
 export default function CreateArticlePage() {

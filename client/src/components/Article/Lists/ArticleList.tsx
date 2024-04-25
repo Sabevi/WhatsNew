@@ -1,4 +1,4 @@
-import ArticleCard from "./ArticleCard";
+import ArticleCard from "../Content/ArticleCard";
 
 const ArticleList = () => {
   return (

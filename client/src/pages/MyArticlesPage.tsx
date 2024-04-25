@@ -1,6 +1,6 @@
 import { Container, Heading, Text } from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
-import MyArticlesList from "../components/Article/MyArticlesList";
+import MyArticlesList from "../components/Article/Lists/MyArticlesList";
 
 export default function MyArticlesPage() {
   return (

@@ -1,6 +1,6 @@
 import { Container, Heading, Text } from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
-import Article from "../components/Article/Article";
+import Article from "../components/Article/Content/Article";
 import CommentList from "../components/Comment/CommentList";
 import CreateComment from "../components/Comment/CreateComment";
 

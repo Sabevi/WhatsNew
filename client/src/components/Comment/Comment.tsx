@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardBody,
 } from "@chakra-ui/react";
-import BlogAuthor from "../Article/ArticleAuthor";
+import BlogAuthor from "../Article/Content/ArticleAuthor";
 import { grey_color } from "../../assets/customColors";
 
 

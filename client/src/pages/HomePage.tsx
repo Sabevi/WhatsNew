@@ -1,7 +1,7 @@
 import { Container, Heading, Text } from "@chakra-ui/react";
-import ArticleList from "../components/Article/ArticleList";
+import ArticleList from "../components/Article/Lists/ArticleList";
 import { blue_color } from "../assets/customColors";
-import SelectArticles from "../components/Article/SelectArticles";
+import SelectArticles from "../components/Article/Actions/SelectArticles";
 
 export default function HomePage() {
   return (

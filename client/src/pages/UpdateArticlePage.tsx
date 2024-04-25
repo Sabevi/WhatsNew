@@ -1,6 +1,6 @@
 import { Container, Heading } from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
-import EditArticle from "../components/Article/EditArticle";
+import EditArticle from "../components/Article/Actions/EditArticle";
 
 export default function UpdateArticlePage() {
   return (

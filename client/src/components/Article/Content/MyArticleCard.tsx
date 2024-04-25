@@ -1,4 +1,4 @@
-import { ChatIcon } from "@chakra-ui/icons";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import {
   Box,
   Image,
@@ -11,16 +11,13 @@ import {
   CardBody,
   CardFooter,
   Heading,
-  Button,
   Icon,
-  Stack,
+  IconButton,
 } from "@chakra-ui/react";
-import { AiOutlineLike } from "react-icons/ai";
-import BlogAuthor from "./ArticleAuthor";
 import { useNavigate } from "react-router-dom";
-import { blue_color, grey_color, white_color } from "../../assets/customColors";
+import { grey_color } from "../../../assets/customColors";
 
-export default function ArticleCard() {
+export default function MyArticleCard() {
   const navigate = useNavigate();
 
   return (
@@ -60,17 +57,21 @@ export default function ArticleCard() {
         </Flex>
         <Flex flex="3" direction="column" justifyContent="center">
           <CardHeader>
-            <BlogAuthor
-              name="John Doe"
-              date={new Date("2021-04-06T19:01:27Z")}
-            />
+            <Flex width="100%" justifyContent="flex-end" alignItems="center">
+              <IconButton
+                icon={<Icon as={EditIcon} w={10} />}
+                variant="ghost"
+                aria-label="Delete"
+                onClick={() => navigate("/edit")}
+              />
+            </Flex>
             <Heading>
               <Text
                 textDecoration="none"
                 _hover={{ textDecoration: "none" }}
                 fontSize="3xl"
               >
-                Blog article title
+                My article title
               </Text>
             </Heading>
           </CardHeader>
@@ -83,29 +84,12 @@ export default function ArticleCard() {
             </Text>
           </CardBody>
           <CardFooter>
-            <Flex
-              width="100%"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Button
-                variant="solid"
-                bg={blue_color}
-                color={white_color}
-                onClick={() => navigate("/article")}
-              >
-                Show full article
-              </Button>
-              <Stack direction="row" spacing={4} align="center">
-                <Stack direction="row" spacing={1} align="center">
-                  <Text>9</Text>
-                  <Icon as={AiOutlineLike} boxSize={5} />
-                </Stack>
-                <Stack direction="row" spacing={1} align="center">
-                  <Text>3</Text>
-                  <Icon as={ChatIcon} w={10} />
-                </Stack>
-              </Stack>
+            <Flex width="100%" justifyContent="flex-end" alignItems="center">
+              <IconButton
+                icon={<Icon as={DeleteIcon} w={10} />}
+                variant="ghost"
+                aria-label="Delete"
+              />
             </Flex>
           </CardFooter>
         </Flex>
