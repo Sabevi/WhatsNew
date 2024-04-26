@@ -61,6 +61,7 @@ export type Mutation = {
   createArticle: CreateArticleResponse;
   createUser: CreateUserResponse;
   getArticles: GetArticlesResponse;
+  incrementOrDecrementLikes: IncrementOrDecrementLikeResponse;
   signIn: SignInResponse;
 };
 
@@ -75,6 +76,12 @@ export type MutationCreateArticleArgs = {
 export type MutationCreateUserArgs = {
   password: Scalars['String']['input'];
   username: Scalars['String']['input'];
+};
+
+
+export type MutationIncrementOrDecrementLikesArgs = {
+  articleId: Scalars['ID']['input'];
+  token: Scalars['String']['input'];
 };
 
 
@@ -107,6 +114,14 @@ export type GetArticlesResponse = {
   __typename?: 'getArticlesResponse';
   articlesDto?: Maybe<Array<Maybe<ArticleDto>>>;
   code: Scalars['Int']['output'];
+  message: Scalars['String']['output'];
+  success: Scalars['Boolean']['output'];
+};
+
+export type IncrementOrDecrementLikeResponse = {
+  __typename?: 'incrementOrDecrementLikeResponse';
+  code: Scalars['Int']['output'];
+  like?: Maybe<Scalars['Boolean']['output']>;
   message: Scalars['String']['output'];
   success: Scalars['Boolean']['output'];
 };
@@ -196,6 +211,7 @@ export type ResolversTypes = {
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   User: ResolverTypeWrapper<User>;
   getArticlesResponse: ResolverTypeWrapper<GetArticlesResponse>;
+  incrementOrDecrementLikeResponse: ResolverTypeWrapper<IncrementOrDecrementLikeResponse>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -214,6 +230,7 @@ export type ResolversParentTypes = {
   String: Scalars['String']['output'];
   User: User;
   getArticlesResponse: GetArticlesResponse;
+  incrementOrDecrementLikeResponse: IncrementOrDecrementLikeResponse;
 };
 
 export type ArticleResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Article'] = ResolversParentTypes['Article']> = {
@@ -259,6 +276,7 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
   createArticle?: Resolver<ResolversTypes['CreateArticleResponse'], ParentType, ContextType, RequireFields<MutationCreateArticleArgs, 'description' | 'title' | 'token'>>;
   createUser?: Resolver<ResolversTypes['CreateUserResponse'], ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'password' | 'username'>>;
   getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType>;
+  incrementOrDecrementLikes?: Resolver<ResolversTypes['incrementOrDecrementLikeResponse'], ParentType, ContextType, RequireFields<MutationIncrementOrDecrementLikesArgs, 'articleId' | 'token'>>;
   signIn?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationSignInArgs, 'password' | 'username'>>;
 };
 
@@ -289,6 +307,14 @@ export type GetArticlesResponseResolvers<ContextType = Context, ParentType exten
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type IncrementOrDecrementLikeResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['incrementOrDecrementLikeResponse'] = ResolversParentTypes['incrementOrDecrementLikeResponse']> = {
+  code?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  like?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  success?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = Context> = {
   Article?: ArticleResolvers<ContextType>;
   ArticleDto?: ArticleDtoResolvers<ContextType>;
@@ -300,5 +326,6 @@ export type Resolvers<ContextType = Context> = {
   SignInResponse?: SignInResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
   getArticlesResponse?: GetArticlesResponseResolvers<ContextType>;
+  incrementOrDecrementLikeResponse?: IncrementOrDecrementLikeResponseResolvers<ContextType>;
 };
 

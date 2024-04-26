@@ -26,8 +26,8 @@ model Article {
   id          String    @id @default(cuid())
   title       String
   description String
-  author      User      @relation(fields: [authorId], references: [id])
-  authorId    String
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
   publishedAt DateTime  @default(now())
   Comment     Comment[]
   Like        Like[]
@@ -38,14 +38,14 @@ model Comment {
   content   String
   article   Article @relation(fields: [articleId], references: [id])
   articleId String
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  String
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
 }
 
 model Like {
   id        String  @id @default(cuid())
   article   Article @relation(fields: [articleId], references: [id])
   articleId String
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  String
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String
 }

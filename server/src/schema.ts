@@ -37,6 +37,7 @@ export const typeDefs = gql`
         signIn(username: String!, password: String!): SignInResponse!
         createArticle(token: String!, title: String!, description: String!): CreateArticleResponse!
         getArticles: getArticlesResponse!
+        incrementOrDecrementLikes(token: String!, articleId: ID!): incrementOrDecrementLikeResponse!
     }
     
     type CreateUserResponse {
@@ -65,5 +66,12 @@ export const typeDefs = gql`
         success: Boolean!
         message: String!
         articlesDto: [ArticleDto]
+    }
+    
+    type incrementOrDecrementLikeResponse {
+        code: Int!
+        success: Boolean!
+        message: String!
+        like: Boolean
     }
 `;

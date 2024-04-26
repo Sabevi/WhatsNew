@@ -1,5 +1,5 @@
 import {MutationResolvers} from "../../types";
-import {getUser, hashPassword} from "../../module/auth.js";
+import {getUser} from "../../module/auth.js";
 
 export const createArticle: MutationResolvers['createArticle'] = async (_, {token, title, description}, {dataSources}) => {
     // Check if token :
@@ -20,7 +20,7 @@ export const createArticle: MutationResolvers['createArticle'] = async (_, {toke
             data: {
                 title,
                 description,
-                authorId: user.id
+                userId: user.id
             }
         })
 
