@@ -11,18 +11,14 @@ import { useForm } from "react-hook-form";
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [user, setUser] = useState({
-    username: "",
-    password: "",
-    confirmPassword: "",
-  });
   const navigate = useNavigate();
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
     trigger,
-  } = useForm({ mode: 'onSubmit' });
+  } = useForm({ mode: "onSubmit" });
 
   const usernameRegister = register("username", {
     required: "Username is required",
@@ -32,19 +28,29 @@ export default function SignupPage(): JSX.Element {
     },
   });
 
+  const PASSWORD_REGEX =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,64}$/;
+  const passwordRegister = register("password", {
+    required: "Password is required",
+    pattern: {
+      value: PASSWORD_REGEX,
+      message:
+        "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be between 8 and 64 characters long",
+    },
+  });
+
+  const password = watch("password");
+  const passwordConfirmRegister = register("confirmPassword", {
+    required: "Password confirmation is required",
+    validate: (value) => value === password || "Passwords do not match",
+  });
+
   const handleShowPassword = () => setShowPassword(!showPassword);
   const handleShowConfirmPassword = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
-  const handlePasswordChange = (e) =>
-    setUser({ ...user, password: e.target.value });
-  const handleConfirmPasswordChange = (e) =>
-    setUser({ ...user, confirmPassword: e.target.value });
-
-
-
-  const onSubmit = data => {
-    console.log('Form data:', data);
+  const onSubmit = (user) => {
+    console.log("Form data:", user);
     // handle form submission here
     () => navigate("/signin");
   };
@@ -72,18 +78,20 @@ export default function SignupPage(): JSX.Element {
               <UsernameInput
                 register={usernameRegister}
                 error={errors.username}
-                trigger={trigger}
+                trigger={() => trigger("username")}
               />
               <PasswordInput
-                password={user.password}
-                handlePasswordChange={handlePasswordChange}
+                register={passwordRegister}
+                error={errors.password}
+                trigger={() => trigger("password")}
                 placeholder="Password"
                 showPassword={showPassword}
                 onClickAction={handleShowPassword}
               />
               <PasswordInput
-                password={user.confirmPassword}
-                handlePasswordChange={handleConfirmPasswordChange}
+                register={passwordConfirmRegister}
+                error={errors.confirmPassword}
+                trigger={() => trigger("confirmPassword")}
                 placeholder="Confirm Password"
                 showPassword={showConfirmPassword}
                 onClickAction={handleShowConfirmPassword}
