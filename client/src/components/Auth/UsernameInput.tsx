@@ -12,7 +12,7 @@ import { light_grey_color } from "../../assets/customColors";
 
 const CFaUserAlt = chakra(FaUserAlt);
 
-export default function UsernameInput(): JSX.Element {
+export default function UsernameInput({ username, handleUsernameChange }): JSX.Element {
   return (
     <FormControl id="Username">
       <VisuallyHidden as={FormLabel}>Username</VisuallyHidden>
@@ -21,7 +21,7 @@ export default function UsernameInput(): JSX.Element {
           pointerEvents="none"
           children={<CFaUserAlt color={light_grey_color} />}
         />
-        <Input type="text" placeholder="Username" />
+        <Input type="text" placeholder="Username" value={username} onChange={handleUsernameChange}/>
       </InputGroup>
     </FormControl>
   );

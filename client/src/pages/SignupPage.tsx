@@ -10,11 +10,21 @@ import BlueButton from "../components/Button/BlueButton";
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [user, setUser] = useState({ username: "", password: "", confirmPassword: ""});
   const navigate = useNavigate();
 
   const handleShowPassword = () => setShowPassword(!showPassword);
   const handleShowConfirmPassword = () =>
     setShowConfirmPassword(!showConfirmPassword);
+
+  const handleUsernameChange = (e) =>
+    setUser({ ...user, username: e.target.value });
+  const handlePasswordChange = (e) =>
+    setUser({ ...user, password: e.target.value });
+  const handleConfirmPasswordChange = (e) =>
+    setUser({ ...user, confirmPassword: e.target.value });
+
+  console.log("user: ", user);
 
   return (
     <AuthBox>
@@ -36,16 +46,21 @@ export default function SignupPage(): JSX.Element {
               backgroundColor={white_color}
               boxShadow="md"
             >
-              <UsernameInput />
+              <UsernameInput
+                username={user.username}
+                handleUsernameChange={handleUsernameChange}
+              />
               <PasswordInput
+                password={user.password}
+                handlePasswordChange={handlePasswordChange}
                 placeholder="Password"
-                isPasswordVisible={showPassword}
                 showPassword={showPassword}
                 onClickAction={handleShowPassword}
               />
               <PasswordInput
+                password={user.confirmPassword}
+                handlePasswordChange={handleConfirmPasswordChange}
                 placeholder="Confirm Password"
-                isPasswordVisible={showConfirmPassword}
                 showPassword={showConfirmPassword}
                 onClickAction={handleShowConfirmPassword}
               />

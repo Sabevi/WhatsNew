@@ -15,8 +15,9 @@ import { light_grey_color } from "../../assets/customColors";
 const CFaLock = chakra(FaLock);
 
 export default function PasswordInput({
+  password,
+  handlePasswordChange,
   placeholder,
-  isPasswordVisible,
   showPassword,
   onClickAction,
 }): JSX.Element {
@@ -30,7 +31,7 @@ export default function PasswordInput({
           color={light_grey_color}
           children={<CFaLock color={light_grey_color} />}
         />
-        <Input type={isPasswordVisible ? "text" : "password"} placeholder={placeholder} />
+        <Input type={showPassword ? "text" : "password"} placeholder={placeholder} value={password} onChange={handlePasswordChange}/>
         <InputRightElement width="4.5rem">
           <Button h="1.75rem" size="sm" onClick={onClickAction}>
             {showPassword ? "Hide" : "Show"}
