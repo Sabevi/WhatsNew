@@ -1,9 +1,20 @@
 import { FocusEventHandler } from "react";
-import { FieldError, FieldErrorsImpl, Merge, UseFormRegister, UseFormRegisterReturn, UseFormTrigger } from "react-hook-form";
+import {
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+  UseFormRegisterReturn,
+} from "react-hook-form";
+
+export interface User {
+  username: string;
+  password: string;
+  confirmPassword: string;
+}
 
 // BUTTONS
 export interface ButtonProps {
-  onClickAction: () => void;
+  onClickAction: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface BlueButtonProps extends ButtonProps {
@@ -11,6 +22,7 @@ export interface BlueButtonProps extends ButtonProps {
   margin?: string;
   type?: "button" | "submit";
   disabled?: boolean;
+  style?: React.CSSProperties;
 }
 
 export interface ActionButtonProps extends ButtonProps {
@@ -34,7 +46,10 @@ export interface FormValues {
 
 export interface InputFieldProps {
   register: UseFormRegisterReturn;
-  error: FieldError | Merge<FieldError, FieldErrorsImpl<FormValues>> | undefined;
+  error:
+    | FieldError
+    | Merge<FieldError, FieldErrorsImpl<FormValues>>
+    | undefined;
   trigger: FocusEventHandler<HTMLInputElement>;
 }
 

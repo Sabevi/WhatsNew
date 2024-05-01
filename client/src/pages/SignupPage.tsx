@@ -1,30 +1,31 @@
 import AuthBox from "../components/Auth/AuthBox";
 import { useState } from "react";
 import { Avatar, Heading, Link, Stack, Box } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
 import UsernameInput from "../components/Auth/UsernameInput";
 import PasswordInput from "../components/Auth/PasswordInput";
 import { blue_color, white_color } from "../assets/customColors";
 import BlueButton from "../components/Button/BlueButton";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import useSignUp from "../hooks/useSignup";
+import { User } from "../types/ComponentTypes";
 
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const navigate = useNavigate();
   const {
     register,
     watch,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     trigger,
   } = useForm({ mode: "onSubmit" });
+  const { signup } = useSignUp();
 
   const usernameRegister = register("username", {
     required: "Username is required",
     maxLength: {
-      value: 45,
-      message: "Username cannot be more than 45 characters long",
+      value: 15,
+      message: "Username cannot be more than 15 characters long",
     },
   });
 
@@ -49,10 +50,10 @@ export default function SignupPage(): JSX.Element {
   const handleShowConfirmPassword = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
-  const onSubmit = (user) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const user = data as User;
     console.log("Form data:", user);
-    // handle form submission here
-    () => navigate("/signin");
+    signup(user);
   };
 
   return (
@@ -67,43 +68,50 @@ export default function SignupPage(): JSX.Element {
         <Heading as="h1" color={blue_color}>
           Sign up
         </Heading>
-        <Box minW={{ base: "90%", md: "468px" }}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Stack
-              spacing={4}
-              p="1rem"
-              backgroundColor={white_color}
-              boxShadow="md"
-            >
-              <UsernameInput
-                register={usernameRegister}
-                error={errors.username}
-                trigger={() => trigger("username")}
-              />
-              <PasswordInput
-                register={passwordRegister}
-                error={errors.password}
-                trigger={() => trigger("password")}
-                placeholder="Password"
-                showPassword={showPassword}
-                onClickAction={handleShowPassword}
-              />
-              <PasswordInput
-                register={passwordConfirmRegister}
-                error={errors.confirmPassword}
-                trigger={() => trigger("confirmPassword")}
-                placeholder="Confirm Password"
-                showPassword={showConfirmPassword}
-                onClickAction={handleShowConfirmPassword}
-              />
-              <BlueButton
-                type="submit"
-                text="Sign up"
-                onClickAction={onSubmit}
-                margin="0 auto"
-              />
-            </Stack>
-          </form>
+        <Box
+          as="form"
+          maxW="400px" 
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <Stack
+            spacing={4}
+            p="1rem"
+            backgroundColor={white_color}
+            boxShadow="md"
+          >
+            <UsernameInput
+              register={usernameRegister}
+              error={errors.username}
+              trigger={() => trigger("username")}
+            />
+            <PasswordInput
+              register={passwordRegister}
+              error={errors.password}
+              trigger={() => trigger("password")}
+              placeholder="Password"
+              showPassword={showPassword}
+              onClickAction={handleShowPassword}
+            />
+            <PasswordInput
+              register={passwordConfirmRegister}
+              error={errors.confirmPassword}
+              trigger={() => trigger("confirmPassword")}
+              placeholder="Confirm Password"
+              showPassword={showConfirmPassword}
+              onClickAction={handleShowConfirmPassword}
+            />
+            <BlueButton
+              type="submit"
+              text="Sign up"
+              onClickAction={onSubmit}
+              margin="0 auto"
+              disabled={!isValid}
+              style={{
+                opacity: !isValid ? 0.5 : 1,
+                pointerEvents: !isValid ? "none" : "auto",
+              }}
+            />
+          </Stack>
         </Box>
       </Stack>
       <Box>

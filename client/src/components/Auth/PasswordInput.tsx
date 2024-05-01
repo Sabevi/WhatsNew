@@ -25,7 +25,7 @@ export default function PasswordInput({
   onClickAction,
 } : PasswordInputProps): JSX.Element {
   return (
-    <FormControl id="Password" isInvalid={!!error}>
+    <FormControl id={placeholder} isInvalid={!!error}>
       <VisuallyHidden as={FormLabel}>{placeholder}</VisuallyHidden>
       <InputGroup>
         <InputLeftElement
@@ -38,6 +38,7 @@ export default function PasswordInput({
           type={showPassword ? "text" : "password"}
           placeholder={placeholder}
           onBlur={trigger}
+          autoComplete="new-password"
         />
         <InputRightElement width="4.5rem">
           <Button h="1.75rem" size="sm" onClick={onClickAction}>

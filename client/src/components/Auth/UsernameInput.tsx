@@ -32,6 +32,7 @@ export default function UsernameInput({
           type="text"
           placeholder="Username"
           onBlur={trigger}
+          autoComplete="username"
         />
       </InputGroup>
       {error && <FormErrorMessage>{error.message}</FormErrorMessage>}
