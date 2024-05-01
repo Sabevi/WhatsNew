@@ -6,25 +6,48 @@ import UsernameInput from "../components/Auth/UsernameInput";
 import PasswordInput from "../components/Auth/PasswordInput";
 import { blue_color, white_color } from "../assets/customColors";
 import BlueButton from "../components/Button/BlueButton";
+import { useForm } from "react-hook-form";
 
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [user, setUser] = useState({ username: "", password: "", confirmPassword: ""});
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    trigger,
+  } = useForm({ mode: 'onSubmit' });
+
+  const usernameRegister = register("username", {
+    required: "Username is required",
+    maxLength: {
+      value: 45,
+      message: "Username cannot be more than 45 characters long",
+    },
+  });
 
   const handleShowPassword = () => setShowPassword(!showPassword);
   const handleShowConfirmPassword = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
-  const handleUsernameChange = (e) =>
-    setUser({ ...user, username: e.target.value });
   const handlePasswordChange = (e) =>
     setUser({ ...user, password: e.target.value });
   const handleConfirmPasswordChange = (e) =>
     setUser({ ...user, confirmPassword: e.target.value });
 
-  console.log("user: ", user);
+
+
+  const onSubmit = data => {
+    console.log('Form data:', data);
+    // handle form submission here
+    () => navigate("/signin");
+  };
 
   return (
     <AuthBox>
@@ -39,7 +62,7 @@ export default function SignupPage(): JSX.Element {
           Sign up
         </Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Stack
               spacing={4}
               p="1rem"
@@ -47,8 +70,9 @@ export default function SignupPage(): JSX.Element {
               boxShadow="md"
             >
               <UsernameInput
-                username={user.username}
-                handleUsernameChange={handleUsernameChange}
+                register={usernameRegister}
+                error={errors.username}
+                trigger={trigger}
               />
               <PasswordInput
                 password={user.password}
@@ -65,8 +89,9 @@ export default function SignupPage(): JSX.Element {
                 onClickAction={handleShowConfirmPassword}
               />
               <BlueButton
+                type="submit"
                 text="Sign up"
-                onClickAction={() => navigate("/signin")}
+                onClickAction={onSubmit}
                 margin="0 auto"
               />
             </Stack>

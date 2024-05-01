@@ -6,6 +6,7 @@ export default function BlueButton({
   text,
   onClickAction,
   margin,
+  type
 }: BlueButtonProps): JSX.Element {
   return (
     <Button
@@ -14,6 +15,7 @@ export default function BlueButton({
       color={white_color}
       onClick={onClickAction}
       m={margin}
+      type={type}
     >
       {text}
     </Button>
