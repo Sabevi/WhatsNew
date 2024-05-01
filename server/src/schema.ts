@@ -36,7 +36,7 @@ export const typeDefs = gql`
         createUser(username: String!, password: String!): CreateUserResponse!
         signIn(username: String!, password: String!): SignInResponse!
         createArticle(token: String!, title: String!, description: String!): CreateArticleResponse!
-        getArticles: getArticlesResponse!
+        getArticles(token: String!): getArticlesResponse!
         incrementOrDecrementLikes(token: String!, articleId: ID!): incrementOrDecrementLikeResponse!
     }
     

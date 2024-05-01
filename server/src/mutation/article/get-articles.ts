@@ -1,7 +1,20 @@
 import {ArticleDto, MutationResolvers} from "../../types";
+import {getUser} from "../../module/auth.js";
 
 
-export const getArticles: MutationResolvers["getArticles"] = async (_, __, {dataSources}) => {
+export const getArticles: MutationResolvers["getArticles"] = async (_, {token}, {dataSources}) => {
+    // check auth
+    const user = getUser(token);
+
+    if(!user) {
+        return {
+            code: 403,
+            message: "Not Authorized",
+            success: false,
+            articlesDto: null
+        }
+    }
+
     const articles = await dataSources.db.article.findMany();
 
     let articlesDto: ArticleDto[] = [];
