@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { FormArticleProps } from "../../../types/ComponentTypes";
 
-export default function FormArticle({
+export default function ArticleForm({
   title,
   article,
 }: FormArticleProps): JSX.Element {
