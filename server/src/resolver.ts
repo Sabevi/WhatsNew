@@ -4,6 +4,7 @@ import {signIn} from "./mutation/user/signin.js";
 import {createArticle} from "./mutation/article/create-article.js";
 import {getArticles} from "./mutation/article/get-articles.js";
 import {incrementOrDecrementLikes} from "./mutation/article/like/increment-or-decrement-like.js";
+import {deleteArticle} from "./mutation/article/delete-article.js";
 
 
 
@@ -15,5 +16,6 @@ export const resolvers: Resolvers = {
         createArticle,
         getArticles,
         incrementOrDecrementLikes,
+        deleteArticle,
     }
 };
