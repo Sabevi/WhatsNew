@@ -1,28 +1,10 @@
 import AuthBox from "../components/Auth/AuthBox";
 import { useState } from "react";
-import {
-  Input,
-  Button,
-  InputGroup,
-  InputLeftElement,
-  chakra,
-  FormControl,
-  InputRightElement,
-  Avatar,
-  Heading,
-  Link,
-  Stack,
-  Box,
-} from "@chakra-ui/react";
-import { FaLock } from "react-icons/fa";
+import { Avatar, Heading, Link, Stack, Box } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import UsernameInput from "../components/Auth/UsernameInput";
 import PasswordInput from "../components/Auth/PasswordInput";
-import {
-  light_grey_color,
-  blue_color,
-  white_color,
-} from "../assets/customColors";
+import { blue_color, white_color } from "../assets/customColors";
 import BlueButton from "../components/Button/BlueButton";
 
 export default function SignupPage(): JSX.Element {
@@ -30,9 +12,9 @@ export default function SignupPage(): JSX.Element {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleShowClick = () => setShowPassword(!showPassword);
-
-  const CFaLock = chakra(FaLock);
+  const handleShowPassword = () => setShowPassword(!showPassword);
+  const handleShowConfirmPassword = () =>
+    setShowConfirmPassword(!showConfirmPassword);
 
   return (
     <AuthBox>
@@ -55,26 +37,18 @@ export default function SignupPage(): JSX.Element {
               boxShadow="md"
             >
               <UsernameInput />
-              <PasswordInput />
-              <FormControl>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    color={light_grey_color}
-                    children={<CFaLock color={light_grey_color} />}
-                  />
-                  <Input
-                    type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Confirm password"
-                  />
-                  <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                      {showConfirmPassword ? "Hide" : "Show"}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-                {/* use FormHelperText for message errors*/}
-              </FormControl>
+              <PasswordInput
+                placeholder="Password"
+                isPasswordVisible={showPassword}
+                showPassword={showPassword}
+                onClickAction={handleShowPassword}
+              />
+              <PasswordInput
+                placeholder="Confirm Password"
+                isPasswordVisible={showConfirmPassword}
+                showPassword={showConfirmPassword}
+                onClickAction={handleShowConfirmPassword}
+              />
               <BlueButton
                 text="Sign up"
                 onClickAction={() => navigate("/signin")}

@@ -29,7 +29,12 @@ export default function SignInPage(): JSX.Element {
               boxShadow="md"
             >
               <UsernameInput />
-              <PasswordInput />
+              <PasswordInput
+                placeholder="Password"
+                isPasswordVisible="blabla"
+                showPassword="blabla"
+                onClickAction="blabla"
+              />
               <BlueButton
                 text="Sign in"
                 onClickAction={() => navigate("/")}
