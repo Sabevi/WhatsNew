@@ -1,30 +1,36 @@
 import { useNavigate } from "react-router-dom";
-import axios from "../config/axios";
-import api from "../config/api";
 import { User } from "../types/ComponentTypes";
+import {ApolloClient, InMemoryCache, useMutation} from '@apollo/client';
+import {CREATE_USER} from "../mutations.ts";
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
 
 const useSignUp = () => {
   const navigate = useNavigate();
 
+  const [createUser] = useMutation(CREATE_USER, {
+    client: client,
+    onCompleted: (data) => {
+      console.log(data.createUser);
+      navigate("/signin");
+    },
+    onError: (error) => {
+      console.log("test 1 error" + error);
+    },
+
+  });
+
   const signup = async (user: User) => {
-    const { username, password } = user;
+    console.log("User:", user);
 
     try {
-      const response = await axios.post(
-        api.createUser,
-        JSON.stringify({
-          username,
-          password,
-        }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(response);
-      () => navigate("/signin");
+      const response = await createUser({ variables: { username: user.username, password: user.password } });
+      console.log("Response:", response.data.createUser.code);
     } catch (error) {
-     console.log(error)
+      console.log(error);
     }
   };
 
