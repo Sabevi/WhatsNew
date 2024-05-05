@@ -58,12 +58,21 @@ export type CreateUserResponse = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addOrDeleteComment: AddOrDeleteCommentResponse;
   createArticle: CreateArticleResponse;
   createUser: CreateUserResponse;
   deleteArticle: DeleteArticleResponse;
   getArticles: GetArticlesResponse;
   incrementOrDecrementLikes: IncrementOrDecrementLikeResponse;
   signIn: SignInResponse;
+};
+
+
+export type MutationAddOrDeleteCommentArgs = {
+  articleId: Scalars['ID']['input'];
+  commentId: Scalars['ID']['input'];
+  content?: InputMaybe<Scalars['String']['input']>;
+  token: Scalars['String']['input'];
 };
 
 
@@ -120,6 +129,14 @@ export type User = {
   __typename?: 'User';
   id: Scalars['ID']['output'];
   username: Scalars['String']['output'];
+};
+
+export type AddOrDeleteCommentResponse = {
+  __typename?: 'addOrDeleteCommentResponse';
+  code: Scalars['Int']['output'];
+  comment?: Maybe<Comment>;
+  message: Scalars['String']['output'];
+  success: Scalars['Boolean']['output'];
 };
 
 export type DeleteArticleResponse = {
@@ -230,6 +247,7 @@ export type ResolversTypes = {
   SignInResponse: ResolverTypeWrapper<SignInResponse>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   User: ResolverTypeWrapper<User>;
+  addOrDeleteCommentResponse: ResolverTypeWrapper<AddOrDeleteCommentResponse>;
   deleteArticleResponse: ResolverTypeWrapper<DeleteArticleResponse>;
   getArticlesResponse: ResolverTypeWrapper<GetArticlesResponse>;
   incrementOrDecrementLikeResponse: ResolverTypeWrapper<IncrementOrDecrementLikeResponse>;
@@ -250,6 +268,7 @@ export type ResolversParentTypes = {
   SignInResponse: SignInResponse;
   String: Scalars['String']['output'];
   User: User;
+  addOrDeleteCommentResponse: AddOrDeleteCommentResponse;
   deleteArticleResponse: DeleteArticleResponse;
   getArticlesResponse: GetArticlesResponse;
   incrementOrDecrementLikeResponse: IncrementOrDecrementLikeResponse;
@@ -295,6 +314,7 @@ export type CreateUserResponseResolvers<ContextType = Context, ParentType extend
 };
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  addOrDeleteComment?: Resolver<ResolversTypes['addOrDeleteCommentResponse'], ParentType, ContextType, RequireFields<MutationAddOrDeleteCommentArgs, 'articleId' | 'commentId' | 'token'>>;
   createArticle?: Resolver<ResolversTypes['CreateArticleResponse'], ParentType, ContextType, RequireFields<MutationCreateArticleArgs, 'description' | 'title' | 'token'>>;
   createUser?: Resolver<ResolversTypes['CreateUserResponse'], ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'password' | 'username'>>;
   deleteArticle?: Resolver<ResolversTypes['deleteArticleResponse'], ParentType, ContextType, RequireFields<MutationDeleteArticleArgs, 'articleId' | 'token'>>;
@@ -319,6 +339,14 @@ export type SignInResponseResolvers<ContextType = Context, ParentType extends Re
 export type UserResolvers<ContextType = Context, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type AddOrDeleteCommentResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['addOrDeleteCommentResponse'] = ResolversParentTypes['addOrDeleteCommentResponse']> = {
+  code?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  comment?: Resolver<Maybe<ResolversTypes['Comment']>, ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  success?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -356,6 +384,7 @@ export type Resolvers<ContextType = Context> = {
   Query?: QueryResolvers<ContextType>;
   SignInResponse?: SignInResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
+  addOrDeleteCommentResponse?: AddOrDeleteCommentResponseResolvers<ContextType>;
   deleteArticleResponse?: DeleteArticleResponseResolvers<ContextType>;
   getArticlesResponse?: GetArticlesResponseResolvers<ContextType>;
   incrementOrDecrementLikeResponse?: IncrementOrDecrementLikeResponseResolvers<ContextType>;

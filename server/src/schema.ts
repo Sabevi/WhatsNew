@@ -39,6 +39,7 @@ export const typeDefs = gql`
         getArticles(token: String!): getArticlesResponse!
         incrementOrDecrementLikes(token: String!, articleId: ID!): incrementOrDecrementLikeResponse!
         deleteArticle(token: String!, articleId: ID!): deleteArticleResponse!
+        addOrDeleteComment(token: String!, articleId: ID!,commentId: ID!, content: String): addOrDeleteCommentResponse!
     }
     
     type CreateUserResponse {
@@ -81,6 +82,13 @@ export const typeDefs = gql`
         success: Boolean!
         message: String!
         articleId: ID
+    }
+
+    type addOrDeleteCommentResponse {
+        code: Int!
+        success: Boolean!
+        message: String!
+        comment: Comment
     }
     
 `;
