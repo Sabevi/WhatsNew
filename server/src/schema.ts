@@ -36,6 +36,7 @@ export const typeDefs = gql`
         createUser(username: String!, password: String!): CreateUserResponse!
         signIn(username: String!, password: String!): SignInResponse!
         createArticle(token: String!, title: String!, description: String!): CreateArticleResponse!
+        deleteUser(token: String!, userId: ID!): deleteUserResponse!
         getArticles(token: String!): getArticlesResponse!
         incrementOrDecrementLikes(token: String!, articleId: ID!): incrementOrDecrementLikeResponse!
         deleteArticle(token: String!, articleId: ID!): deleteArticleResponse!
@@ -89,6 +90,13 @@ export const typeDefs = gql`
         success: Boolean!
         message: String!
         comment: Comment
+    }
+
+    type deleteUserResponse {
+        code: Int!
+        success: Boolean!
+        message: String!
+        userId: ID
     }
     
 `;

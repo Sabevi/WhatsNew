@@ -13,6 +13,7 @@ export const resolvers: Resolvers = {
     Mutation: {
         createUser,
         signIn,
+        deleteUser,
         createArticle,
         getArticles,
         incrementOrDecrementLikes,
