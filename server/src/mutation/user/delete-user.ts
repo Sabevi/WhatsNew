@@ -3,8 +3,10 @@ import { MutationResolvers } from "../../types";
 
 export const deleteUser: MutationResolvers['deleteUser'] = async (_, {token, userId}, {dataSources}) => {
     
+    // get user from token
     const user = getUser(token);
 
+    // If the user is not found (i.e., the token is invalid), return an error response
     if (!user) {
         return {
             code: 403,
