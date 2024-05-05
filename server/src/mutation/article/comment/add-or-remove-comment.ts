@@ -1,5 +1,5 @@
-import { getUser } from "../../../module/auth";
-import { MutationResolvers } from "../../../types";
+import { getUser } from "../../../module/auth.js";
+import { MutationResolvers } from "../../../types.js";
 
 export const addOrDeleteComment: MutationResolvers['addOrDeleteComment'] = async (_, {token, articleId, commentId, content}, {dataSources}) => {
     const user = getUser(token);

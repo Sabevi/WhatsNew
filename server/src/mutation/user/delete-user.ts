@@ -1,5 +1,5 @@
-import { getUser } from "../../module/auth";
-import { MutationResolvers } from "../../types";
+import { getUser } from "../../module/auth.js";
+import { MutationResolvers } from "../../types.js";
 
 export const deleteUser: MutationResolvers['deleteUser'] = async (_, {token, userId}, {dataSources}) => {
     
