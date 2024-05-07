@@ -10,7 +10,7 @@ const client = new ApolloClient({
 
 const useSignUp = () => {
   const navigate = useNavigate();
-
+  // Define the createUser mutation
   const [createUser] = useMutation(CREATE_USER, {
     client: client,
     onCompleted: (data) => {
@@ -31,8 +31,8 @@ const useSignUp = () => {
     console.log("User:", user);
 
     try {
-      const response = await createUser({ variables: { username: user.username, password: user.password } });
-      console.log("Response:", response.data.createUser.code);
+      // call the createUser mutation
+      await createUser({ variables: { username: user.username, password: user.password } });
     } catch (error) {
       console.log(error);
     }
