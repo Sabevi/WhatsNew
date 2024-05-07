@@ -1,18 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { User } from "../types/ComponentTypes";
-import {ApolloClient, InMemoryCache, useMutation} from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import {CREATE_USER} from "../mutations.ts";
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache(),
-});
 
 const useSignUp = () => {
   const navigate = useNavigate();
   // Define the createUser mutation
   const [createUser] = useMutation(CREATE_USER, {
-    client: client,
     onCompleted: (data) => {
       console.log(data.createUser);
         if(data.createUser.code === 201) {
