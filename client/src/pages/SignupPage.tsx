@@ -11,7 +11,6 @@ import { User } from "../types/ComponentTypes";
 
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const {
     register,
     watch,
@@ -47,8 +46,6 @@ export default function SignupPage(): JSX.Element {
   });
 
   const handleShowPassword = () => setShowPassword(!showPassword);
-  const handleShowConfirmPassword = () =>
-    setShowConfirmPassword(!showConfirmPassword);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const user = data as User;
@@ -97,8 +94,8 @@ export default function SignupPage(): JSX.Element {
               error={errors.confirmPassword}
               trigger={() => trigger("confirmPassword")}
               placeholder="Confirm Password"
-              showPassword={showConfirmPassword}
-              onClickAction={handleShowConfirmPassword}
+              showPassword={showPassword}
+              onClickAction={handleShowPassword}
             />
             <BlueButton
               type="submit"

@@ -15,10 +15,14 @@ const useSignUp = () => {
     client: client,
     onCompleted: (data) => {
       console.log(data.createUser);
-      navigate("/signin");
+        if(data.createUser.code === 201) {
+          navigate("/signin");
+        } else {
+            console.log("Error: " + data.createUser.message);
+        }
     },
     onError: (error) => {
-      console.log("test 1 error" + error);
+      console.log("error" + error);
     },
 
   });
