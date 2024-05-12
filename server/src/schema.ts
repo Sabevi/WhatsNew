@@ -40,7 +40,8 @@ export const typeDefs = gql`
         getArticles(token: String!): getArticlesResponse!
         incrementOrDecrementLikes(token: String!, articleId: ID!): incrementOrDecrementLikeResponse!
         deleteArticle(token: String!, articleId: ID!): deleteArticleResponse!
-        addOrDeleteComment(token: String!, articleId: ID!,commentId: ID!, content: String): addOrDeleteCommentResponse!
+        addComment(token: String!, articleId: ID!, userId: ID!, content: String!): addCommentResponse!
+        deleteComment(token: String!, commentId: ID!, userId: ID!, articleId: ID!): deleteCommentResponse!
     }
     
     type CreateUserResponse {
@@ -85,11 +86,18 @@ export const typeDefs = gql`
         articleId: ID
     }
 
-    type addOrDeleteCommentResponse {
+    type addCommentResponse {
         code: Int!
         success: Boolean!
         message: String!
         comment: Comment
+    }
+
+    type deleteCommentResponse {
+        code: Int!
+        success: Boolean!
+        message: String!
+        commentId: ID
     }
 
     type deleteUserResponse {
