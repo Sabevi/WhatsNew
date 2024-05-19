@@ -22,13 +22,16 @@ const useSignUp = () => {
       const response = await createUser({
         variables: { username: username, password: password },
       });
-
-      if (response.data.createUser.code === 201) {
-        navigate("/signin");
-      } else if (response.data.createUser.code === 409) {
-        showExistingAccountError();
-      } else if (response.data.createUser.code === 403) {
-        showGenericSubmitError();
+      switch (response.data.createUser.code) {
+        case 201:
+          navigate("/signin");
+          break;
+        case 409:
+          showExistingAccountError();
+          break;
+        case 403:
+          showGenericSubmitError();
+          break;
       }
     } catch (error) {
       showServerError();

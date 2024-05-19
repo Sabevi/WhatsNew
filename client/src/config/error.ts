@@ -1,8 +1,8 @@
 const errorDisplayed = {
-    generic: "Oops an error occurred, please try again later",
-    server: "Aucune réponse du serveur",
-    invalidCredentials: "Veuillez entrer des identifiants valides",
-    existingAccount: "Vous avez déjà un compte, connectez-vous en utilisant le lien ci-dessous",
-  };
-  
-  export default errorDisplayed;
+  generic: "Oops an error occurred, please try again later",
+  server: "No response from the server",
+  invalidCredentials: "Please enter valid credentials",
+  existingAccount: "You already have an account, please log in using the link below",
+};
+
+export default errorDisplayed;
