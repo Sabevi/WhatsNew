@@ -1,6 +1,6 @@
 import { Container, Heading, Box } from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
-import EditArticle from "../components/Article/Actions/EditArticle";
+import EditArticle from "../components/Article/Content/EditArticleCard";
 
 export default function UpdateArticlePage(): JSX.Element {
   return (

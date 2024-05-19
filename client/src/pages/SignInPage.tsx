@@ -1,24 +1,23 @@
 import AuthBox from "../components/Auth/AuthBox";
-import { useState } from "react";
-import { Avatar, Heading, Link, Stack, Box } from "@chakra-ui/react";
 import UsernameInput from "../components/Auth/UsernameInput";
 import PasswordInput from "../components/Auth/PasswordInput";
-import { blue_color, white_color } from "../assets/customColors";
 import BlueButton from "../components/Button/BlueButton";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import useSignUp from "../hooks/useSignup";
+import { Avatar, Heading, Link, Stack, Box } from "@chakra-ui/react";
+import { blue_color, white_color } from "../assets/customColors";
+import { useState } from "react";
+import useSignIn from "../hooks/useSignin";
+import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { User } from "../types/ComponentTypes";
 
-export default function SignupPage(): JSX.Element {
+export default function SignInPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors, isValid },
     trigger,
   } = useForm({ mode: "onSubmit" });
-  const { signup } = useSignUp();
+  const { signin } = useSignIn();
 
   const usernameRegister = register("username", {
     required: "Username is required",
@@ -28,21 +27,8 @@ export default function SignupPage(): JSX.Element {
     },
   });
 
-  const PASSWORD_REGEX =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,64}$/;
   const passwordRegister = register("password", {
     required: "Password is required",
-    pattern: {
-      value: PASSWORD_REGEX,
-      message:
-        "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be between 8 and 64 characters long",
-    },
-  });
-
-  const password = watch("password");
-  const passwordConfirmRegister = register("confirmPassword", {
-    required: "Password confirmation is required",
-    validate: (value) => value === password || "Passwords do not match",
   });
 
   const handleShowPassword = () => setShowPassword(!showPassword);
@@ -50,8 +36,8 @@ export default function SignupPage(): JSX.Element {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const user = data as User;
     console.log("Form data:", user);
-    signup(user);
-  };
+    signin(user);
+  }
 
   return (
     <AuthBox>
@@ -63,11 +49,11 @@ export default function SignupPage(): JSX.Element {
       >
         <Avatar bg={blue_color} />
         <Heading as="h1" color={blue_color}>
-          Sign up
+          Sign in
         </Heading>
-        <Box
-          as="form"
-          maxW="400px" 
+        <Box 
+          as="form" 
+          maxW="400px"
           onSubmit={handleSubmit(onSubmit)}
         >
           <Stack
@@ -76,45 +62,33 @@ export default function SignupPage(): JSX.Element {
             backgroundColor={white_color}
             boxShadow="md"
           >
-            <UsernameInput
+            <UsernameInput 
               register={usernameRegister}
               error={errors.username}
               trigger={() => trigger("username")}
             />
             <PasswordInput
+              placeholder="Password"
               register={passwordRegister}
               error={errors.password}
               trigger={() => trigger("password")}
-              placeholder="Password"
-              showPassword={showPassword}
-              onClickAction={handleShowPassword}
-            />
-            <PasswordInput
-              register={passwordConfirmRegister}
-              error={errors.confirmPassword}
-              trigger={() => trigger("confirmPassword")}
-              placeholder="Confirm Password"
               showPassword={showPassword}
               onClickAction={handleShowPassword}
             />
             <BlueButton
-              type="submit"
-              text="Sign up"
+              type= "submit"
+              text="Sign in"
               onClickAction={onSubmit}
               margin="0 auto"
               disabled={!isValid}
-              style={{
-                opacity: !isValid ? 0.5 : 1,
-                pointerEvents: !isValid ? "none" : "auto",
-              }}
             />
           </Stack>
         </Box>
       </Stack>
       <Box>
-        Already registered ?{" "}
-        <Link color={blue_color} href="/signin">
-          Sign in
+        Not registered yet ?{" "}
+        <Link color={blue_color} href="/signup">
+          Sign up
         </Link>
       </Box>
     </AuthBox>

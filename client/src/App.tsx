@@ -1,7 +1,7 @@
 
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LoginPage from './pages/LoginPage'
+import SignInPage from './pages/SignInPage'
 import HomePage from './pages/HomePage'
 import SignupPage from './pages/SignupPage'
 import CreateArticlePage from './pages/CreateArticlePage'
@@ -15,7 +15,7 @@ export default function App(): JSX.Element {
     <ChakraProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />

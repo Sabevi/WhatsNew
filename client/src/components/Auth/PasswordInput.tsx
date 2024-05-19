@@ -8,16 +8,25 @@ import {
   Button,
   VisuallyHidden,
   FormLabel,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { FaLock } from "react-icons/fa";
 import { light_grey_color } from "../../assets/customColors";
+import { PasswordInputProps } from "../../types/ComponentTypes";
 
 const CFaLock = chakra(FaLock);
 
-export default function PasswordInput(): JSX.Element {
+export default function PasswordInput({
+  register,
+  error,
+  trigger,
+  placeholder,
+  showPassword,
+  onClickAction,
+} : PasswordInputProps): JSX.Element {
   return (
-    <FormControl id="Password">
-      <VisuallyHidden as={FormLabel}>Username</VisuallyHidden>
+    <FormControl id={placeholder} isInvalid={!!error}>
+      <VisuallyHidden as={FormLabel}>{placeholder}</VisuallyHidden>
       <InputGroup>
         <InputLeftElement
           pointerEvents="none"
@@ -25,14 +34,19 @@ export default function PasswordInput(): JSX.Element {
           children={<CFaLock color={light_grey_color} />}
         />
         <Input
-          type={true ? "text" : "password"}
-          placeholder="Password"
+          {...register}
+          type={showPassword ? "text" : "password"}
+          placeholder={placeholder}
+          onBlur={trigger}
+          autoComplete="new-password"
         />
         <InputRightElement width="4.5rem">
-          <Button h="1.75rem" size="sm" onClick={() => ({})}/>
+          <Button h="1.75rem" size="sm" onClick={onClickAction}>
+            {showPassword ? "Hide" : "Show"}
+          </Button>
         </InputRightElement>
       </InputGroup>
-      {/* use FormHelperText for message errors*/}
+      {error && <FormErrorMessage>{error.message}</FormErrorMessage>}
     </FormControl>
   );
 }

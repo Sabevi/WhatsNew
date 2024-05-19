@@ -1,11 +1,11 @@
 import { Card, CardFooter } from "@chakra-ui/react";
 import BlueButton from "../../Button/BlueButton";
-import FormArticle from "./FormArticle";
+import ArticleForm from "../Actions/ArticleForm";
 
-export default function CreateArticle(): JSX.Element {
+export default function CreateArticleCard(): JSX.Element {
   return (
     <Card p="4" w="full" h="auto">
-      <FormArticle title="" article="" />
+      <ArticleForm title="" article="" />
       <CardFooter>
         <BlueButton
           text="Publish article"
