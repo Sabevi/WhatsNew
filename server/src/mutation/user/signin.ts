@@ -21,6 +21,7 @@ export const signIn: MutationResolvers["signIn"] = async (
       message: "User signed in",
       success: true,
       token: createJWT(userExist as JWTUser),
+     id: userExist.id,
     };
   } else {
     return {
@@ -28,6 +29,7 @@ export const signIn: MutationResolvers["signIn"] = async (
       message: "Unable to sign in user",
       success: false,
       token: null,
+      id: null,
     };
   }
 };

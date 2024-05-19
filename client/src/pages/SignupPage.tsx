@@ -7,7 +7,7 @@ import { blue_color, white_color } from "../assets/customColors";
 import BlueButton from "../components/Button/BlueButton";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useSignUp from "../hooks/useSignup";
-import { User } from "../types/ComponentTypes";
+import { User } from "../types/types";
 import errorDisplayed from "../config/error";
 
 export default function SignupPage(): JSX.Element {

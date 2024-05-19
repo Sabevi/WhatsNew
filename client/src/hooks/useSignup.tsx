@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../mutations.ts";
-import { User } from "../types/ComponentTypes.tsx";
+import { User } from "../types/types.tsx";
 import { apolloClientApi } from "../config/apolloClient.ts";
 
 const useSignUp = () => {

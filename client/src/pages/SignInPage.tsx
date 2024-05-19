@@ -5,9 +5,9 @@ import BlueButton from "../components/Button/BlueButton";
 import { Avatar, Heading, Link, Stack, Box } from "@chakra-ui/react";
 import { blue_color, white_color } from "../assets/customColors";
 import { useState } from "react";
-import useSignIn from "../hooks/useSignin";
+import useAuth from "../hooks/useAuth";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
-import { User } from "../types/ComponentTypes";
+import { User } from "../types/types";
 import errorDisplayed from "../config/error";
 
 export default function SignInPage(): JSX.Element {
@@ -19,7 +19,7 @@ export default function SignInPage(): JSX.Element {
     formState: { errors, isValid },
     trigger,
   } = useForm({ mode: "onSubmit" });
-  const { signin } = useSignIn();
+  const { signin } = useAuth();
 
   const usernameRegister = register("username", {
     required: "Username is required",

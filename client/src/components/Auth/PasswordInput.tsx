@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { FaLock } from "react-icons/fa";
 import { light_grey_color } from "../../assets/customColors";
-import { PasswordInputProps } from "../../types/ComponentTypes";
+import { PasswordInputProps } from "../../types/types";
 
 const CFaLock = chakra(FaLock);
 
