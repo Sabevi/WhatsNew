@@ -8,6 +8,7 @@ import BlueButton from "../components/Button/BlueButton";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useSignUp from "../hooks/useSignup";
 import { User } from "../types/ComponentTypes";
+import errorDisplayed from "../config/error";
 
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +20,7 @@ export default function SignupPage(): JSX.Element {
     trigger,
   } = useForm({ mode: "onSubmit" });
   const { signup } = useSignUp();
+  const [submitError, setSubmitError] = useState("");
 
   const usernameRegister = register("username", {
     required: "Username is required",
@@ -47,11 +49,24 @@ export default function SignupPage(): JSX.Element {
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
+  const showGenericSubmitError = () => {
+    setSubmitError(errorDisplayed.generic);
+  };
+
+  const showExistingAccountError = () => {
+    setSubmitError(errorDisplayed.existingAccount);
+  };
+
+  const showServerError = () => {
+    setSubmitError(errorDisplayed.server);
+  };
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const user = data as User;
-    console.log("Form data:", user);
-    signup(user);
+    signup(user, showGenericSubmitError, showExistingAccountError, showServerError);
   };
+
+  console.log("submitError:", submitError);
 
   return (
     <AuthBox>
@@ -65,11 +80,7 @@ export default function SignupPage(): JSX.Element {
         <Heading as="h1" color={blue_color}>
           Sign up
         </Heading>
-        <Box
-          as="form"
-          maxW="400px" 
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <Box as="form" maxW="400px" onSubmit={handleSubmit(onSubmit)}>
           <Stack
             spacing={4}
             p="1rem"
@@ -97,10 +108,15 @@ export default function SignupPage(): JSX.Element {
               showPassword={showPassword}
               onClickAction={handleShowPassword}
             />
+            // Display the error message if there is one
+            {submitError && (
+              <Box color="red.500" textAlign="center">
+                {submitError}
+              </Box>
+            )}
             <BlueButton
               type="submit"
               text="Sign up"
-              onClickAction={onSubmit}
               margin="0 auto"
               disabled={!isValid}
               style={{
