@@ -67,6 +67,7 @@ export type Mutation = {
   getArticles: GetArticlesResponse;
   incrementOrDecrementLikes: IncrementOrDecrementLikeResponse;
   signIn: SignInResponse;
+  updateArticle: CreateArticleResponse;
 };
 
 
@@ -125,6 +126,14 @@ export type MutationIncrementOrDecrementLikesArgs = {
 export type MutationSignInArgs = {
   password: Scalars['String']['input'];
   username: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateArticleArgs = {
+  articleId: Scalars['ID']['input'];
+  description: Scalars['String']['input'];
+  title: Scalars['String']['input'];
+  token: Scalars['String']['input'];
 };
 
 export type Query = {
@@ -359,6 +368,7 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
   getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType, RequireFields<MutationGetArticlesArgs, 'token'>>;
   incrementOrDecrementLikes?: Resolver<ResolversTypes['incrementOrDecrementLikeResponse'], ParentType, ContextType, RequireFields<MutationIncrementOrDecrementLikesArgs, 'articleId' | 'token'>>;
   signIn?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationSignInArgs, 'password' | 'username'>>;
+  updateArticle?: Resolver<ResolversTypes['CreateArticleResponse'], ParentType, ContextType, RequireFields<MutationUpdateArticleArgs, 'articleId' | 'description' | 'title' | 'token'>>;
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
