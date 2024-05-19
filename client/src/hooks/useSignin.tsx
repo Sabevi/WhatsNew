@@ -4,43 +4,44 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../types/ComponentTypes";
 
 const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
-    cache: new InMemoryCache(),
-    });
+  uri: "http://localhost:4000/graphql",
+  cache: new InMemoryCache(),
+});
 
 const useSignIn = () => {
-    const navigate = useNavigate();
-    // Define the signIn mutation
-    const [signIn] = useMutation(SIGNIN, {
-        client: client,
-        onCompleted: (data) => {
-            console.log(data.signIn);
-            if(data.signIn.code === 200) {
-                localStorage.setItem('token', data.signIn.token);
-                navigate("/");
-            } else {
-                console.log("Error: " + data.signIn.message);
-            }
-        },
-        onError: (error) => {
-            console.log("error" + error);
-        },
-    });
+  const navigate = useNavigate();
 
-    const signin = async (user: User) => {
-        console.log("User:", user);
+  // Define the signIn mutation
+  const [signIn] = useMutation(SIGNIN, {
+    client: client,
+  });
 
-        try {
-            // call the signIn mutation
-            await signIn({ variables: { username: user.username, password: user.password } });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+  const signin = async (
+    user: User,
+    showInvalidCredentialsError: () => void,
+    showServerError: () => void
+  ) => {
+    try {
+      const { username, password } = user;
+      // call the signIn mutation
+      const response = await signIn({
+        variables: { username: username, password: password },
+      });
+      console.log(response);
 
-    return {
-        signin,
-    };
-}
+      if (response.data.signIn.code === 200) {
+        navigate("/");
+      } else if (response.data.signIn.code === 403) {
+        showInvalidCredentialsError();
+      }
+    } catch (error) {
+      showServerError();
+    }
+  };
+
+  return {
+    signin,
+  };
+};
 
 export default useSignIn;

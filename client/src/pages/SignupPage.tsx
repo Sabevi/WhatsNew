@@ -12,6 +12,7 @@ import errorDisplayed from "../config/error";
 
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const {
     register,
     watch,
@@ -20,7 +21,6 @@ export default function SignupPage(): JSX.Element {
     trigger,
   } = useForm({ mode: "onSubmit" });
   const { signup } = useSignUp();
-  const [submitError, setSubmitError] = useState("");
 
   const usernameRegister = register("username", {
     required: "Username is required",
@@ -66,8 +66,6 @@ export default function SignupPage(): JSX.Element {
     signup(user, showGenericSubmitError, showExistingAccountError, showServerError);
   };
 
-  console.log("submitError:", submitError);
-
   return (
     <AuthBox>
       <Stack
@@ -108,7 +106,6 @@ export default function SignupPage(): JSX.Element {
               showPassword={showPassword}
               onClickAction={handleShowPassword}
             />
-            // Display the error message if there is one
             {submitError && (
               <Box color="red.500" textAlign="center">
                 {submitError}

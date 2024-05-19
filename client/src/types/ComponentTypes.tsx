@@ -14,7 +14,7 @@ export interface User {
 
 // BUTTONS
 export interface ButtonProps {
-  onClickAction: React.MouseEventHandler<HTMLButtonElement>;
+  onClickAction?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface BlueButtonProps extends ButtonProps {
