@@ -1,18 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { ApolloClient, InMemoryCache, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../mutations.ts";
 import { User } from "../types/ComponentTypes.tsx";
-
-const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
-  cache: new InMemoryCache(),
-});
+import { apolloClientApi } from "../config/apolloClient.ts";
 
 const useSignUp = () => {
   const navigate = useNavigate();
 
   const [createUser] = useMutation(CREATE_USER, {
-    client: client,
+    client: apolloClientApi,
   });
 
   const signup = async (
