@@ -65,9 +65,10 @@ export type Mutation = {
   deleteComment: DeleteCommentResponse;
   deleteUser: DeleteUserResponse;
   getArticles: GetArticlesResponse;
+  getMyArticles: GetMyArticlesResponse;
   incrementOrDecrementLikes: IncrementOrDecrementLikeResponse;
   signIn: SignInResponse;
-  updateArticle: CreateArticleResponse;
+  updateArticle: UpdateArticleResponse;
 };
 
 
@@ -117,6 +118,11 @@ export type MutationGetArticlesArgs = {
 };
 
 
+export type MutationGetMyArticlesArgs = {
+  token: Scalars['String']['input'];
+};
+
+
 export type MutationIncrementOrDecrementLikesArgs = {
   articleId: Scalars['ID']['input'];
   token: Scalars['String']['input'];
@@ -148,6 +154,14 @@ export type SignInResponse = {
   message: Scalars['String']['output'];
   success: Scalars['Boolean']['output'];
   token?: Maybe<Scalars['String']['output']>;
+};
+
+export type UpdateArticleResponse = {
+  __typename?: 'UpdateArticleResponse';
+  article?: Maybe<Article>;
+  code: Scalars['Int']['output'];
+  message: Scalars['String']['output'];
+  success: Scalars['Boolean']['output'];
 };
 
 export type User = {
@@ -190,6 +204,14 @@ export type DeleteUserResponse = {
 
 export type GetArticlesResponse = {
   __typename?: 'getArticlesResponse';
+  articlesDto?: Maybe<Array<Maybe<ArticleDto>>>;
+  code: Scalars['Int']['output'];
+  message: Scalars['String']['output'];
+  success: Scalars['Boolean']['output'];
+};
+
+export type GetMyArticlesResponse = {
+  __typename?: 'getMyArticlesResponse';
   articlesDto?: Maybe<Array<Maybe<ArticleDto>>>;
   code: Scalars['Int']['output'];
   message: Scalars['String']['output'];
@@ -287,12 +309,14 @@ export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
   SignInResponse: ResolverTypeWrapper<SignInResponse>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
+  UpdateArticleResponse: ResolverTypeWrapper<UpdateArticleResponse>;
   User: ResolverTypeWrapper<User>;
   addCommentResponse: ResolverTypeWrapper<AddCommentResponse>;
   deleteArticleResponse: ResolverTypeWrapper<DeleteArticleResponse>;
   deleteCommentResponse: ResolverTypeWrapper<DeleteCommentResponse>;
   deleteUserResponse: ResolverTypeWrapper<DeleteUserResponse>;
   getArticlesResponse: ResolverTypeWrapper<GetArticlesResponse>;
+  getMyArticlesResponse: ResolverTypeWrapper<GetMyArticlesResponse>;
   incrementOrDecrementLikeResponse: ResolverTypeWrapper<IncrementOrDecrementLikeResponse>;
 };
 
@@ -310,12 +334,14 @@ export type ResolversParentTypes = {
   Query: {};
   SignInResponse: SignInResponse;
   String: Scalars['String']['output'];
+  UpdateArticleResponse: UpdateArticleResponse;
   User: User;
   addCommentResponse: AddCommentResponse;
   deleteArticleResponse: DeleteArticleResponse;
   deleteCommentResponse: DeleteCommentResponse;
   deleteUserResponse: DeleteUserResponse;
   getArticlesResponse: GetArticlesResponse;
+  getMyArticlesResponse: GetMyArticlesResponse;
   incrementOrDecrementLikeResponse: IncrementOrDecrementLikeResponse;
 };
 
@@ -366,9 +392,10 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
   deleteComment?: Resolver<ResolversTypes['deleteCommentResponse'], ParentType, ContextType, RequireFields<MutationDeleteCommentArgs, 'articleId' | 'commentId' | 'token' | 'userId'>>;
   deleteUser?: Resolver<ResolversTypes['deleteUserResponse'], ParentType, ContextType, RequireFields<MutationDeleteUserArgs, 'token' | 'userId'>>;
   getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType, RequireFields<MutationGetArticlesArgs, 'token'>>;
+  getMyArticles?: Resolver<ResolversTypes['getMyArticlesResponse'], ParentType, ContextType, RequireFields<MutationGetMyArticlesArgs, 'token'>>;
   incrementOrDecrementLikes?: Resolver<ResolversTypes['incrementOrDecrementLikeResponse'], ParentType, ContextType, RequireFields<MutationIncrementOrDecrementLikesArgs, 'articleId' | 'token'>>;
   signIn?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationSignInArgs, 'password' | 'username'>>;
-  updateArticle?: Resolver<ResolversTypes['CreateArticleResponse'], ParentType, ContextType, RequireFields<MutationUpdateArticleArgs, 'articleId' | 'description' | 'title' | 'token'>>;
+  updateArticle?: Resolver<ResolversTypes['UpdateArticleResponse'], ParentType, ContextType, RequireFields<MutationUpdateArticleArgs, 'articleId' | 'description' | 'title' | 'token'>>;
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -381,6 +408,14 @@ export type SignInResponseResolvers<ContextType = Context, ParentType extends Re
   message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   success?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   token?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type UpdateArticleResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['UpdateArticleResponse'] = ResolversParentTypes['UpdateArticleResponse']> = {
+  article?: Resolver<Maybe<ResolversTypes['Article']>, ParentType, ContextType>;
+  code?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  success?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -430,6 +465,14 @@ export type GetArticlesResponseResolvers<ContextType = Context, ParentType exten
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type GetMyArticlesResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['getMyArticlesResponse'] = ResolversParentTypes['getMyArticlesResponse']> = {
+  articlesDto?: Resolver<Maybe<Array<Maybe<ResolversTypes['ArticleDto']>>>, ParentType, ContextType>;
+  code?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  success?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type IncrementOrDecrementLikeResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['incrementOrDecrementLikeResponse'] = ResolversParentTypes['incrementOrDecrementLikeResponse']> = {
   code?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   like?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
@@ -447,12 +490,14 @@ export type Resolvers<ContextType = Context> = {
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   SignInResponse?: SignInResponseResolvers<ContextType>;
+  UpdateArticleResponse?: UpdateArticleResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
   addCommentResponse?: AddCommentResponseResolvers<ContextType>;
   deleteArticleResponse?: DeleteArticleResponseResolvers<ContextType>;
   deleteCommentResponse?: DeleteCommentResponseResolvers<ContextType>;
   deleteUserResponse?: DeleteUserResponseResolvers<ContextType>;
   getArticlesResponse?: GetArticlesResponseResolvers<ContextType>;
+  getMyArticlesResponse?: GetMyArticlesResponseResolvers<ContextType>;
   incrementOrDecrementLikeResponse?: IncrementOrDecrementLikeResponseResolvers<ContextType>;
 };
 
