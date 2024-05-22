@@ -1,8 +1,8 @@
 import { useMutation } from "@apollo/client";
-import { SIGNIN } from "../mutations";
+import { SIGNIN } from "../mutations/mutations";
 import { useNavigate } from "react-router-dom";
 import { MyJwtPayload, User, UserConnected } from "../types/types";
-import { apolloClientApi } from "../config/apolloClient";
+import { publicClient } from "../config/apolloClient";
 import { useStateValue } from "../context/auth/useAuthContext";
 import { jwtDecode } from "jwt-decode";
 
@@ -21,7 +21,7 @@ const useAuth = (): {
 
   // Define the signIn mutation
   const [signIn] = useMutation(SIGNIN, {
-    client: apolloClientApi,
+    client: publicClient,
   });
 
   const signin = async (

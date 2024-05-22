@@ -1,6 +1,6 @@
 import { Card, CardFooter } from "@chakra-ui/react";
 import BlueButton from "../../Button/BlueButton";
-import ArticleForm from "../Actions/ArticleForm";
+import ArticleForm from "../Actions/ArticleInputs";
 
 export default function EditArticleCard(): JSX.Element {
   return (
