@@ -3,3 +3,4 @@
 /server/.idea/
 
 /server/prisma/dev.db
+/server/prisma/migrations/20240426143143_/

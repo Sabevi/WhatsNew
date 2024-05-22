@@ -1,3 +1,4 @@
+import { JwtPayload } from "jwt-decode";
 import { FocusEventHandler } from "react";
 import {
   FieldError,
@@ -12,9 +13,14 @@ export interface User {
   confirmPassword: string;
 }
 
+export interface UserConnected {
+  id: string;
+  token: string;
+}
+
 // BUTTONS
 export interface ButtonProps {
-  onClickAction: React.MouseEventHandler<HTMLButtonElement>;
+  onClickAction?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface BlueButtonProps extends ButtonProps {
@@ -57,4 +63,9 @@ export interface PasswordInputProps extends InputFieldProps {
   showPassword: boolean;
   onClickAction: () => void;
   placeholder: string;
+}
+
+export interface MyJwtPayload extends JwtPayload {
+  id: string;
+  token: string;
 }

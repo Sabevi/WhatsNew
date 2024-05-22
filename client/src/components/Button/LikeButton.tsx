@@ -1,6 +1,6 @@
 import { AiOutlineLike } from "react-icons/ai";
 import { Text, Stack, IconButton } from "@chakra-ui/react";
-import { ActionButtonProps } from "../../types/ComponentTypes";
+import { ActionButtonProps } from "../../types/types";
 
 export default function LikeButton({
   onClickAction,

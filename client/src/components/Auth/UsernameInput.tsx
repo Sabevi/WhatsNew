@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { FaUserAlt } from "react-icons/fa";
 import { light_grey_color } from "../../assets/customColors";
-import { InputFieldProps } from "../../types/ComponentTypes";
+import { InputFieldProps } from "../../types/types";
 
 const CFaUserAlt = chakra(FaUserAlt);
 
