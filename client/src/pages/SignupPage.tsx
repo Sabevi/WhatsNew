@@ -7,10 +7,12 @@ import { blue_color, white_color } from "../assets/customColors";
 import BlueButton from "../components/Button/BlueButton";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useSignUp from "../hooks/useSignup";
-import { User } from "../types/ComponentTypes";
+import { User } from "../types/types";
+import errorDisplayed from "../config/error";
 
 export default function SignupPage(): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const {
     register,
     watch,
@@ -47,10 +49,21 @@ export default function SignupPage(): JSX.Element {
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
+  const showGenericSubmitError = () => {
+    setSubmitError(errorDisplayed.generic);
+  };
+
+  const showExistingAccountError = () => {
+    setSubmitError(errorDisplayed.existingAccount);
+  };
+
+  const showServerError = () => {
+    setSubmitError(errorDisplayed.server);
+  };
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const user = data as User;
-    console.log("Form data:", user);
-    signup(user);
+    signup(user, showGenericSubmitError, showExistingAccountError, showServerError);
   };
 
   return (
@@ -65,11 +78,7 @@ export default function SignupPage(): JSX.Element {
         <Heading as="h1" color={blue_color}>
           Sign up
         </Heading>
-        <Box
-          as="form"
-          maxW="400px" 
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <Box as="form" maxW="400px" onSubmit={handleSubmit(onSubmit)}>
           <Stack
             spacing={4}
             p="1rem"
@@ -97,10 +106,14 @@ export default function SignupPage(): JSX.Element {
               showPassword={showPassword}
               onClickAction={handleShowPassword}
             />
+            {submitError && (
+              <Box color="red.500" textAlign="center">
+                {submitError}
+              </Box>
+            )}
             <BlueButton
               type="submit"
               text="Sign up"
-              onClickAction={onSubmit}
               margin="0 auto"
               disabled={!isValid}
               style={{

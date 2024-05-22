@@ -5,7 +5,7 @@ import {
   FormLabel,
   VisuallyHidden,
 } from "@chakra-ui/react";
-import { FormArticleProps } from "../../../types/ComponentTypes";
+import { FormArticleProps } from "../../../types/types";
 
 export default function ArticleForm({
   title,
