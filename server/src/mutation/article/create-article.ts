@@ -1,4 +1,4 @@
-import {MutationResolvers} from "../../types";
+import {MutationResolvers} from "../../types.js";
 import {getUser} from "../../module/auth.js";
 
 export const createArticle: MutationResolvers['createArticle'] = async (_, {token, title, description}, {dataSources}) => {

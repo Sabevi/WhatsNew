@@ -2,12 +2,43 @@ import AuthBox from "../components/Auth/AuthBox";
 import UsernameInput from "../components/Auth/UsernameInput";
 import PasswordInput from "../components/Auth/PasswordInput";
 import BlueButton from "../components/Button/BlueButton";
-import { useNavigate } from "react-router-dom";
 import { Avatar, Heading, Link, Stack, Box } from "@chakra-ui/react";
 import { blue_color, white_color } from "../assets/customColors";
+import { useState } from "react";
+import useSignIn from "../hooks/useSignin";
+import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
+import { User } from "../types/ComponentTypes";
 
 export default function SignInPage(): JSX.Element {
-  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    trigger,
+  } = useForm({ mode: "onSubmit" });
+  const { signin } = useSignIn();
+
+  const usernameRegister = register("username", {
+    required: "Username is required",
+    maxLength: {
+      value: 15,
+      message: "Username cannot be more than 15 characters long",
+    },
+  });
+
+  const passwordRegister = register("password", {
+    required: "Password is required",
+  });
+
+  const handleShowPassword = () => setShowPassword(!showPassword);
+
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const user = data as User;
+    console.log("Form data:", user);
+    signin(user);
+  }
+
   return (
     <AuthBox>
       <Stack
@@ -20,24 +51,36 @@ export default function SignInPage(): JSX.Element {
         <Heading as="h1" color={blue_color}>
           Sign in
         </Heading>
-        <Box as="form" maxW="400px">
+        <Box 
+          as="form" 
+          maxW="400px"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <Stack
             spacing={4}
             p="1rem"
             backgroundColor={white_color}
             boxShadow="md"
           >
-            <UsernameInput />
+            <UsernameInput 
+              register={usernameRegister}
+              error={errors.username}
+              trigger={() => trigger("username")}
+            />
             <PasswordInput
               placeholder="Password"
-              isPasswordVisible="blabla"
-              showPassword="blabla"
-              onClickAction="blabla"
+              register={passwordRegister}
+              error={errors.password}
+              trigger={() => trigger("password")}
+              showPassword={showPassword}
+              onClickAction={handleShowPassword}
             />
             <BlueButton
+              type= "submit"
               text="Sign in"
-              onClickAction={() => navigate("/")}
+              onClickAction={onSubmit}
               margin="0 auto"
+              disabled={!isValid}
             />
           </Stack>
         </Box>
