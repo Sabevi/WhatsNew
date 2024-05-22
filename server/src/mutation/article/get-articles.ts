@@ -2,9 +2,11 @@ import {ArticleDto, MutationResolvers} from "../../types";
 import {getUser} from "../../module/auth.js";
 
 
-export const getArticles: MutationResolvers["getArticles"] = async (_, {token}, {dataSources}) => {
+export const getArticles: MutationResolvers["getArticles"] = async (_, __, {dataSources, token}) => {
     // check auth
-    const user = getUser(token);
+    const actualToken = token.split(' ')[1];
+
+    const user = getUser(actualToken);
 
     if(!user) {
         return {

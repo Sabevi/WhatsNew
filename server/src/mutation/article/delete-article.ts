@@ -2,9 +2,11 @@ import {MutationResolvers} from "../../types";
 import {getUser} from "../../module/auth.js";
 
 
-export const deleteArticle: MutationResolvers['deleteArticle'] = async (_, {token, articleId}, {dataSources}) => {
+export const deleteArticle: MutationResolvers['deleteArticle'] = async (_, { articleId}, {dataSources, token}) => {
     //check auth
-    const user = getUser(token);
+    const actualToken = token.split(' ')[1];
+
+    const user = getUser(actualToken);
 
     if(!user) {
         return {

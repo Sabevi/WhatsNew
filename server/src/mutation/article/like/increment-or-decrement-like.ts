@@ -1,9 +1,11 @@
 import {MutationResolvers} from "../../../types.js";
 import {getUser} from "../../../module/auth.js";
 
-export const incrementOrDecrementLikes: MutationResolvers['incrementOrDecrementLikes'] = async (_, {token, articleId}, {dataSources}) => {
-    // Check if token :
-    const user = getUser(token);
+export const incrementOrDecrementLikes: MutationResolvers['incrementOrDecrementLikes'] = async (_, {articleId}, {dataSources, token}) => {
+    // Check token :
+    const actualToken = token.split(' ')[1];
+
+    const user = getUser(actualToken);
 
     if (!user) {
         return {

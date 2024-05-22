@@ -1,8 +1,10 @@
 import { getUser } from "../../../module/auth.js";
 import { MutationResolvers, Comment } from "../../../types";
 
-export const addComment: MutationResolvers['addComment'] = async (_, {token, userId, articleId, content}, {dataSources}) => {
-    const user = getUser(token);
+export const addComment: MutationResolvers['addComment'] = async (_, {userId, articleId, content}, {dataSources, token}) => {
+    const actualToken = token.split(' ')[1];
+
+    const user = getUser(actualToken);
 
     if (!user) {
         return {

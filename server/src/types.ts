@@ -75,7 +75,6 @@ export type Mutation = {
 export type MutationAddCommentArgs = {
   articleId: Scalars['ID']['input'];
   content: Scalars['String']['input'];
-  token: Scalars['String']['input'];
   userId: Scalars['ID']['input'];
 };
 
@@ -83,7 +82,6 @@ export type MutationAddCommentArgs = {
 export type MutationCreateArticleArgs = {
   description: Scalars['String']['input'];
   title: Scalars['String']['input'];
-  token: Scalars['String']['input'];
 };
 
 
@@ -95,37 +93,23 @@ export type MutationCreateUserArgs = {
 
 export type MutationDeleteArticleArgs = {
   articleId: Scalars['ID']['input'];
-  token: Scalars['String']['input'];
 };
 
 
 export type MutationDeleteCommentArgs = {
   articleId: Scalars['ID']['input'];
   commentId: Scalars['ID']['input'];
-  token: Scalars['String']['input'];
   userId: Scalars['ID']['input'];
 };
 
 
 export type MutationDeleteUserArgs = {
-  token: Scalars['String']['input'];
   userId: Scalars['ID']['input'];
-};
-
-
-export type MutationGetArticlesArgs = {
-  token: Scalars['String']['input'];
-};
-
-
-export type MutationGetMyArticlesArgs = {
-  token: Scalars['String']['input'];
 };
 
 
 export type MutationIncrementOrDecrementLikesArgs = {
   articleId: Scalars['ID']['input'];
-  token: Scalars['String']['input'];
 };
 
 
@@ -139,7 +123,6 @@ export type MutationUpdateArticleArgs = {
   articleId: Scalars['ID']['input'];
   description: Scalars['String']['input'];
   title: Scalars['String']['input'];
-  token: Scalars['String']['input'];
 };
 
 export type Query = {
@@ -385,17 +368,17 @@ export type CreateUserResponseResolvers<ContextType = Context, ParentType extend
 };
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  addComment?: Resolver<ResolversTypes['addCommentResponse'], ParentType, ContextType, RequireFields<MutationAddCommentArgs, 'articleId' | 'content' | 'token' | 'userId'>>;
-  createArticle?: Resolver<ResolversTypes['CreateArticleResponse'], ParentType, ContextType, RequireFields<MutationCreateArticleArgs, 'description' | 'title' | 'token'>>;
+  addComment?: Resolver<ResolversTypes['addCommentResponse'], ParentType, ContextType, RequireFields<MutationAddCommentArgs, 'articleId' | 'content' | 'userId'>>;
+  createArticle?: Resolver<ResolversTypes['CreateArticleResponse'], ParentType, ContextType, RequireFields<MutationCreateArticleArgs, 'description' | 'title'>>;
   createUser?: Resolver<ResolversTypes['CreateUserResponse'], ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'password' | 'username'>>;
-  deleteArticle?: Resolver<ResolversTypes['deleteArticleResponse'], ParentType, ContextType, RequireFields<MutationDeleteArticleArgs, 'articleId' | 'token'>>;
-  deleteComment?: Resolver<ResolversTypes['deleteCommentResponse'], ParentType, ContextType, RequireFields<MutationDeleteCommentArgs, 'articleId' | 'commentId' | 'token' | 'userId'>>;
-  deleteUser?: Resolver<ResolversTypes['deleteUserResponse'], ParentType, ContextType, RequireFields<MutationDeleteUserArgs, 'token' | 'userId'>>;
-  getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType, RequireFields<MutationGetArticlesArgs, 'token'>>;
-  getMyArticles?: Resolver<ResolversTypes['getMyArticlesResponse'], ParentType, ContextType, RequireFields<MutationGetMyArticlesArgs, 'token'>>;
-  incrementOrDecrementLikes?: Resolver<ResolversTypes['incrementOrDecrementLikeResponse'], ParentType, ContextType, RequireFields<MutationIncrementOrDecrementLikesArgs, 'articleId' | 'token'>>;
+  deleteArticle?: Resolver<ResolversTypes['deleteArticleResponse'], ParentType, ContextType, RequireFields<MutationDeleteArticleArgs, 'articleId'>>;
+  deleteComment?: Resolver<ResolversTypes['deleteCommentResponse'], ParentType, ContextType, RequireFields<MutationDeleteCommentArgs, 'articleId' | 'commentId' | 'userId'>>;
+  deleteUser?: Resolver<ResolversTypes['deleteUserResponse'], ParentType, ContextType, RequireFields<MutationDeleteUserArgs, 'userId'>>;
+  getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType>;
+  getMyArticles?: Resolver<ResolversTypes['getMyArticlesResponse'], ParentType, ContextType>;
+  incrementOrDecrementLikes?: Resolver<ResolversTypes['incrementOrDecrementLikeResponse'], ParentType, ContextType, RequireFields<MutationIncrementOrDecrementLikesArgs, 'articleId'>>;
   signIn?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationSignInArgs, 'password' | 'username'>>;
-  updateArticle?: Resolver<ResolversTypes['UpdateArticleResponse'], ParentType, ContextType, RequireFields<MutationUpdateArticleArgs, 'articleId' | 'description' | 'title' | 'token'>>;
+  updateArticle?: Resolver<ResolversTypes['UpdateArticleResponse'], ParentType, ContextType, RequireFields<MutationUpdateArticleArgs, 'articleId' | 'description' | 'title'>>;
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {

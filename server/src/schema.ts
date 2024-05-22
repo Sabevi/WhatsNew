@@ -35,15 +35,15 @@ export const typeDefs = gql`
     type Mutation {
         createUser(username: String!, password: String!): CreateUserResponse!
         signIn(username: String!, password: String!): SignInResponse!
-        createArticle(token: String!, title: String!, description: String!): CreateArticleResponse!
-        updateArticle(token: String!, articleId: ID!, title: String!, description: String!): UpdateArticleResponse!
-        deleteUser(token: String!, userId: ID!): deleteUserResponse!
-        getArticles(token: String!): getArticlesResponse!
-        getMyArticles(token: String!): getMyArticlesResponse!
-        incrementOrDecrementLikes(token: String!, articleId: ID!): incrementOrDecrementLikeResponse!
-        deleteArticle(token: String!, articleId: ID!): deleteArticleResponse!
-        addComment(token: String!, articleId: ID!, userId: ID!, content: String!): addCommentResponse!
-        deleteComment(token: String!, commentId: ID!, userId: ID!, articleId: ID!): deleteCommentResponse!
+        createArticle(title: String!, description: String!): CreateArticleResponse!
+        updateArticle(articleId: ID!, title: String!, description: String!): UpdateArticleResponse!
+        deleteUser(userId: ID!): deleteUserResponse!
+        getArticles: getArticlesResponse!
+        getMyArticles: getMyArticlesResponse!
+        incrementOrDecrementLikes(articleId: ID!): incrementOrDecrementLikeResponse!
+        deleteArticle(articleId: ID!): deleteArticleResponse!
+        addComment(articleId: ID!, userId: ID!, content: String!): addCommentResponse!
+        deleteComment(commentId: ID!, userId: ID!, articleId: ID!): deleteCommentResponse!
     }
     
     type CreateUserResponse {

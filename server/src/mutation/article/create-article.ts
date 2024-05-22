@@ -1,10 +1,12 @@
 import {MutationResolvers} from "../../types.js";
 import {getUser} from "../../module/auth.js";
 
-export const createArticle: MutationResolvers['createArticle'] = async (_, {token, title, description}, {dataSources}) => {
+export const createArticle: MutationResolvers['createArticle'] = async (_, { title, description}, {dataSources, token}) => {
     // Check if token :
-    const user =  getUser(token);
+    const actualToken = token.split(' ')[1];
 
+    const user = getUser(actualToken);
+    console.log("token  :", actualToken)
     if (!user) {
         return {
             code: 403,

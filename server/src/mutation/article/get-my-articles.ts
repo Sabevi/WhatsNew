@@ -3,11 +3,13 @@ import { getUser } from "../../module/auth.js";
 
 export const getMyArticles: MutationResolvers["getMyArticles"] = async (
   _,
-  { token },
-  { dataSources }
+  __,
+  { dataSources, token }
 ) => {
   // check auth
-  const user = getUser(token);
+  const actualToken = token.split(' ')[1];
+
+  const user = getUser(actualToken);
 
   if (!user) {
     return {

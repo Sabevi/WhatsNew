@@ -1,10 +1,12 @@
 import { getUser } from "../../module/auth.js";
 import { MutationResolvers } from "../../types.js";
 
-export const deleteUser: MutationResolvers['deleteUser'] = async (_, {token, userId}, {dataSources}) => {
+export const deleteUser: MutationResolvers['deleteUser'] = async (_, {userId}, {dataSources, token}) => {
     
     // get user from token
-    const user = getUser(token);
+    const actualToken = token.split(' ')[1];
+
+    const user = getUser(actualToken);
 
     // If the user is not found (i.e., the token is invalid), return an error response
     if (!user) {
