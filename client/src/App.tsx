@@ -29,7 +29,7 @@ export default function App(): JSX.Element {
                 <Route path="/create" element={<CreateArticlePage />} />
                 <Route path="/edit" element={<UpdateArticlePage />} />
                 <Route path="/my-articles" element={<MyArticlesPage />} />
-                <Route path="/article" element={<ShowArticlePage />} />
+                <Route path="/article/:id" element={<ShowArticlePage />} />
               </Route>
             </Route>
           </Routes>

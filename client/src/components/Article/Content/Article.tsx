@@ -27,16 +27,13 @@ export default function ArticleCard(): JSX.Element {
               name="John Doe"
               date={new Date("2021-04-06T19:01:27Z")}
             />
-            <Heading>
-              <Text
+            <Heading
                 textDecoration="none"
                 _hover={{ textDecoration: "none" }}
                 fontSize="3xl"
-                as="h2"
                 mt="10"
               >
                 Blog article title
-              </Text>
             </Heading>
           </CardHeader>
           <CardBody>

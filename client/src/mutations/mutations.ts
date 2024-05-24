@@ -39,3 +39,23 @@ export const CREATE_ARTICLE = gql`
     }
   }
 `;
+
+export const GET_ARTICLE_BY_ID = gql`
+    mutation GetArticle($articleId: ID!) {
+      getArticle(articleId: $articleId) {
+        articleDto {
+          title
+          id
+          likes {
+            articleId
+            id
+            userId
+          }
+          description
+        }
+        code
+        message
+        success
+      }
+    }
+`;

@@ -27,14 +27,12 @@ export default function MyArticleCard(): JSX.Element {
             onClick={() => navigate("/edit")}
           />
         </Flex>
-        <Heading>
-          <Text
+        <Heading
             textDecoration="none"
             _hover={{ textDecoration: "none" }}
             fontSize="3xl"
           >
             My article title
-          </Text>
         </Heading>
       </CardHeader>
       <CardBody>
