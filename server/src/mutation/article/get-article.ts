@@ -46,7 +46,7 @@ export const getArticle: MutationResolvers["getArticle"] = async (
     const commentsDTO: Comment[] = []
 
     for (const comment of comments) {
-        console.log("comment ", comment)
+
         const user = await dataSources.db.user.findUnique({where: {id: comment.userId}})
         const username = user?.username ?? "unknown"
         const commentToAdd: Comment = {

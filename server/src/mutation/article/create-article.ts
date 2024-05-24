@@ -6,7 +6,6 @@ export const createArticle: MutationResolvers['createArticle'] = async (_, { tit
     const actualToken = token.split(' ')[1];
 
     const user = getUser(actualToken);
-    console.log("token  :", actualToken)
     if (!user) {
         return {
             code: 403,
