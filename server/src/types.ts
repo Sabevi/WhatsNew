@@ -131,6 +131,7 @@ export type MutationGetArticleArgs = {
 
 
 export type MutationGetArticlesArgs = {
+  mostLiked?: InputMaybe<Scalars['Boolean']['input']>;
   page?: InputMaybe<Scalars['Int']['input']>;
 };
 
