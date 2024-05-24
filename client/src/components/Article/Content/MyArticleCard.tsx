@@ -32,7 +32,6 @@ export default function MyArticleCard(): JSX.Element {
             textDecoration="none"
             _hover={{ textDecoration: "none" }}
             fontSize="3xl"
-            as="h2"
           >
             My article title
           </Text>

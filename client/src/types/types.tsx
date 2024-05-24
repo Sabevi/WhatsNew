@@ -34,12 +34,6 @@ export interface BlueButtonProps extends ButtonProps {
 export interface ActionButtonProps extends ButtonProps {
   number: number;
 }
-
-export interface FormArticleProps {
-  title: string;
-  article: string;
-}
-
 export interface BlogAuthorProps {
   date: Date;
   name: string;
@@ -48,6 +42,8 @@ export interface BlogAuthorProps {
 // AUTHENTICATION
 export interface FormValues {
   username: string;
+  title: string;
+  description: string;
 }
 
 export interface InputFieldProps {
@@ -65,7 +61,15 @@ export interface PasswordInputProps extends InputFieldProps {
   placeholder: string;
 }
 
+export interface ArticleInputsProps {
+  titleRegister: UseFormRegisterReturn;
+  articleRegister: UseFormRegisterReturn;
+  errors: FieldErrorsImpl<FormValues>;
+  trigger: (fieldName?: "title" | "description" | ("title" | "description")[]) => void;
+}
 export interface MyJwtPayload extends JwtPayload {
   id: string;
   token: string;
 }
+
+
