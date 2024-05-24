@@ -24,3 +24,18 @@ export const SIGNIN = gql`
     }
   }
 `;
+
+export const CREATE_ARTICLE = gql`
+  mutation CreateArticle($title: String!, $description: String!) {
+    createArticle(title: $title, description: $description) {
+      article {
+        description
+        id
+        title
+      }
+      code
+      message
+      success
+    }
+  }
+`;
