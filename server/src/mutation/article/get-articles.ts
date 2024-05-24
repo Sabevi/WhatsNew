@@ -1,10 +1,10 @@
-import {ArticleDto, MutationResolvers} from "../../types";
+import {Article, ArticleDto, MutationResolvers} from "../../types";
 import {getUser} from "../../module/auth.js";
 
 
 export const getArticles: MutationResolvers["getArticles"] = async (
     _,
-    {page, mostLiked},
+    {page, mostLiked, userId},
     {dataSources, token}) => {
     // check auth
     const actualToken = token.split(' ')[1];
@@ -21,8 +21,18 @@ export const getArticles: MutationResolvers["getArticles"] = async (
         }
     }
 
+    let articles: Article[];
+    if (userId && userId != user.id) {
+        articles = await dataSources.db.article.findMany({
+            where: {
+                userId: userId
+            }
+        });
+    } else {
+        articles = await dataSources.db.article.findMany();
+    }
 
-    const articles = await dataSources.db.article.findMany();
+
 
     let articlesDto: ArticleDto[] = [];
 

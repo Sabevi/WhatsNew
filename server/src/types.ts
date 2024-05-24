@@ -82,7 +82,6 @@ export type Mutation = {
   deleteUser: DeleteUserResponse;
   getArticle: GetArticleResponse;
   getArticles: GetArticlesResponse;
-  getMyArticles: GetMyArticlesResponse;
   incrementOrDecrementLikes: IncrementOrDecrementLikeResponse;
   signIn: SignInResponse;
   updateArticle: UpdateArticleResponse;
@@ -133,6 +132,7 @@ export type MutationGetArticleArgs = {
 export type MutationGetArticlesArgs = {
   mostLiked?: InputMaybe<Scalars['Boolean']['input']>;
   page?: InputMaybe<Scalars['Int']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -443,7 +443,6 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
   deleteUser?: Resolver<ResolversTypes['deleteUserResponse'], ParentType, ContextType, RequireFields<MutationDeleteUserArgs, 'userId'>>;
   getArticle?: Resolver<ResolversTypes['getArticleResponse'], ParentType, ContextType, RequireFields<MutationGetArticleArgs, 'articleId'>>;
   getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType, Partial<MutationGetArticlesArgs>>;
-  getMyArticles?: Resolver<ResolversTypes['getMyArticlesResponse'], ParentType, ContextType>;
   incrementOrDecrementLikes?: Resolver<ResolversTypes['incrementOrDecrementLikeResponse'], ParentType, ContextType, RequireFields<MutationIncrementOrDecrementLikesArgs, 'articleId'>>;
   signIn?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationSignInArgs, 'password' | 'username'>>;
   updateArticle?: Resolver<ResolversTypes['UpdateArticleResponse'], ParentType, ContextType, RequireFields<MutationUpdateArticleArgs, 'articleId' | 'description' | 'title'>>;

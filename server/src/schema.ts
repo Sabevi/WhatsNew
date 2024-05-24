@@ -17,8 +17,7 @@ export const typeDefs = gql`
         createArticle(title: String!, description: String!): CreateArticleResponse!
         updateArticle(articleId: ID!, title: String!, description: String!): UpdateArticleResponse!
         deleteUser(userId: ID!): deleteUserResponse!
-        getArticles(page: Int, mostLiked: Boolean): getArticlesResponse!
-        getMyArticles: getMyArticlesResponse!
+        getArticles(page: Int, mostLiked: Boolean, userId: String): getArticlesResponse!
         getArticle(articleId: ID!): getArticleResponse!
         incrementOrDecrementLikes(articleId: ID!): incrementOrDecrementLikeResponse!
         deleteArticle(articleId: ID!): deleteArticleResponse!
