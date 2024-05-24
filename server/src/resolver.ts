@@ -10,6 +10,7 @@ import {incrementOrDecrementLikes} from "./mutation/article/like/increment-or-de
 import {deleteArticle} from "./mutation/article/delete-article.js";
 import {addComment} from "./mutation/article/comment/add-comment.js";
 import { deleteComment } from "./mutation/article/comment/delete-comment.js";
+import {getArticle} from "./mutation/article/get-article.js";
 
 
 
@@ -22,6 +23,7 @@ export const resolvers: Resolvers = {
         updateArticle,
         getArticles,
         getMyArticles,
+        getArticle,
         incrementOrDecrementLikes,
         deleteArticle,
         addComment,

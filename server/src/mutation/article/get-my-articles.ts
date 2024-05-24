@@ -33,17 +33,17 @@ export const getMyArticles: MutationResolvers["getMyArticles"] = async (
         articleId: article.id,
       },
     });
-    const nbLikes = await dataSources.db.like.count({
-      where: {
-        articleId: article.id,
-      },
-    });
+    const likes = await dataSources.db.like.findMany({
+        where: {
+            articleId: article.id,
+        },
+        });
     articlesDto.push({
       id: article.id,
       title: article.title,
       description: article.description,
       nbComments: nbComments ?? 0,
-      nbLikes: nbLikes ?? 0,
+      likes: likes == null ? [] : likes,
     });
   }
   return {

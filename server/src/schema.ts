@@ -11,6 +11,25 @@ export const typeDefs = gql`
         users: [User!]!
     }
     
+    type Mutation {
+        createUser(username: String!, password: String!): CreateUserResponse!
+        signIn(username: String!, password: String!): SignInResponse!
+        createArticle(title: String!, description: String!): CreateArticleResponse!
+        updateArticle(articleId: ID!, title: String!, description: String!): UpdateArticleResponse!
+        deleteUser(userId: ID!): deleteUserResponse!
+        getArticles(page: Int): getArticlesResponse!
+        getMyArticles: getMyArticlesResponse!
+        getArticle(articleId: ID!): getArticleResponse!
+        incrementOrDecrementLikes(articleId: ID!): incrementOrDecrementLikeResponse!
+        deleteArticle(articleId: ID!): deleteArticleResponse!
+        addComment(articleId: ID!, userId: ID!, content: String!): addCommentResponse!
+        deleteComment(commentId: ID!, userId: ID!, articleId: ID!): deleteCommentResponse!
+    }
+    
+    #########################
+    ###### Entity Types #####
+    #########################
+    
     type Article {
         id: ID!
         title: String!
@@ -23,28 +42,40 @@ export const typeDefs = gql`
         content: String!
     }
     
+    type Like {
+        id: ID!
+        userId: ID!
+        articleId: ID!
+    }
+    
+    type Pagination {
+        total: Int!
+        page: Int!
+    }
+   
+    #########################
+    ###### DTO Types ########
+    #########################
+    
     type ArticleDto {
         id: ID!
         title: String!
         description: String!
         nbComments: Int!
-        nbLikes: Int!
+        likes: [Like!]!
     }
     
-    
-    type Mutation {
-        createUser(username: String!, password: String!): CreateUserResponse!
-        signIn(username: String!, password: String!): SignInResponse!
-        createArticle(title: String!, description: String!): CreateArticleResponse!
-        updateArticle(articleId: ID!, title: String!, description: String!): UpdateArticleResponse!
-        deleteUser(userId: ID!): deleteUserResponse!
-        getArticles: getArticlesResponse!
-        getMyArticles: getMyArticlesResponse!
-        incrementOrDecrementLikes(articleId: ID!): incrementOrDecrementLikeResponse!
-        deleteArticle(articleId: ID!): deleteArticleResponse!
-        addComment(articleId: ID!, userId: ID!, content: String!): addCommentResponse!
-        deleteComment(commentId: ID!, userId: ID!, articleId: ID!): deleteCommentResponse!
+    type ArticleDtoBis {
+        id: ID!
+        title: String!
+        description: String!
+        comments: [Comment!]!
+        likes: [Like!]!
     }
+    
+    #########################
+    #### Response Types #####
+    #########################
     
     type CreateUserResponse {
         code: Int!
@@ -52,6 +83,7 @@ export const typeDefs = gql`
         message: String!
         user: User
     }
+    
     
     type SignInResponse {
         code: Int!
@@ -79,6 +111,7 @@ export const typeDefs = gql`
         success: Boolean!
         message: String!
         articlesDto: [ArticleDto]
+        pagination: Pagination
     }
 
     type getMyArticlesResponse {
@@ -123,4 +156,10 @@ export const typeDefs = gql`
         userId: ID
     }
     
+    type getArticleResponse {
+        code: Int!
+        success: Boolean!
+        message: String!
+        articleDto: ArticleDtoBis
+    }
 `;
