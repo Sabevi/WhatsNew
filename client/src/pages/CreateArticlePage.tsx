@@ -5,8 +5,6 @@ import useCreateArticle from "../hooks/useCreateArticle";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
 import { FormValues } from "../types/types";
-import { useState } from "react";
-import errorDisplayed from "../config/error";
 
 export default function CreateArticlePage(): JSX.Element {
   const {
