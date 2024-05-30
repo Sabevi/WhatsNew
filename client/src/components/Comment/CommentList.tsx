@@ -5,9 +5,12 @@ import {
   CardFooter,
   CardBody,
 } from "@chakra-ui/react";
-import { Comment } from "./Comment";
-
-export default function CommentList(): JSX.Element {
+import { CommentDetails } from "./CommentDetails.tsx";
+import {CommentModel} from "../../types/article.ts";
+interface CommentListProps {
+    comments: CommentModel[];
+}
+export default function CommentList({ comments }: CommentListProps) {
   return (
     <Card mt="10">
       <CardHeader>
@@ -21,8 +24,9 @@ export default function CommentList(): JSX.Element {
         </Heading>
       </CardHeader>
       <CardBody>
-        <Comment />
-        <Comment />
+        {comments.map((comment) => (
+          <CommentDetails key={comment.id} comment={comment} />
+        ))}
       </CardBody>
       <CardFooter>PAGINATION</CardFooter>
     </Card>

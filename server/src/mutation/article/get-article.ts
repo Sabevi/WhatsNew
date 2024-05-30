@@ -52,7 +52,8 @@ export const getArticle: MutationResolvers["getArticle"] = async (
         const commentToAdd: Comment = {
             id: comment.id,
             username: username,
-            content: comment.content
+            content: comment.content,
+            publishedAt: comment.publishedAt.toISOString()
         }
 
         commentsDTO.push(commentToAdd);
@@ -60,6 +61,8 @@ export const getArticle: MutationResolvers["getArticle"] = async (
     
     const articleDtoBis: ArticleDtoBis = {
         id: article!.id,
+        username: user.username,
+        publishedAt: article!.publishedAt.toISOString(),
         title: article!.title,
         description: article!.description,
         likes: likes == null ? [] : likes,

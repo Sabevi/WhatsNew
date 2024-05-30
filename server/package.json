@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "generate": "graphql-codegen",
     "dev": "node --import ./scripts/register.js --watch index.ts",
-    "prisma": "prisma"
+    "prisma": "prisma",
+    "prisma:migrate": "npm run prisma migrate dev --name init"
   },
   "keywords": [],
   "author": "",

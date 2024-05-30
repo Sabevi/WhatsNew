@@ -45,11 +45,19 @@ export const GET_ARTICLE_BY_ID = gql`
       getArticle(articleId: $articleId) {
         articleDto {
           title
+          username
           id
+          publishedAt
           likes {
             articleId
             id
             userId
+          }
+          comments {
+            id
+            username
+            content
+            publishedAt
           }
           description
         }

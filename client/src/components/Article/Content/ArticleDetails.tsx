@@ -13,8 +13,14 @@ import BlogAuthor from "./ArticleAuthor";
 import { grey_color } from "../../../assets/customColors";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
+import {ArticleModel} from "../../../types/article.ts";
 
-export default function ArticleCard(): JSX.Element {
+interface ArticleCardProps {
+  articleDetails: ArticleModel;
+}
+export default function ArticleCard({ articleDetails }: ArticleCardProps) {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  console.log('userId :' , user.id)
   return (
     <Card mt={10}>
       <Flex
@@ -24,8 +30,8 @@ export default function ArticleCard(): JSX.Element {
         <Flex flex="3" direction="column" justifyContent="center">
           <CardHeader>
             <BlogAuthor
-              name="John Doe"
-              date={new Date("2021-04-06T19:01:27Z")}
+              name={articleDetails.username}
+              date={new Date(articleDetails.publishedAt)}
             />
             <Heading
                 textDecoration="none"
@@ -33,7 +39,7 @@ export default function ArticleCard(): JSX.Element {
                 fontSize="3xl"
                 mt="10"
               >
-                Blog article title
+              {articleDetails.title}
             </Heading>
           </CardHeader>
           <CardBody>
@@ -54,37 +60,19 @@ export default function ArticleCard(): JSX.Element {
               padding="10"
               color={grey_color}
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book... Lorem
-              Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book... Lorem
-              Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book... Lorem
-              Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book... Lorem
-              Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry&apos;s standard dummy
-              text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book...
+              {articleDetails.description}
             </Text>
           </CardBody>
           <CardFooter>
             <Flex width="100%" justifyContent="flex-end" gap="20px">
               <CommentButton
-                onClickAction={() => console.log("Comment button clicked")}
-                number={3}
+                onClickAction={() => console.log("CommentDetails button clicked")}
+                number={articleDetails.comments.length}
               />
               <LikeButton
                 onClickAction={() => console.log("Like button clicked")}
-                number={6}
+                number={articleDetails.likes.length}
+                liked={articleDetails.likes.some(like => like.userId === user.id)}
               />
             </Flex>
           </CardFooter>

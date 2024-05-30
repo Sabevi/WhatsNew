@@ -1,10 +1,11 @@
 import {Box, Container, Flex, Heading, Spinner} from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
-import Article from "../components/Article/Content/Article";
+import ArticleDetailsComponent from "../components/Article/Content/ArticleDetails.tsx";
 import CommentList from "../components/Comment/CommentList";
 import CreateComment from "../components/Comment/CreateComment";
 import {useNavigate, useParams} from "react-router-dom";
 import useShowArticleDetails from "../hooks/useShowArticleDetails.ts";
+import {ArticleModel} from "../types/article.ts";
 
 export default function ShowArticlePage() {
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ export default function ShowArticlePage() {
   if(id === undefined || id === null) navigate("/");
   //console.log("Article id: ", id)
   const { data, loading } = useShowArticleDetails(id as string);
-  console.log("Article details: ", data.getArticle);
+  console.log("Article details: ", data);
+
   return (
     <Box as="main">
       <Container maxW="7xl" p="12">
@@ -34,9 +36,9 @@ export default function ShowArticlePage() {
             <Heading textAlign="center" as="h1" color={blue_color}>
               What's New - Article{" "}
             </Heading>
-            <Article />
+            <ArticleDetailsComponent articleDetails={data as ArticleModel} />
             <CreateComment />
-            <CommentList />
+            <CommentList comments={(data as ArticleModel).comments} />
 
           </>
         )}

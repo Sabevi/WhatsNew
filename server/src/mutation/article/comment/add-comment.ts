@@ -40,6 +40,7 @@ export const addComment: MutationResolvers['addComment'] = async (_, {userId, ar
             id: (await createdComment).id,
             content: (await createdComment).content,
             username: user.username,
+            publishedAt: (await createdComment).publishedAt.toISOString()
         }
 
         return {

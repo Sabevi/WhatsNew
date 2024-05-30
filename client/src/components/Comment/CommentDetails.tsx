@@ -7,9 +7,13 @@ import {
 } from "@chakra-ui/react";
 import BlogAuthor from "../Article/Content/ArticleAuthor";
 import { grey_color } from "../../assets/customColors";
+import {CommentModel} from "../../types/article.ts";
 
+interface CommentProps {
+  comment: CommentModel
+}
 
-export function Comment(): JSX.Element {
+export function CommentDetails({ comment }: CommentProps) {
   return (
     <Card mb={10}>
       <Flex
@@ -18,14 +22,14 @@ export function Comment(): JSX.Element {
       ></Flex>
       <Flex flex="3" direction="column" justifyContent="center">
         <CardHeader>
-          <BlogAuthor name="John Doe" date={new Date("2021-04-06T19:01:27Z")} />
+            {
+                // FIXME: Fix the date
+            }
+          <BlogAuthor name={comment.username} date={new Date(comment.publishedAt)} />
         </CardHeader>
         <CardBody>
           <Text marginTop="2" fontSize="lg" color={grey_color}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book...
+            {comment.content}
           </Text>
         </CardBody>
       </Flex>

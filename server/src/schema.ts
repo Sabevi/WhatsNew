@@ -31,14 +31,17 @@ export const typeDefs = gql`
     
     type Article {
         id: ID!
+        userId: ID!
         title: String!
         description: String!
+        publishedAt: String!
     }
     
     type Comment {
         id: ID!
         username: String!
         content: String!
+        publishedAt: String!
     }
     
     type Like {
@@ -58,15 +61,19 @@ export const typeDefs = gql`
     
     type ArticleDto {
         id: ID!
+        username: String!
         title: String!
         description: String!
+        publishedAt: String!
         nbComments: Int!
         likes: [Like!]!
     }
     
     type ArticleDtoBis {
         id: ID!
+        username: String!
         title: String!
+        publishedAt: String!
         description: String!
         comments: [Comment!]!
         likes: [Like!]!
