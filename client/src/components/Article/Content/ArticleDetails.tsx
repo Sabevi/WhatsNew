@@ -20,7 +20,6 @@ interface ArticleCardProps {
 }
 export default function ArticleCard({ articleDetails }: ArticleCardProps) {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
-  console.log('userId :' , user.id)
   return (
     <Card mt={10}>
       <Flex
