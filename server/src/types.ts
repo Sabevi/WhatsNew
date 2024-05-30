@@ -50,6 +50,7 @@ export type ArticleDtoBis = {
 
 export type Comment = {
   __typename?: 'Comment';
+  articleId: Scalars['ID']['output'];
   content: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   publishedAt: Scalars['String']['output'];
@@ -98,7 +99,6 @@ export type Mutation = {
 export type MutationAddCommentArgs = {
   articleId: Scalars['ID']['input'];
   content: Scalars['String']['input'];
-  userId: Scalars['ID']['input'];
 };
 
 
@@ -418,6 +418,7 @@ export type ArticleDtoBisResolvers<ContextType = Context, ParentType extends Res
 };
 
 export type CommentResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Comment'] = ResolversParentTypes['Comment']> = {
+  articleId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   publishedAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -449,7 +450,7 @@ export type LikeResolvers<ContextType = Context, ParentType extends ResolversPar
 };
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  addComment?: Resolver<ResolversTypes['addCommentResponse'], ParentType, ContextType, RequireFields<MutationAddCommentArgs, 'articleId' | 'content' | 'userId'>>;
+  addComment?: Resolver<ResolversTypes['addCommentResponse'], ParentType, ContextType, RequireFields<MutationAddCommentArgs, 'articleId' | 'content'>>;
   createArticle?: Resolver<ResolversTypes['CreateArticleResponse'], ParentType, ContextType, RequireFields<MutationCreateArticleArgs, 'description' | 'title'>>;
   createUser?: Resolver<ResolversTypes['CreateUserResponse'], ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'password' | 'username'>>;
   deleteArticle?: Resolver<ResolversTypes['deleteArticleResponse'], ParentType, ContextType, RequireFields<MutationDeleteArticleArgs, 'articleId'>>;

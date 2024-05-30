@@ -10,7 +10,6 @@ export const getArticle: MutationResolvers["getArticle"] = async (
     const actualToken = token.split(' ')[1];
 
     const user = getUser(actualToken);
-    console.log("actualal token ",actualToken)
     if (!user) {
         return {
             code: 403,
@@ -52,6 +51,7 @@ export const getArticle: MutationResolvers["getArticle"] = async (
         const commentToAdd: Comment = {
             id: comment.id,
             username: username,
+            articleId: comment.articleId,
             content: comment.content,
             publishedAt: comment.publishedAt.toISOString()
         }

@@ -67,11 +67,11 @@ export default function ArticleCard({ articleDetails }: ArticleCardProps) {
             <Flex width="100%" justifyContent="flex-end" gap="20px">
               <CommentButton
                 onClickAction={() => console.log("CommentDetails button clicked")}
-                number={articleDetails.comments.length}
+                number={articleDetails.comments.length ?? 0}
               />
               <LikeButton
                 onClickAction={() => console.log("Like button clicked")}
-                number={articleDetails.likes.length}
+                number={articleDetails.likes.length ?? 0}
                 liked={articleDetails.likes.some(like => like.userId === user.id)}
               />
             </Flex>

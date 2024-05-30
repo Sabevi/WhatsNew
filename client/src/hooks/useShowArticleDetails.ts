@@ -2,7 +2,7 @@ import {GET_ARTICLE_BY_ID} from "../mutations/mutations.ts";
 import {privateClient} from "../config/apolloClient.ts";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {ArticleDetails} from "../types/article.ts";
+import {ArticleModel} from "../types/article.ts";
 
 const useShowArticleDetails = (id: string) => {
     const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ const useShowArticleDetails = (id: string) => {
                 });
 
                 if(response.getArticle.code === 200) {
-                    setData(response.getArticle.articleDto as ArticleDetails);
+                    setData(response.getArticle.articleDto as ArticleModel);
                 }
                  else if(response.getArticle.code === 404) {
                     navigate('/404');

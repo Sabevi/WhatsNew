@@ -16,7 +16,6 @@ export default function ShowArticlePage() {
   if(id === undefined || id === null) navigate("/");
   //console.log("Article id: ", id)
   const { data, loading } = useShowArticleDetails(id as string);
-  console.log("Article details: ", data);
 
   return (
     <Box as="main">
@@ -37,7 +36,7 @@ export default function ShowArticlePage() {
               What's New - Article{" "}
             </Heading>
             <ArticleDetailsComponent articleDetails={data as ArticleModel} />
-            <CreateComment />
+            <CreateComment articleId={(data as ArticleModel).id}/>
             <CommentList comments={(data as ArticleModel).comments} />
 
           </>
