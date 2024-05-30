@@ -22,9 +22,6 @@ export function CommentDetails({ comment }: CommentProps) {
       ></Flex>
       <Flex flex="3" direction="column" justifyContent="center">
         <CardHeader>
-            {
-                // FIXME: Fix the date
-            }
           <BlogAuthor name={comment.username} date={new Date(comment.publishedAt)} />
         </CardHeader>
         <CardBody>
