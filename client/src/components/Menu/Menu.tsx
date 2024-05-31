@@ -34,9 +34,6 @@ export default function Menu(): JSX.Element {
         <MenuItem as={Link} to="/create" icon={<EditIcon />} fontSize="lg">
           Create a new article
         </MenuItem>
-        <MenuItem as={Link} to="/my-articles" icon={<EditIcon />} fontSize="lg">
-          Manage your articles
-        </MenuItem>
         <MenuItem
           as={Link}
           to="/signin"

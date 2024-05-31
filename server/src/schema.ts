@@ -63,6 +63,7 @@ export const typeDefs = gql`
     type ArticleDto {
         id: ID!
         username: String!
+        userId: ID!
         title: String!
         description: String!
         publishedAt: String!

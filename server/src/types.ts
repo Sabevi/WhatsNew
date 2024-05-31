@@ -34,6 +34,7 @@ export type ArticleDto = {
   nbComments: Scalars['Int']['output'];
   publishedAt: Scalars['String']['output'];
   title: Scalars['String']['output'];
+  userId: Scalars['ID']['output'];
   username: Scalars['String']['output'];
 };
 
@@ -402,6 +403,7 @@ export type ArticleDtoResolvers<ContextType = Context, ParentType extends Resolv
   nbComments?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   publishedAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  userId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
