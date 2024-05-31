@@ -6,7 +6,6 @@ export default function SelectArticles({ onParamsChange } : SelectArticlesProps)
   const [selectedOption, setSelectedOption] = useState("allArticles");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const userId = user.id;
-  console.log("userId: ", userId);
 
   useEffect(() => {
     let newParams: [number, boolean, string];

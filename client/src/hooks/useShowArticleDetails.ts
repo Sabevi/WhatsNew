@@ -29,7 +29,7 @@ const useShowArticleDetails = (id: string) => {
             }
             setLoading(false);
         };
-        getArticle().then(_ => console.log("finished---------------"));
+        getArticle();
     }, []);
     return {
         data,

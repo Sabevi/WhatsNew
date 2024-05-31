@@ -2,23 +2,32 @@ import { GET_ARTICLES } from "../mutations/mutations.ts";
 import { privateClient } from "../config/apolloClient.ts";
 import { useEffect, useState } from "react";
 
-const useShowArticleList = (page: number, mostLiked: boolean, userId: string) => {
+const useShowArticleList = (
+  page: number,
+  mostLiked: boolean,
+  userId: string
+) => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({});
-
-  console.log("useShowArticleList called with: ", page, mostLiked, userId);
+  const [data, setData] = useState({
+    articlesDto: [],
+    pagination: {
+      page: 0,
+      total: 0,
+    },
+  });
 
   useEffect(() => {
     const getArticleList = async () => {
       try {
         const { data: response } = await privateClient.mutate({
           mutation: GET_ARTICLES,
-          variables: { page: page, mostLiked: mostLiked, userId: userId},
+          variables: { page: page, mostLiked: mostLiked, userId: userId },
         });
-
-        console.log("List of articles: ", response.getArticles);
         if (response.getArticles.code === 200) {
-          setData(response.getArticles.articlesDto);
+          setData({
+            articlesDto: response.getArticles.articlesDto,
+            pagination: response.getArticles.pagination,
+          });
         }
       } catch (error) {
         console.error(error);

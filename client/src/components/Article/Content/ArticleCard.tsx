@@ -27,6 +27,7 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
     userId,
     nbComments,
     likes,
+    id,
   } = article;
   const navigate = useNavigate();
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
@@ -70,7 +71,7 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
         <Flex width="100%" justifyContent="space-between" alignItems="center">
           <BlueButton
             text="Show full article"
-            onClickAction={() => navigate("/article")}
+            onClickAction={() => navigate(`/article/${id}`)}
           />
           <Flex width="18%" justifyContent="space-between">
             <CommentButton
