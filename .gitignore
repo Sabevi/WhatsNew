@@ -4,3 +4,4 @@
 
 /server/prisma/dev.db
 /server/prisma/migrations/20240426143143_/
+/server/prisma/dev.db-journal

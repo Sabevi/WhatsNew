@@ -33,7 +33,7 @@ model Article {
   Like           Like[]
 }
 
-model CommentDetails {
+model Comment {
   id          String   @id @default(cuid())
   content     String
   article     Article  @relation(fields: [articleId], references: [id])
