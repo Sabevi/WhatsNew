@@ -39,3 +39,46 @@ export const CREATE_ARTICLE = gql`
     }
   }
 `;
+
+export const COMMENT_ARTICLE = gql`
+mutation AddComment($articleId: ID!, $content: String!) {
+  addComment(articleId: $articleId, content: $content) {
+    code
+    comment {
+      username
+      id
+      content
+    }
+    message
+    success
+  }
+}
+`
+
+export const GET_ARTICLE_BY_ID = gql`
+    mutation GetArticle($articleId: ID!) {
+      getArticle(articleId: $articleId) {
+        articleDto {
+          title
+          username
+          id
+          publishedAt
+          likes {
+            articleId
+            id
+            userId
+          }
+          comments {
+            id
+            username
+            content
+            publishedAt
+          }
+          description
+        }
+        code
+        message
+        success
+      }
+    }
+`;

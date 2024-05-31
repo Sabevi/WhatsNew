@@ -1,4 +1,4 @@
-import { MutationResolvers } from "../../types.js";
+import {Article, MutationResolvers} from "../../types.js";
 import { getUser } from "../../module/auth.js";
 
 export const updateArticle: MutationResolvers["updateArticle"] = async (
@@ -22,7 +22,7 @@ export const updateArticle: MutationResolvers["updateArticle"] = async (
 
   try {
     // Update the article
-    const updatedArticle = await dataSources.db.article.update({
+    const article = await dataSources.db.article.update({
       where: {
         id: articleId,
       },
@@ -32,6 +32,18 @@ export const updateArticle: MutationResolvers["updateArticle"] = async (
         userId: user.id,
       },
     });
+
+    const updatedArticle: Article = {
+        id: article.id,
+        title: article.title,
+        description: article.description,
+        userId: article.userId,
+        publishedAt: article.publishedAt.toISOString(),
+    }
+
+
+
+
 
     return {
       code: 201,

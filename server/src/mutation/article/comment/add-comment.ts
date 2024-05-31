@@ -1,7 +1,7 @@
 import { getUser } from "../../../module/auth.js";
 import { MutationResolvers, Comment } from "../../../types";
 
-export const addComment: MutationResolvers['addComment'] = async (_, {userId, articleId, content}, {dataSources, token}) => {
+export const addComment: MutationResolvers['addComment'] = async (_, {articleId, content}, {dataSources, token}) => {
     const actualToken = token.split(' ')[1];
 
     const user = getUser(actualToken);
@@ -22,7 +22,7 @@ export const addComment: MutationResolvers['addComment'] = async (_, {userId, ar
 
         if (!article) {
             return {
-                code: 403,
+                code: 404,
                 message: "article not found",
                 success: false
             }
@@ -31,7 +31,7 @@ export const addComment: MutationResolvers['addComment'] = async (_, {userId, ar
         const createdComment = dataSources.db.comment.create({
             data: {
                 articleId,
-                userId,
+                userId: user.id,
                 content: content || "new comment",
             }
         });
@@ -39,12 +39,14 @@ export const addComment: MutationResolvers['addComment'] = async (_, {userId, ar
         const comment: Comment = {
             id: (await createdComment).id,
             content: (await createdComment).content,
+            articleId: (await createdComment).articleId,
             username: user.username,
+            publishedAt: (await createdComment).publishedAt.toISOString()
         }
 
         return {
-            code: 200,
-            message: "comment added seccessfully",
+            code: 201,
+            message: "comment added successfully",
             success: true,
             comment: comment
         }

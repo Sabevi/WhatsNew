@@ -1,19 +1,46 @@
-import { Box, Container, Heading } from "@chakra-ui/react";
+import {Box, Container, Flex, Heading, Spinner} from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
-import Article from "../components/Article/Content/Article";
+import ArticleDetailsComponent from "../components/Article/Content/ArticleDetails.tsx";
 import CommentList from "../components/Comment/CommentList";
 import CreateComment from "../components/Comment/CreateComment";
+import {useNavigate, useParams} from "react-router-dom";
+import useShowArticleDetails from "../hooks/useShowArticleDetails.ts";
+import {ArticleModel} from "../types/article.ts";
 
-export default function ShowArticlePage(): JSX.Element {
+export default function ShowArticlePage() {
+  const navigate = useNavigate();
+
+
+  const { id } = useParams<{ id: string }>();
+
+  if(id === undefined || id === null) navigate("/");
+  //console.log("Article id: ", id)
+  const { data, loading } = useShowArticleDetails(id as string);
+
   return (
     <Box as="main">
       <Container maxW="7xl" p="12">
-        <Heading textAlign="center" as="h1" color={blue_color}>
-          What's New - Article{" "}
-        </Heading>
-        <Article />
-        <CreateComment />
-        <CommentList />
+        {loading ? (
+            <Flex justify="center" align="center" height="100vh">
+              <Spinner
+                  thickness='4px'
+                  speed='0.45s'
+                  emptyColor='gray.200'
+                  color='blue.500'
+                  boxSize='100px'
+              />
+            </Flex>
+        ) : (
+            <>
+            <Heading textAlign="center" as="h1" color={blue_color}>
+              What's New - Article{" "}
+            </Heading>
+            <ArticleDetailsComponent articleDetails={data as ArticleModel} />
+            <CreateComment articleId={(data as ArticleModel).id}/>
+            <CommentList comments={(data as ArticleModel).comments} />
+
+          </>
+        )}
       </Container>
     </Box>
   );

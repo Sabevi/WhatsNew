@@ -1,17 +1,18 @@
-import { AiOutlineLike } from "react-icons/ai";
+import {AiFillLike, AiOutlineLike} from "react-icons/ai";
 import { Text, Stack, IconButton } from "@chakra-ui/react";
-import { ActionButtonProps } from "../../types/types";
+import {LikeComponentProps} from "../../types/types.tsx";
 
 export default function LikeButton({
   onClickAction,
   number,
-}: ActionButtonProps): JSX.Element {
+  liked,
+}: LikeComponentProps): JSX.Element {
   return (
     <Stack direction="row" align="center" spacing={0}>
       <Text>{number}</Text>
       <IconButton
         aria-label="Like"
-        icon={<AiOutlineLike size={24} />}
+        icon={liked ? <AiFillLike /> : <AiOutlineLike />}
         onClick={onClickAction}
         bg="transparent"
       />

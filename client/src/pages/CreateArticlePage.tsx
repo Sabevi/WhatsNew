@@ -59,6 +59,7 @@ export default function CreateArticlePage(): JSX.Element {
             />
             <CardFooter>
               <BlueButton
+
                 text="Publish article"
                 margin="0 auto"
                 type="submit"

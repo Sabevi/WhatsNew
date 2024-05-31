@@ -23,13 +23,21 @@ export const getArticles: MutationResolvers["getArticles"] = async (
 
     let articles: Article[];
     if (userId && userId != user.id) {
-        articles = await dataSources.db.article.findMany({
+        let articlesList = await dataSources.db.article.findMany({
             where: {
                 userId: userId
             }
         });
+        articles = articlesList.map(article => ({
+            ...article,
+            publishedAt: article.publishedAt.toISOString(),
+        }));
     } else {
-        articles = await dataSources.db.article.findMany();
+        let articlesList = await dataSources.db.article.findMany();
+        articles = articlesList.map(article => ({
+            ...article,
+            publishedAt: article.publishedAt.toISOString(),
+        }));
     }
 
 
@@ -48,10 +56,19 @@ export const getArticles: MutationResolvers["getArticles"] = async (
             },
         });
 
+        const user =  await dataSources.db.user.findUnique({
+            where: {
+                id: article.userId
+            }
+        })
+
+
         articlesDto.push({
             id: article.id,
             title: article.title,
+            username: user?.username ?? "unknown",
             description: article.description,
+            publishedAt: article.publishedAt,
             nbComments: nbComments ?? 0,
             likes: likes == null ? [] : likes,
         })

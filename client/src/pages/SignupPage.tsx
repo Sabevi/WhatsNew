@@ -10,7 +10,7 @@ import useSignUp from "../hooks/useSignup";
 import { User } from "../types/types";
 import errorDisplayed from "../config/error";
 
-export default function SignupPage(): JSX.Element {
+export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const {

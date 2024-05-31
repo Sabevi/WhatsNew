@@ -1,4 +1,4 @@
-import {MutationResolvers} from "../../types.js";
+import {Article, MutationResolvers} from "../../types.js";
 import {getUser} from "../../module/auth.js";
 
 export const createArticle: MutationResolvers['createArticle'] = async (_, { title, description}, {dataSources, token}) => {
@@ -25,11 +25,20 @@ export const createArticle: MutationResolvers['createArticle'] = async (_, { tit
             }
         })
 
+        const article: Article = {
+            id: createdArticle.id,
+            title: createdArticle.title,
+            description: createdArticle.description,
+            userId: createdArticle.userId,
+            publishedAt: createdArticle.publishedAt.toISOString()
+        }
+
+
         return {
             code: 201,
             message: "Article created",
             success: true,
-            article: createdArticle
+            article: article
             }
     } catch (e) {
         return {

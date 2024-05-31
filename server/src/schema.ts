@@ -21,7 +21,7 @@ export const typeDefs = gql`
         getArticle(articleId: ID!): getArticleResponse!
         incrementOrDecrementLikes(articleId: ID!): incrementOrDecrementLikeResponse!
         deleteArticle(articleId: ID!): deleteArticleResponse!
-        addComment(articleId: ID!, userId: ID!, content: String!): addCommentResponse!
+        addComment(articleId: ID!, content: String!): addCommentResponse!
         deleteComment(commentId: ID!, userId: ID!, articleId: ID!): deleteCommentResponse!
     }
     
@@ -31,14 +31,18 @@ export const typeDefs = gql`
     
     type Article {
         id: ID!
+        userId: ID!
         title: String!
         description: String!
+        publishedAt: String!
     }
     
     type Comment {
         id: ID!
+        articleId: ID!
         username: String!
         content: String!
+        publishedAt: String!
     }
     
     type Like {
@@ -58,15 +62,19 @@ export const typeDefs = gql`
     
     type ArticleDto {
         id: ID!
+        username: String!
         title: String!
         description: String!
+        publishedAt: String!
         nbComments: Int!
         likes: [Like!]!
     }
     
     type ArticleDtoBis {
         id: ID!
+        username: String!
         title: String!
+        publishedAt: String!
         description: String!
         comments: [Comment!]!
         likes: [Like!]!

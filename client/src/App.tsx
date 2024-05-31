@@ -10,6 +10,7 @@ import UpdateArticlePage from "./pages/UpdateArticlePage";
 import ShowArticlePage from "./pages/ShowArticlePage";
 import AuthProvider from "./context/auth/AuthProvider";
 import RequireAuth from "./components/Auth/Requireauth";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 export default function App(): JSX.Element {
   return (
@@ -29,7 +30,8 @@ export default function App(): JSX.Element {
                 <Route path="/create" element={<CreateArticlePage />} />
                 <Route path="/edit" element={<UpdateArticlePage />} />
                 <Route path="/my-articles" element={<MyArticlesPage />} />
-                <Route path="/article" element={<ShowArticlePage />} />
+                <Route path="/article/:id" element={<ShowArticlePage />} />
+                <Route path="/404" element={<NotFoundPage />} />
               </Route>
             </Route>
           </Routes>

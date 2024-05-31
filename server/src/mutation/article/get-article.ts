@@ -10,7 +10,6 @@ export const getArticle: MutationResolvers["getArticle"] = async (
     const actualToken = token.split(' ')[1];
 
     const user = getUser(actualToken);
-
     if (!user) {
         return {
             code: 403,
@@ -52,7 +51,9 @@ export const getArticle: MutationResolvers["getArticle"] = async (
         const commentToAdd: Comment = {
             id: comment.id,
             username: username,
-            content: comment.content
+            articleId: comment.articleId,
+            content: comment.content,
+            publishedAt: comment.publishedAt.toISOString()
         }
 
         commentsDTO.push(commentToAdd);
@@ -60,6 +61,8 @@ export const getArticle: MutationResolvers["getArticle"] = async (
     
     const articleDtoBis: ArticleDtoBis = {
         id: article!.id,
+        username: user.username,
+        publishedAt: article!.publishedAt.toISOString(),
         title: article!.title,
         description: article!.description,
         likes: likes == null ? [] : likes,

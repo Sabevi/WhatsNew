@@ -31,7 +31,12 @@ export interface BlueButtonProps extends ButtonProps {
   style?: React.CSSProperties;
 }
 
-export interface ActionButtonProps extends ButtonProps {
+export interface LikeComponentProps extends ButtonProps {
+  number: number;
+  liked: boolean;
+}
+
+export interface CommentComponentProps extends ButtonProps {
   number: number;
 }
 export interface BlogAuthorProps {
