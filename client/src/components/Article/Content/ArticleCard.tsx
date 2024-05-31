@@ -5,6 +5,8 @@ import {
   CardBody,
   CardFooter,
   Heading,
+  IconButton,
+  Icon,
 } from "@chakra-ui/react";
 import BlogAuthor from "./ArticleAuthor";
 import { useNavigate } from "react-router-dom";
@@ -13,31 +15,55 @@ import BlueButton from "../../Button/BlueButton";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
 import SmallArticleCard from "./SmallArticleCard";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { ArticleProps } from "../../../types/types";
 
-export default function ArticleCard(): JSX.Element {
+export default function ArticleCard({article}: ArticleProps ): JSX.Element {
+  const {
+    title,
+    description,
+    publishedAt,
+    username,
+    userId,
+    nbComments,
+    likes,
+  } = article;
   const navigate = useNavigate();
+  const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
+  const myId = userConnected.id;
+  const itsMyArticle = myId === userId;
 
   return (
     <SmallArticleCard>
       <CardHeader>
-        <BlogAuthor name="John Doe" date={new Date("2021-04-06T19:01:27Z")} />
-        <Heading>
-          <Text
-            textDecoration="none"
-            _hover={{ textDecoration: "none" }}
-            fontSize="3xl"
-            as="h2"
-          >
-            Blog article title
-          </Text>
+        {itsMyArticle && (
+          <Flex justifyContent="flex-end" alignItems="center">
+            <IconButton
+              icon={<Icon as={EditIcon} w={10} />}
+              variant="ghost"
+              aria-label="Delete"
+              onClick={() => navigate("/edit")}
+            />
+            <IconButton
+              icon={<Icon as={DeleteIcon} w={10} />}
+              variant="ghost"
+              aria-label="Delete"
+            />
+          </Flex>
+        )}
+        <Heading
+          textDecoration="none"
+          _hover={{ textDecoration: "none" }}
+          fontSize="3xl"
+          as="h2"
+        >
+          {title}
         </Heading>
+        <BlogAuthor name={itsMyArticle ? "Me" : username} date={new Date(publishedAt)} />
       </CardHeader>
       <CardBody>
         <Text as="p" marginTop="2" color={grey_color} fontSize="lg">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry&apos;s standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book...
+          {description}...
         </Text>
       </CardBody>
       <CardFooter>
@@ -49,9 +75,12 @@ export default function ArticleCard(): JSX.Element {
           <Flex width="18%" justifyContent="space-between">
             <CommentButton
               onClickAction={() => navigate("/article")}
-              number={3}
+              number={nbComments}
             />
-            <LikeButton onClickAction={() => navigate("/article")} number={6} />
+            <LikeButton
+              onClickAction={() => navigate("/article")}
+              number={likes.length}
+            />
           </Flex>
         </Flex>
       </CardFooter>

@@ -22,10 +22,13 @@ export const getArticles: MutationResolvers["getArticles"] = async (
     }
 
     let articles: Article[];
-    if (userId && userId != user.id) {
+    if (userId && userId === user.id) {
         let articlesList = await dataSources.db.article.findMany({
             where: {
                 userId: userId
+            },
+            orderBy: {
+                publishedAt: 'desc'
             }
         });
         articles = articlesList.map(article => ({
@@ -33,7 +36,11 @@ export const getArticles: MutationResolvers["getArticles"] = async (
             publishedAt: article.publishedAt.toISOString(),
         }));
     } else {
-        let articlesList = await dataSources.db.article.findMany();
+        let articlesList = await dataSources.db.article.findMany({
+            orderBy: {
+                publishedAt: 'desc'
+            }
+        });
         articles = articlesList.map(article => ({
             ...article,
             publishedAt: article.publishedAt.toISOString(),
@@ -67,6 +74,7 @@ export const getArticles: MutationResolvers["getArticles"] = async (
             id: article.id,
             title: article.title,
             username: user?.username ?? "unknown",
+            userId: article.userId,
             description: article.description,
             publishedAt: article.publishedAt,
             nbComments: nbComments ?? 0,
@@ -80,12 +88,12 @@ export const getArticles: MutationResolvers["getArticles"] = async (
             return b.likes.length - a.likes.length;
         })
     }
-    const articlesLength = articles.length;
+    const articlesDtoLength = articlesDto.length;
 
     let articlesPaginated = [];
 
     // Pagination
-    if(articlesLength >= 3) {
+    if(articlesDtoLength > 3) {
         if( page == null ) {
             for (let i = 0; i < 3; i++ ) {
                 const article = articlesDto[i];
@@ -95,7 +103,7 @@ export const getArticles: MutationResolvers["getArticles"] = async (
             const start = page * 3;
             const end = start + 3;
             for (let i = start; i<end; i++) {
-                if(i >= articlesLength) {
+                if(i >= articlesDtoLength) {
                     break;
                 }
                 const article = articlesDto[i];
@@ -112,8 +120,9 @@ export const getArticles: MutationResolvers["getArticles"] = async (
                 pagination: null
             }
         }
+    } else {
+        articlesPaginated = articlesDto; // If less than 3 articles, return all articles
     }
-
 
     return {
         code: 200,
@@ -122,7 +131,7 @@ export const getArticles: MutationResolvers["getArticles"] = async (
         articlesDto: articlesPaginated,
         pagination: {
             page: page ?? 0,
-            total: Math.ceil(articlesLength / 3)
+            total: Math.ceil(articlesDtoLength / 3)
         }
     }
 }
