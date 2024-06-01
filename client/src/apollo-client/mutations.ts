@@ -40,6 +40,31 @@ export const CREATE_ARTICLE = gql`
   }
 `;
 
+export const UPDATE_ARTICLE = gql`
+  mutation CreateArticle(
+    $articleId: ID!
+    $title: String!
+    $description: String!
+  ) {
+    updateArticle(
+      articleId: $articleId
+      title: $title
+      description: $description
+    ) {
+      article {
+        description
+        id
+        publishedAt
+        title
+        userId
+      }
+      code
+      message
+      success
+    }
+  }
+`;
+
 export const COMMENT_ARTICLE = gql`
   mutation AddComment($articleId: ID!, $content: String!) {
     addComment(articleId: $articleId, content: $content) {

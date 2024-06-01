@@ -49,6 +49,7 @@ export interface FormValues {
   username: string;
   title: string;
   description: string;
+  id: string | undefined;
 }
 
 export interface InputFieldProps {
@@ -97,3 +98,8 @@ export interface ArticleProps {
 export interface ArticleListProps {
   articles: ArticleProps[];
 }
+
+export interface ArticleDetails {
+  title: string;
+  description: string;
+};
