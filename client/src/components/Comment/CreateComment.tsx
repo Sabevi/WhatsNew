@@ -49,6 +49,7 @@ export default function CreateComment({ articleId }: CreateCommentProps) {
           <FormControl id="article">
               <VisuallyHidden as={FormLabel}>Article</VisuallyHidden>
               <Textarea
+                  id={"comment-textarea"}
                   placeholder="Enter the text of your article here..."
                   h="300px"
                   fontSize="lg"
