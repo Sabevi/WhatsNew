@@ -80,10 +80,9 @@ export interface MyJwtPayload extends JwtPayload {
 export interface SelectArticlesProps {
   onParamsChange: (params: [number, boolean, string]) => void;
 }
-
 export interface ArticleProps {
-  title: string;
   article: {
+    id: string;
     title: string;
     description: string;
     publishedAt: string;
@@ -91,5 +90,10 @@ export interface ArticleProps {
     userId: string;
     nbComments: number;
     likes: number[];
+    _typename: string;
   };
+}
+
+export interface ArticleListProps {
+  articles: ArticleProps[];
 }

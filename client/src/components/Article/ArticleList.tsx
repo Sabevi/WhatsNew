@@ -1,14 +1,13 @@
+import { ArticleListProps } from "../../types/types";
 import ArticleCard from "./Content/ArticleCard";
 
-const ArticleList = ({ data }): JSX.Element => {
-  console.log("ArticleList data: ", data)
-  // Prevoir aussi un cas ou data est null
-  if (!data) {
+const ArticleList = ({ articles }: ArticleListProps): JSX.Element => {
+  if (!articles) {
     return  <p>"No articles found."</p>
   }
   return (
     <>
-    {data.map((article) => 
+    {articles.map((article) => 
       <ArticleCard key={article.id} article={article} />)}
     </>
   );

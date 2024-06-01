@@ -1,17 +1,35 @@
-import { Container, Heading, Text, Box, Flex, Spinner } from "@chakra-ui/react";
+import { Container, Heading, Box, Flex, Spinner } from "@chakra-ui/react";
 import ArticleList from "../components/Article/ArticleList";
 import { blue_color } from "../assets/customColors";
 import SelectArticles from "../components/Article/Actions/SelectArticles";
 import { useCallback, useState } from "react";
 import useShowArticleList from "../hooks/useShowArticleList";
+import Pagination from "../components/Pagination/Pagination";
 
 export default function HomePage(): JSX.Element {
-  const [params, setParams] = useState<[number, boolean, string]>([1, false, ""]);
+  const [params, setParams] = useState<[number, boolean, string]>([
+    1,
+    false,
+    "",
+  ]);
   const { data, loading } = useShowArticleList(...params);
+  const { articlesDto, pagination } = data;
+  const { page, total } = pagination;
 
-  const handleParamsChange = useCallback((newParams: [number, boolean, string]) => {
-    setParams(newParams);
-  }, []);
+  const handleParamsChange = useCallback(
+    (newParams: [number, boolean, string]) => {
+      setParams(newParams);
+    },
+    []
+  );
+
+  const handlePrevious = () => {
+    setParams([page - 1, params[1], params[2]]);
+  };
+  
+  const handleNext = () => {
+    setParams([page + 1, params[1], params[2]]);
+  };
 
   return (
     <Box as="main">
@@ -32,8 +50,13 @@ export default function HomePage(): JSX.Element {
           </Flex>
         ) : (
           <>
-            <ArticleList data={data} />
-            <Text textAlign="center">PAGINATION</Text>
+            <ArticleList articles={articlesDto} />
+            <Pagination
+              hasPreviousPage={page > 1}
+              hasNextPage={page < total}
+              onPreviousPage={handlePrevious}
+              onNextPage={handleNext}
+            />
           </>
         )}
       </Container>

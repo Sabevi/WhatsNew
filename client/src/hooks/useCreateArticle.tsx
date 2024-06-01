@@ -2,12 +2,14 @@ import { useMutation } from "@apollo/client";
 import { CREATE_ARTICLE } from "../mutations/mutations.ts";
 import { privateClient } from "../config/apolloClient.ts";
 import { useToast } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom";
 
 const useCreateArticle = () => {
   const [articleCreate] = useMutation(CREATE_ARTICLE, {
     client: privateClient,
   });
   const toast = useToast();
+  const navigate = useNavigate();
 
   const createArticle = async (
     data: { title: string; description: string },
@@ -17,6 +19,7 @@ const useCreateArticle = () => {
       const response = await articleCreate({
         variables: { title, description },
       });
+      navigate(`/article/${response.data.createArticle.article.id}`);
       switch (response.data.createArticle.code) {
         case 201:
           toast({
