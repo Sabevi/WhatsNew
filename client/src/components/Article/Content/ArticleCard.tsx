@@ -75,7 +75,7 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
           />
           <Flex width="18%" justifyContent="space-between">
             <CommentButton
-              onClickAction={() => navigate("/article")}
+              onClickAction={() => navigate(`/article/${id}#comment-textarea`)}
               number={nbComments}
             />
             <LikeButton
