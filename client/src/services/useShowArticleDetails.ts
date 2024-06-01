@@ -1,5 +1,5 @@
-import {GET_ARTICLE_BY_ID} from "../mutations/mutations.ts";
-import {privateClient} from "../config/apolloClient.ts";
+import {GET_ARTICLE_BY_ID} from "../apollo-client/mutations.ts";
+import {privateClient} from "../apollo-client/apolloClient.ts";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {ArticleModel} from "../types/article.ts";

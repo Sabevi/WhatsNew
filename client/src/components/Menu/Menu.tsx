@@ -12,7 +12,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../services/useAuth";
 
 export default function Menu(): JSX.Element {
   const { logout } = useAuth();

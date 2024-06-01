@@ -3,9 +3,9 @@ import { blue_color } from "../assets/customColors";
 import ArticleDetailsComponent from "../components/Article/Content/ArticleDetails.tsx";
 import CommentList from "../components/Comment/CommentList";
 import CreateComment from "../components/Comment/CreateComment";
-import { useNavigate, useParams } from "react-router-dom";
-import useShowArticleDetails from "../hooks/useShowArticleDetails.ts";
-import { ArticleModel } from "../types/article.ts";
+import {useNavigate, useParams} from "react-router-dom";
+import useShowArticleDetails from "../services/useShowArticleDetails.ts";
+import {ArticleModel} from "../types/article.ts";
 
 export default function ShowArticlePage() {
   const navigate = useNavigate();

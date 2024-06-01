@@ -1,7 +1,7 @@
 import { Box, Card, CardFooter, Container, Heading } from "@chakra-ui/react";
 import { blue_color } from "../assets/customColors";
 import { SubmitHandler, useForm } from "react-hook-form";
-import useCreateArticle from "../hooks/useCreateArticle";
+import useCreateArticle from "../services/useCreateArticle";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
 import { FormValues } from "../types/types";
