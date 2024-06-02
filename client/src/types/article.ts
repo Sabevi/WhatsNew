@@ -16,6 +16,21 @@ export type ArticleModel = {
     likes: Like[];
 }
 
+export type ArticleModelDTO = {
+    id: string;
+    title: string;
+    username: string;
+    publishedAt: string;
+    description: string;
+    nbComments: number;
+    likes: Like[];
+}
+
+export type Pagination = {
+    page: number
+    total: number
+}
+
 export type CommentModel = {
     id: string;
     username: string;

@@ -6,6 +6,7 @@ import {
   Merge,
   UseFormRegisterReturn,
 } from "react-hook-form";
+import {ArticleModelDTO} from "./article.ts";
 
 export interface User {
   username: string;
@@ -96,10 +97,10 @@ export interface ArticleProps {
 }
 
 export interface ArticleListProps {
-  articles: ArticleProps[];
+  articles: ArticleModelDTO[];
 }
 
 export interface ArticleDetails {
   title: string;
   description: string;
-};
+}

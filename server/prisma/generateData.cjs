@@ -7,6 +7,10 @@ const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
+NB_USERS = 10;
+NB_ARTICLES = 60;
+
+
 let db = new sqlite3.Database('./prisma/dev.db', (err) => {
     if (err) {
         console.error(err.message);
@@ -77,8 +81,8 @@ const createJWT = (user) => {
 async function generateData() {
     const users = [];
     const userPromises = [];
-    console.log('Generating users');
-    for(let i=0; i<5; i++) {
+    console.log(`Generating ${NB_USERS} users`);
+    for(let i=0; i<NB_USERS; i++) {
         const username = faker.internet.userName();
         const password = faker.internet.password();
         const hashedPassword = await hashPassword(password);
@@ -101,8 +105,8 @@ async function generateData() {
 
     // Wait for all user insert operations to complete
     await Promise.all(userPromises);
-    console.log('Generating articles, likes and comments')
-    for(let i=0; i<10; i++) {
+    console.log(`Generating ${NB_ARTICLES} articles, likes and comments`)
+    for(let i=0; i<NB_ARTICLES; i++) {
         const id = faker.datatype.uuid();
         const title = faker.lorem.words(5);
         const description = faker.lorem.sentences(3);
