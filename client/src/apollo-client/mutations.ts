@@ -135,3 +135,14 @@ export const GET_ARTICLES = gql`
     }
   }
 `;
+
+export const DELETE_ARTICLE = gql`
+  mutation DeleteArticle($articleId: ID!) {
+    deleteArticle(articleId: $articleId) {
+      articleId
+      code
+      message
+      success
+    }
+  }
+`;

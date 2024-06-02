@@ -17,8 +17,9 @@ import LikeButton from "../../Button/LikeButton";
 import SmallArticleCard from "./SmallArticleCard";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { ArticleProps } from "../../../types/types";
+import useDeleteArticle from "../../../services/useDeleArticle";
 
-export default function ArticleCard({article}: ArticleProps ): JSX.Element {
+export default function ArticleCard({ article }: ArticleProps): JSX.Element {
   const {
     id,
     title,
@@ -33,6 +34,7 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
   const myId = userConnected.id;
   const itsMyArticle = myId === userId;
+  const { deleteArticle } = useDeleteArticle();
 
   return (
     <SmallArticleCard>
@@ -49,6 +51,7 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
               icon={<Icon as={DeleteIcon} w={10} />}
               variant="ghost"
               aria-label="Delete"
+              onClick={() => deleteArticle({articleId: id})}
             />
           </Flex>
         )}
@@ -60,7 +63,10 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
         >
           {title}
         </Heading>
-        <BlogAuthor name={itsMyArticle ? "Me" : username} date={new Date(publishedAt)} />
+        <BlogAuthor
+          name={itsMyArticle ? "Me" : username}
+          date={new Date(publishedAt)}
+        />
       </CardHeader>
       <CardBody>
         <Text as="p" marginTop="2" color={grey_color} fontSize="lg">
