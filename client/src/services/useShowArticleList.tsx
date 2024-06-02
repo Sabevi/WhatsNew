@@ -1,5 +1,5 @@
-import { GET_ARTICLES } from "../mutations/mutations.ts";
-import { privateClient } from "../config/apolloClient.ts";
+import { GET_ARTICLES } from "../apollo-client/mutations.ts";
+import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useEffect, useState } from "react";
 
 const useShowArticleList = (

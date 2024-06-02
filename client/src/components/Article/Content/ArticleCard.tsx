@@ -20,6 +20,7 @@ import { ArticleProps } from "../../../types/types";
 
 export default function ArticleCard({article}: ArticleProps ): JSX.Element {
   const {
+    id,
     title,
     description,
     publishedAt,
@@ -27,7 +28,6 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
     userId,
     nbComments,
     likes,
-    id,
   } = article;
   const navigate = useNavigate();
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
@@ -43,7 +43,7 @@ export default function ArticleCard({article}: ArticleProps ): JSX.Element {
               icon={<Icon as={EditIcon} w={10} />}
               variant="ghost"
               aria-label="Delete"
-              onClick={() => navigate("/edit")}
+              onClick={() => navigate(`/article/${id}/edit`)}
             />
             <IconButton
               icon={<Icon as={DeleteIcon} w={10} />}

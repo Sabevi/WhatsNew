@@ -1,8 +1,8 @@
 import { useMutation } from "@apollo/client";
-import { SIGNIN } from "../mutations/mutations";
+import { SIGNIN } from "../apollo-client/mutations";
 import { useNavigate } from "react-router-dom";
 import { MyJwtPayload, User, UserConnected } from "../types/types";
-import { publicClient } from "../config/apolloClient";
+import { publicClient } from "../apollo-client/apolloClient";
 import { useStateValue } from "../context/auth/useAuthContext";
 import { jwtDecode } from "jwt-decode";
 

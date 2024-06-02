@@ -1,6 +1,6 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import PropTypes from "prop-types";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../services/useAuth";
 import { jwtDecode } from "jwt-decode";
 import { MyJwtPayload } from "../../types/types";
 

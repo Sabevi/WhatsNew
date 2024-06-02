@@ -3,7 +3,7 @@ import ArticleList from "../components/Article/ArticleList";
 import { blue_color } from "../assets/customColors";
 import SelectArticles from "../components/Article/Actions/SelectArticles";
 import { useCallback, useState } from "react";
-import useShowArticleList from "../hooks/useShowArticleList";
+import useShowArticleList from "../services/useShowArticleList";
 import Pagination from "../components/Pagination/Pagination";
 
 export default function HomePage(): JSX.Element {

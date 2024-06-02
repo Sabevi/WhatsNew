@@ -4,16 +4,15 @@ import ArticleDetailsComponent from "../components/Article/Content/ArticleDetail
 import CommentList from "../components/Comment/CommentList";
 import CreateComment from "../components/Comment/CreateComment";
 import { useNavigate, useParams } from "react-router-dom";
-import useShowArticleDetails from "../hooks/useShowArticleDetails.ts";
+import useShowArticleDetails from "../services/useShowArticleDetails.ts";
 import { ArticleModel } from "../types/article.ts";
 
 export default function ShowArticlePage() {
+  const { id } = useParams<{ id: string }>();
+  const { data, loading } = useShowArticleDetails(id as string);
   const navigate = useNavigate();
 
-  const { id } = useParams<{ id: string }>();
-
   if (id === undefined || id === null) navigate("/");
-  const { data, loading } = useShowArticleDetails(id as string);
 
   return (
     <Box as="main">
