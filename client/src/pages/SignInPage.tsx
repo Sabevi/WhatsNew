@@ -5,7 +5,7 @@ import BlueButton from "../components/Button/BlueButton";
 import { Avatar, Heading, Link, Stack, Box } from "@chakra-ui/react";
 import { blue_color, white_color } from "../assets/customColors";
 import { useState } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../services/useAuth";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { User } from "../types/types";
 import errorDisplayed from "../config/error";

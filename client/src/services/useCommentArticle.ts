@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/client";
-import {COMMENT_ARTICLE} from "../mutations/mutations.ts";
-import { privateClient } from "../config/apolloClient.ts";
+import {COMMENT_ARTICLE} from "../apollo-client/mutations.ts";
+import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useToast } from '@chakra-ui/react'
 
 const useCommentArticle = () => {

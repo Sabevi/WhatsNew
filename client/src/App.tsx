@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
                 <Route path="/create" element={<CreateArticlePage />} />
-                <Route path="/edit" element={<UpdateArticlePage />} />
+                <Route path="/article/:id/edit" element={<UpdateArticlePage />} />
                 <Route path="/article/:id" element={<ShowArticlePage />} />
                 <Route path="/404" element={<NotFoundPage />} />
               </Route>

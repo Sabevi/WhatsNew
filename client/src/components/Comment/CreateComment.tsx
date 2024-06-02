@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import BlueButton from "../Button/BlueButton";
-import useCommentArticle from "../../hooks/useCommentArticle.ts";
+import useCommentArticle from "../../services/useCommentArticle.ts";
 import {useState} from "react";
 
 type CreateCommentProps = {
