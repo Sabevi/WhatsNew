@@ -9,11 +9,12 @@ const useDeleteArticle = () => {
   });
   const toast = useToast();
 
-  const deleteArticle = async (data: { id: string }) => {
-    const { id } = data;
+  const deleteArticle = async (data: { articleId: string }) => {
+    console.log(data);
+    const { articleId } = data;
     try {
       const response = await articleDeletion({
-        variables: { id },
+        variables: { articleId },
       });
       console.log(response);
       switch (response.data.deleteArticle.code) {
@@ -25,6 +26,7 @@ const useDeleteArticle = () => {
             duration: 10000,
             isClosable: true,
           });
+          window.location.reload();
           break;
         case 404:
           toast({
@@ -37,6 +39,7 @@ const useDeleteArticle = () => {
           break;
       }
     } catch (error) {
+      console.error(error);
       toast({
         title: "Article not deleted.",
         description: "Oops! An error occurred while deleting the article.",

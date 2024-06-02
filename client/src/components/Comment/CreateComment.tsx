@@ -23,7 +23,7 @@ export default function CreateComment({ articleId }: CreateCommentProps) {
 
     const handlePublish = async () => {
         await commentArticle({articleId, content: commentText});
-        setCommentText(''); // Clear the textarea after publishing
+        setCommentText('');
         window.location.reload();
     };
   return (
