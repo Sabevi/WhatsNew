@@ -64,7 +64,7 @@ export default function ArticleCard({ article }: ArticleProps): JSX.Element {
           {title}
         </Heading>
         <BlogAuthor
-          name={itsMyArticle ? "Me" : username}
+          name={itsMyArticle ? `${username} (me)` : username}
           date={new Date(publishedAt)}
         />
       </CardHeader>
