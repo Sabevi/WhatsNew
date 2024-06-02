@@ -10,8 +10,57 @@ dotenv.config();
 let db = new sqlite3.Database('./prisma/dev.db', (err) => {
     if (err) {
         console.error(err.message);
+        process.exit(1);
     }
     console.log('Connected to the database.');
+
+    // Check if the User table exists
+    db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='User'", (err, row) => {
+        if (err) {
+            console.error(err.message);
+            process.exit(1);
+        }
+        if (!row) {
+            console.error("The User table does not exist. Please run 'npm run prisma:migrate' to create the tables.");
+            process.exit(1);
+        }
+    });
+
+    // Check if the Article table exists
+    db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='Article'", (err, row) => {
+        if (err) {
+            console.error(err.message);
+            process.exit(1)
+        }
+        if (!row) {
+            console.error("The Article table does not exist. Please run 'npm run prisma:migrate' to create the tables.");
+            process.exit(1)
+        }
+    });
+
+    // Check if the Comment table exists
+    db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='Comment'", (err, row) => {
+        if (err) {
+            console.error(err.message);
+            process.exit(1);
+        }
+        if (!row) {
+            console.error("The Comment table does not exist. Please run 'npm run prisma:migrate' to create the tables.");
+            process.exit(1);
+        }
+    });
+
+    // Check if the Like table exists
+    db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='Like'", (err, row) => {
+        if (err) {
+            console.error(err.message);
+            process.exit(1);
+        }
+        if (!row) {
+            console.error("The Like table does not exist. Please run 'npm run prisma:migrate' to create the tables.");
+            process.exit(1);
+        }
+    });
 });
 
 const hashPassword = (password) => {
@@ -28,7 +77,7 @@ const createJWT = (user) => {
 async function generateData() {
     const users = [];
     const userPromises = [];
-
+    console.log('Generating users');
     for(let i=0; i<5; i++) {
         const username = faker.internet.userName();
         const password = faker.internet.password();
@@ -52,19 +101,17 @@ async function generateData() {
 
     // Wait for all user insert operations to complete
     await Promise.all(userPromises);
-
+    console.log('Generating articles, likes and comments')
     for(let i=0; i<10; i++) {
         const id = faker.datatype.uuid();
         const title = faker.lorem.words(5);
         const description = faker.lorem.sentences(3);
-        console.log('Users array before creating an article:', users);
         const userId = users[Math.floor(Math.random() * users.length)].id;
         db.run(`INSERT INTO Article (id, title, description, userId) VALUES (?, ?, ?, ?)`, [id, title, description, userId]);
 
         const likes = Math.floor(Math.random() * 6);
         for(let j=0; j<likes; j++) {
             const likeId = faker.datatype.uuid();
-            console.log('Users array before creating a like:', users);
             const likeUserId = users[Math.floor(Math.random() * users.length)].id;
             db.run(`INSERT INTO Like (id, articleId, userId) VALUES (?, ?, ?)`, [likeId, id, likeUserId]);
         }
@@ -85,13 +132,12 @@ async function generateData() {
         console.log('Close the database connection.');
 
         // Save users to fake-users.json
-        fs.writeFile('fake-users.json', JSON.stringify(users, null, 2), (err) => {
+        fs.writeFile('prisma/fake-users.json', JSON.stringify(users, null, 2), (err) => {
             if (err) throw err;
-            console.log('Data written to file');
+            console.log('Data written to file prisma/fake-users.json');
         });
     });
 
-    console.log(users);
 }
 
 generateData();
