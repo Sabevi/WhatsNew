@@ -146,3 +146,18 @@ export const DELETE_ARTICLE = gql`
     }
   }
 `;
+
+export const LIKE_OR_UNLIKE_ARTICLE = gql`
+mutation IncrementOrDecrementLikes($articleId: ID!) {
+  incrementOrDecrementLikes(articleId: $articleId) {
+    code
+    likes {
+      articleId
+      userId
+    },
+    isLiked
+    message
+    success
+  }
+}
+`;

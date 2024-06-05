@@ -45,10 +45,19 @@ export const incrementOrDecrementLikes: MutationResolvers['incrementOrDecrementL
                     id: like.id
                 }
             });
+            const likes = await dataSources.db.like.findMany( {
+               where: {
+                   articleId
+               }
+            });
+            console.log('likes when unliked', likes);
             return {
                 code: 200,
                 message: "Like removed",
-                success: true
+                success: true,
+                isLiked: false,
+                likes: likes
+
             }
         } else {
             // like
@@ -58,15 +67,22 @@ export const incrementOrDecrementLikes: MutationResolvers['incrementOrDecrementL
                     userId: user.id
                 }
             });
+
+            const likes = await dataSources.db.like.findMany( {
+                where: {
+                    articleId
+                }
+            });
+            console.log('likes when liked', likes);
+            return {
+                code: 200,
+                message: "Like added",
+                success: true,
+                isLiked: true,
+                likes: likes
+            }
         }
 
-
-        return {
-            code: 200,
-            message: "Like added",
-            success: true,
-            like: !like
-        }
     } catch (e) {
         return {
             code: 500,

@@ -133,7 +133,8 @@ export const typeDefs = gql`
         code: Int!
         success: Boolean!
         message: String!
-        like: Boolean
+        isLiked: Boolean
+        likes: [Like]
     }
     
     type deleteArticleResponse {

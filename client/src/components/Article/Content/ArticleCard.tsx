@@ -16,25 +16,48 @@ import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
 import SmallArticleCard from "./SmallArticleCard";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import { ArticleProps } from "../../../types/types";
+import {ArticleDTOProps } from "../../../types/types";
 import useDeleteArticle from "../../../services/useDeleArticle";
+import {useLikeOrDislike} from "../../../services/useLikeOrDislike.ts";
+import {jwtDecode} from "jwt-decode";
+import {useEffect, useState} from "react";
+import {Like} from "../../../types/article.ts";
 
-export default function ArticleCard({ article }: ArticleProps): JSX.Element {
-  const {
+export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
+  let {
     id,
     title,
     description,
     publishedAt,
     username,
-    userId,
     nbComments,
     likes,
   } = article;
   const navigate = useNavigate();
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
-  const myId = userConnected.id;
-  const itsMyArticle = myId === userId;
-  const { deleteArticle } = useDeleteArticle();
+  const token = userConnected.token; // assuming the token is stored under the 'token' key
+  const decodedToken = jwtDecode(token) as {};
+  const usernameFromToken = (decodedToken as {username:string, id: string}).username;
+  const itsMyArticle = usernameFromToken === username;
+  const {deleteArticle} = useDeleteArticle();
+  const { likeList, handleLikeOrDislike } = useLikeOrDislike(id);
+  const [likesArray, setLikesArray] = useState<Like[]>(likes);
+
+  useEffect(() => {
+    setLikesArray(article.likes);
+  }, []);
+  const submitlikeorDislike = async () => {
+    handleLikeOrDislike();
+
+
+  };
+
+  useEffect(() => {
+    if (likeList != null) {
+      article.likes = likeList;
+      console.log('article likes : ', article.likes)
+    }
+  }, [likeList]);
 
   return (
     <SmallArticleCard>
@@ -85,8 +108,9 @@ export default function ArticleCard({ article }: ArticleProps): JSX.Element {
               number={nbComments}
             />
             <LikeButton
-              onClickAction={() => navigate("/article")}
-              number={likes.length}
+              onClickAction={submitlikeorDislike}
+              number={likesArray.length}
+              liked={likesArray.some((like) => like.userId === userConnected.id)}
             />
           </Flex>
         </Flex>
