@@ -22,7 +22,7 @@ import {useLikeOrDislike} from "../../../services/useLikeOrDislike.ts";
 import {jwtDecode} from "jwt-decode";
 
 export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
-  let {
+  const {
     id,
     title,
     description,
@@ -31,13 +31,15 @@ export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
     nbComments,
   } = article;
   const navigate = useNavigate();
+  const {deleteArticle} = useDeleteArticle();
+  const { handleLikeOrDislike } = useLikeOrDislike(id);
+
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
-  const token = userConnected.token; // assuming the token is stored under the 'token' key
+  const token = userConnected.token;
   const decodedToken = jwtDecode(token) as {};
   const usernameFromToken = (decodedToken as {username:string, id: string}).username;
   const itsMyArticle = usernameFromToken === username;
-  const {deleteArticle} = useDeleteArticle();
-  const { handleLikeOrDislike } = useLikeOrDislike(id);
+
   const submitlikeorDislike = async () => {
     const {likeList} = await handleLikeOrDislike();
     if (likeList != null) {
@@ -53,14 +55,14 @@ export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
             <IconButton
               icon={<Icon as={EditIcon} w={10} />}
               variant="ghost"
-              aria-label="Delete"
+              aria-label="Edit"
               onClick={() => navigate(`/article/${id}/edit`)}
             />
             <IconButton
               icon={<Icon as={DeleteIcon} w={10} />}
               variant="ghost"
               aria-label="Delete"
-              onClick={() => deleteArticle({articleId: id})}
+              onClick={() => deleteArticle({articleId: id })}
             />
           </Flex>
         )}
