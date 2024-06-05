@@ -1,6 +1,7 @@
 import { GET_ARTICLES } from "../apollo-client/mutations.ts";
 import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useEffect, useState } from "react";
+import {ArticleModelDTO} from "../types/article.ts";
 
 const useShowArticleList = (
   page: number,
@@ -9,7 +10,7 @@ const useShowArticleList = (
 ) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
-    articlesDto: [],
+    articlesDto: [] as ArticleModelDTO[],
     pagination: {
       page: 0,
       total: 0,
@@ -25,7 +26,7 @@ const useShowArticleList = (
         });
         if (response.getArticles.code === 200) {
           setData({
-            articlesDto: response.getArticles.articlesDto,
+            articlesDto: response.getArticles.articlesDto as ArticleModelDTO[],
             pagination: response.getArticles.pagination,
           });
         }

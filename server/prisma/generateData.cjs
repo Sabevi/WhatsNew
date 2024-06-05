@@ -7,6 +7,11 @@ const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
+NB_USERS = 10;
+NB_ARTICLES = 60;
+
+const articles = JSON.parse(fs.readFileSync('./prisma/articles-data.json', 'utf8'));
+
 let db = new sqlite3.Database('./prisma/dev.db', (err) => {
     if (err) {
         console.error(err.message);
@@ -77,8 +82,8 @@ const createJWT = (user) => {
 async function generateData() {
     const users = [];
     const userPromises = [];
-    console.log('Generating users');
-    for(let i=0; i<5; i++) {
+    console.log(`Generating ${NB_USERS} users...`);
+    for(let i=0; i<NB_USERS; i++) {
         const username = faker.internet.userName();
         const password = faker.internet.password();
         const hashedPassword = await hashPassword(password);
@@ -101,11 +106,11 @@ async function generateData() {
 
     // Wait for all user insert operations to complete
     await Promise.all(userPromises);
-    console.log('Generating articles, likes and comments')
-    for(let i=0; i<10; i++) {
+    console.log(`Generating ${articles.length} articles, likes and comments...`)
+    for(let i=0; i<articles.length; i++) {
         const id = faker.datatype.uuid();
-        const title = faker.lorem.words(5);
-        const description = faker.lorem.sentences(3);
+        const title = articles[i].title;
+        const description = articles[i].description;
         const userId = users[Math.floor(Math.random() * users.length)].id;
         db.run(`INSERT INTO Article (id, title, description, userId) VALUES (?, ?, ?, ?)`, [id, title, description, userId]);
 
@@ -116,13 +121,14 @@ async function generateData() {
             db.run(`INSERT INTO Like (id, articleId, userId) VALUES (?, ?, ?)`, [likeId, id, likeUserId]);
         }
 
-        const comments = Math.floor(Math.random() * 7);
-        for(let j=0; j<comments; j++) {
+        const comments = articles[i].comments;
+        for(let j=0; j<comments.length; j++) {
             const commentId = faker.datatype.uuid();
-            const content = faker.lorem.sentences(2);
+            const content = comments[j];
             const commentUserId = users[Math.floor(Math.random() * users.length)].id;
             db.run(`INSERT INTO Comment (id, content, articleId, userId) VALUES (?, ?, ?, ?)`, [commentId, content, id, commentUserId]);
         }
+
     }
 
     db.close((err) => {

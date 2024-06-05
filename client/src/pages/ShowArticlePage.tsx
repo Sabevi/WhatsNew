@@ -14,6 +14,8 @@ export default function ShowArticlePage() {
 
   if (id === undefined || id === null) navigate("/");
 
+
+
   return (
     <Box as="main">
       <Container maxW="7xl" p="12">

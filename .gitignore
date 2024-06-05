@@ -6,3 +6,4 @@
 /server/prisma/migrations/20240426143143_/
 /server/prisma/dev.db-journal
 /server/prisma/migrations/
+/server/prisma/fake-users.json

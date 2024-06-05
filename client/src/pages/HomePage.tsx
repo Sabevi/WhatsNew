@@ -53,6 +53,8 @@ export default function HomePage(): JSX.Element {
                 <>
                   <ArticleList articles={articlesDto} />
                   <Pagination
+                      page={page}
+                      total={total}
                       hasPreviousPage={page > 1}
                       hasNextPage={page < total}
                       onPreviousPage={handlePrevious}

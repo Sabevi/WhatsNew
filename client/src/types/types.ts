@@ -6,6 +6,7 @@ import {
   Merge,
   UseFormRegisterReturn,
 } from "react-hook-form";
+import {ArticleModelDTO} from "./article.ts";
 
 export interface User {
   username: string;
@@ -81,25 +82,16 @@ export interface MyJwtPayload extends JwtPayload {
 export interface SelectArticlesProps {
   onParamsChange: (params: [number, boolean, string]) => void;
 }
-export interface ArticleProps {
-  article: {
-    id: string;
-    title: string;
-    description: string;
-    publishedAt: string;
-    username: string;
-    userId: string;
-    nbComments: number;
-    likes: number[];
-    _typename: string;
-  };
+export interface ArticleDTOProps {
+  article: ArticleModelDTO;
 }
 
 export interface ArticleListProps {
-  articles: ArticleProps[];
+  articles: ArticleModelDTO[];
 }
+
 
 export interface ArticleDetails {
   title: string;
   description: string;
-};
+}

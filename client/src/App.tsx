@@ -11,7 +11,7 @@ import AuthProvider from "./context/auth/AuthProvider";
 import RequireAuth from "./components/Auth/Requireauth";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 
-export default function App(): JSX.Element {
+export default function App() {
   return (
     <AuthProvider>
       <ChakraProvider>

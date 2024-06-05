@@ -255,7 +255,8 @@ export type GetMyArticlesResponse = {
 export type IncrementOrDecrementLikeResponse = {
   __typename?: 'incrementOrDecrementLikeResponse';
   code: Scalars['Int']['output'];
-  like?: Maybe<Scalars['Boolean']['output']>;
+  isLiked?: Maybe<Scalars['Boolean']['output']>;
+  likes?: Maybe<Array<Maybe<Like>>>;
   message: Scalars['String']['output'];
   success: Scalars['Boolean']['output'];
 };
@@ -557,7 +558,8 @@ export type GetMyArticlesResponseResolvers<ContextType = Context, ParentType ext
 
 export type IncrementOrDecrementLikeResponseResolvers<ContextType = Context, ParentType extends ResolversParentTypes['incrementOrDecrementLikeResponse'] = ResolversParentTypes['incrementOrDecrementLikeResponse']> = {
   code?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  like?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  isLiked?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  likes?: Resolver<Maybe<Array<Maybe<ResolversTypes['Like']>>>, ParentType, ContextType>;
   message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   success?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
