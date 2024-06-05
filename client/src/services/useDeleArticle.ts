@@ -10,13 +10,11 @@ const useDeleteArticle = () => {
   const toast = useToast();
 
   const deleteArticle = async (data: { articleId: string }) => {
-    console.log(data);
     const { articleId } = data;
     try {
       const response = await articleDeletion({
         variables: { articleId },
       });
-      console.log(response);
       switch (response.data.deleteArticle.code) {
         case 200:
           toast({

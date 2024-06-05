@@ -20,15 +20,16 @@ interface ArticleCardProps {
   articleDetails: ArticleModel;
 }
 export default function ArticleCard({ articleDetails }: ArticleCardProps) {
+  const { handleLikeOrDislike } = useLikeOrDislike(articleDetails.id);
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
-  const { handleLikeOrDislike } = useLikeOrDislike(articleDetails.id);
   const submitlikeorDislike = async () => {
     const {likeList} = await handleLikeOrDislike();
     if (likeList != null) {
       articleDetails.likes = likeList;
     }
   };
+  
   return (
     <Card mt={10}>
       <Flex
