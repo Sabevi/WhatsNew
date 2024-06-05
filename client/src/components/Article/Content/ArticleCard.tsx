@@ -20,8 +20,7 @@ import {ArticleDTOProps } from "../../../types/types";
 import useDeleteArticle from "../../../services/useDeleArticle";
 import {useLikeOrDislike} from "../../../services/useLikeOrDislike.ts";
 import {jwtDecode} from "jwt-decode";
-import {useEffect, useState} from "react";
-import {Like} from "../../../types/article.ts";
+import {useEffect} from "react";
 
 export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
   let {
@@ -31,7 +30,6 @@ export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
     publishedAt,
     username,
     nbComments,
-    likes,
   } = article;
   const navigate = useNavigate();
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
@@ -40,24 +38,16 @@ export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
   const usernameFromToken = (decodedToken as {username:string, id: string}).username;
   const itsMyArticle = usernameFromToken === username;
   const {deleteArticle} = useDeleteArticle();
-  const { likeList, handleLikeOrDislike } = useLikeOrDislike(id);
-  const [likesArray, setLikesArray] = useState<Like[]>(likes);
-
-  useEffect(() => {
-    setLikesArray(article.likes);
-  }, []);
+  const { likeList, isLiked, handleLikeOrDislike } = useLikeOrDislike(id);
   const submitlikeorDislike = async () => {
     handleLikeOrDislike();
-
-
   };
 
   useEffect(() => {
     if (likeList != null) {
       article.likes = likeList;
-      console.log('article likes : ', article.likes)
     }
-  }, [likeList]);
+  }, [likeList, isLiked]);
 
   return (
     <SmallArticleCard>
@@ -109,8 +99,8 @@ export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
             />
             <LikeButton
               onClickAction={submitlikeorDislike}
-              number={likesArray.length}
-              liked={likesArray.some((like) => like.userId === userConnected.id)}
+              number={article.likes.length}
+              liked={article.likes.some((like) => like.userId === userConnected.id)}
             />
           </Flex>
         </Flex>
