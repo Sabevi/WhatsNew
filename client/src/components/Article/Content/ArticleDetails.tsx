@@ -14,12 +14,21 @@ import { grey_color } from "../../../assets/customColors";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
 import {ArticleModel} from "../../../types/article.ts";
+import {useLikeOrDislike} from "../../../services/useLikeOrDislike.ts";
 
 interface ArticleCardProps {
   articleDetails: ArticleModel;
 }
 export default function ArticleCard({ articleDetails }: ArticleCardProps) {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  const { handleLikeOrDislike } = useLikeOrDislike(articleDetails.id);
+  const submitlikeorDislike = async () => {
+    const {likeList} = await handleLikeOrDislike();
+    if (likeList != null) {
+      articleDetails.likes = likeList;
+    }
+  };
   return (
     <Card mt={10}>
       <Flex
@@ -69,7 +78,7 @@ export default function ArticleCard({ articleDetails }: ArticleCardProps) {
                 number={articleDetails.comments.length ?? 0}
               />
               <LikeButton
-                onClickAction={() => console.log("Like button clicked")}
+                onClickAction={submitlikeorDislike}
                 number={articleDetails.likes.length ?? 0}
                 liked={articleDetails.likes.some(like => like.userId === user.id)}
               />

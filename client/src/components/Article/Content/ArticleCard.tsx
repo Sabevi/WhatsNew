@@ -20,7 +20,6 @@ import {ArticleDTOProps } from "../../../types/types";
 import useDeleteArticle from "../../../services/useDeleArticle";
 import {useLikeOrDislike} from "../../../services/useLikeOrDislike.ts";
 import {jwtDecode} from "jwt-decode";
-import {useEffect} from "react";
 
 export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
   let {
@@ -38,16 +37,13 @@ export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
   const usernameFromToken = (decodedToken as {username:string, id: string}).username;
   const itsMyArticle = usernameFromToken === username;
   const {deleteArticle} = useDeleteArticle();
-  const { likeList, isLiked, handleLikeOrDislike } = useLikeOrDislike(id);
+  const { handleLikeOrDislike } = useLikeOrDislike(id);
   const submitlikeorDislike = async () => {
-    handleLikeOrDislike();
-  };
-
-  useEffect(() => {
+    const {likeList} = await handleLikeOrDislike();
     if (likeList != null) {
       article.likes = likeList;
     }
-  }, [likeList, isLiked]);
+  };
 
   return (
     <SmallArticleCard>
