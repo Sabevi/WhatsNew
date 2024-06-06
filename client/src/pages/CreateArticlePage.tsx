@@ -4,9 +4,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import useCreateArticle from "../services/useCreateArticle";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { FormValues } from "../types/types";
+import { FormValues } from "../types/common/Input.types";
 
-export default function CreateArticlePage(): JSX.Element {
+export default function CreateArticlePage() {
   const {
     register,
     handleSubmit,
@@ -59,7 +59,6 @@ export default function CreateArticlePage(): JSX.Element {
             />
             <CardFooter>
               <BlueButton
-
                 text="Publish article"
                 margin="0 auto"
                 type="submit"

@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode } from "react";
-import { UserConnected } from "../../types/types";
+import { UserConnected } from "../../types/User.types";
 // component that uses the useState hook to manage the user state and provides 
 // this state to its children components through the AuthContext.Provider.
 

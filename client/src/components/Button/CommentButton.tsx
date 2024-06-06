@@ -1,6 +1,6 @@
 import { ChatIcon } from "@chakra-ui/icons";
 import { Text, Stack, IconButton } from "@chakra-ui/react";
-import {CommentComponentProps} from "../../types/types";
+import { CommentComponentProps } from "../../types/Article.types";
 
 export default function CommentButton({
   onClickAction,

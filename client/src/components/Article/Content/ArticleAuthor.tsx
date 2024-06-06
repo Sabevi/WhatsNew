@@ -1,7 +1,7 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import { BlogAuthorProps } from "../../../types/types";
+import { BlogAuthorProps } from "../../../types/User.types";
 
-export default function BlogAuthor({name, date}: BlogAuthorProps): JSX.Element {
+export default function BlogAuthor({name, date}: BlogAuthorProps) {
   return (
     <HStack
       marginTop="2"

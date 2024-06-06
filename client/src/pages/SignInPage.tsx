@@ -7,10 +7,10 @@ import { blue_color, white_color } from "../assets/customColors";
 import { useState } from "react";
 import useAuth from "../services/useAuth";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
-import { User } from "../types/types";
+import { User } from "../types/User.types";
 import errorDisplayed from "../config/error";
 
-export default function SignInPage(): JSX.Element {
+export default function SignInPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const {

@@ -1,13 +1,16 @@
 import { GET_ARTICLES } from "../apollo-client/mutations.ts";
 import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useEffect, useState } from "react";
-import {ArticleModelDTO} from "../types/article.ts";
+import {
+  ArticleModelDTO,
+  UseShowArticleListProps,
+} from "../types/Article.types.ts";
 
-const useShowArticleList = (
-  page: number,
-  mostLiked: boolean,
-  userId: string
-) => {
+const useShowArticleList = ({
+  page,
+  mostLiked,
+  userId,
+}: UseShowArticleListProps) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
     articlesDto: [] as ArticleModelDTO[],

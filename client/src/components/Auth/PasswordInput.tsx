@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { FaLock } from "react-icons/fa";
 import { light_grey_color } from "../../assets/customColors";
-import { PasswordInputProps } from "../../types/types";
+import { PasswordInputProps } from "../../types/Auth.types";
 
 const CFaLock = chakra(FaLock);
 
@@ -23,7 +23,7 @@ export default function PasswordInput({
   placeholder,
   showPassword,
   onClickAction,
-} : PasswordInputProps): JSX.Element {
+} : PasswordInputProps) {
   return (
     <FormControl id={placeholder} isInvalid={!!error}>
       <VisuallyHidden as={FormLabel}>{placeholder}</VisuallyHidden>

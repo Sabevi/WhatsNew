@@ -2,7 +2,7 @@ import { useLocation, Navigate, Outlet } from "react-router-dom";
 import PropTypes from "prop-types";
 import useAuth from "../../services/useAuth";
 import { jwtDecode } from "jwt-decode";
-import { MyJwtPayload } from "../../types/types";
+import { MyJwtPayload } from "../../types/Auth.types";
 
 export default function RequireAuth({ onlyPublic }: { onlyPublic: boolean }) {
   const location = useLocation();

@@ -2,15 +2,13 @@ import { useMutation } from "@apollo/client";
 import { LIKE_OR_UNLIKE_ARTICLE } from "../apollo-client/mutations.ts";
 import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useToast } from "@chakra-ui/react";
-import { Like } from "../types/article.ts";
+import {
+  Like,
+  LikeOrDislikeResponse,
+  ArticleActionProps,
+} from "../types/Article.types.ts";
 
-type LikeOrDislikeResponse = {
-  success: boolean;
-  isLiked: boolean;
-  likeList: Like[] | null;
-};
-
-export const useLikeOrDislike = (articleId: string) => {
+export const useLikeOrDislike = (articleId: ArticleActionProps) => {
   const [articleLikeOrUnlike] = useMutation(LIKE_OR_UNLIKE_ARTICLE, {
     client: privateClient,
   });

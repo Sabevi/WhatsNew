@@ -6,16 +6,14 @@ import {
   VisuallyHidden,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { ArticleInputsProps } from "../../../types/types";
+import { ArticleInputsProps } from "../../../types/Article.types";
 
-export default function ArticleInputs(
-  {
-    titleRegister,
-    articleRegister,
-    errors,
-    trigger,
-  }: ArticleInputsProps
-): JSX.Element {
+export default function ArticleInputs({
+  titleRegister,
+  articleRegister,
+  errors,
+  trigger,
+}: ArticleInputsProps) {
   return (
     <>
       <FormControl id="Article Title" isInvalid={!!errors.title}>

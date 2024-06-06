@@ -1,12 +1,12 @@
 import {AiFillLike, AiOutlineLike} from "react-icons/ai";
 import { Text, Stack, IconButton } from "@chakra-ui/react";
-import {LikeComponentProps} from "../../types/types.tsx";
+import {LikeComponentProps} from "../../types/Article.types.tsx";
 
 export default function LikeButton({
   onClickAction,
   number,
   liked,
-}: LikeComponentProps): JSX.Element {
+}: LikeComponentProps) {
   return (
     <Stack direction="row" align="center" spacing={0}>
       <Text>{number}</Text>

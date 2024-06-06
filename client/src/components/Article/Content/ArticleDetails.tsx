@@ -13,23 +13,22 @@ import BlogAuthor from "./ArticleAuthor";
 import { grey_color } from "../../../assets/customColors";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
-import {ArticleModel} from "../../../types/article.ts";
-import {useLikeOrDislike} from "../../../services/useLikeOrDislike.ts";
+import { useLikeOrDislike } from "../../../services/useLikeOrDislike.ts";
+import { ArticleCardProps } from "../../../types/Article.types.ts";
 
-interface ArticleCardProps {
-  articleDetails: ArticleModel;
-}
 export default function ArticleCard({ articleDetails }: ArticleCardProps) {
-  const { handleLikeOrDislike } = useLikeOrDislike(articleDetails.id);
-  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const { handleLikeOrDislike } = useLikeOrDislike({
+    articleId: articleDetails.id,
+  });
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   const submitlikeorDislike = async () => {
-    const {likeList} = await handleLikeOrDislike();
+    const { likeList } = await handleLikeOrDislike();
     if (likeList != null) {
       articleDetails.likes = likeList;
     }
   };
-  
+
   return (
     <Card mt={10}>
       <Flex
@@ -43,11 +42,11 @@ export default function ArticleCard({ articleDetails }: ArticleCardProps) {
               date={new Date(articleDetails.publishedAt)}
             />
             <Heading
-                textDecoration="none"
-                _hover={{ textDecoration: "none" }}
-                fontSize="3xl"
-                mt="10"
-              >
+              textDecoration="none"
+              _hover={{ textDecoration: "none" }}
+              fontSize="3xl"
+              mt="10"
+            >
               {articleDetails.title}
             </Heading>
           </CardHeader>
@@ -75,13 +74,17 @@ export default function ArticleCard({ articleDetails }: ArticleCardProps) {
           <CardFooter>
             <Flex width="100%" justifyContent="flex-end" gap="20px">
               <CommentButton
-                onClickAction={() => console.log("CommentDetails button clicked")}
+                onClickAction={() =>
+                  console.log("CommentDetails button clicked")
+                }
                 number={articleDetails.comments.length ?? 0}
               />
               <LikeButton
                 onClickAction={submitlikeorDislike}
                 number={articleDetails.likes.length ?? 0}
-                liked={articleDetails.likes.some(like => like.userId === user.id)}
+                liked={articleDetails.likes.some(
+                  (like) => like.userId === user.id
+                )}
               />
             </Flex>
           </CardFooter>

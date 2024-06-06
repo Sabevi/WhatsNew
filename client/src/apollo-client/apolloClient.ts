@@ -9,7 +9,7 @@ export const publicClient = new ApolloClient({
 
 // for private apis
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql', // replace with your GraphQL server URI
+  uri: 'http://localhost:4000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

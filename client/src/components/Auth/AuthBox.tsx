@@ -5,7 +5,7 @@ export default function AuthBox({
   children,
 }: {
   children: ReactNode;
-}): JSX.Element {
+}) {
   return (
     <Box as="main">
       <Flex

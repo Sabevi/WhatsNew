@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { FaUserAlt } from "react-icons/fa";
 import { light_grey_color } from "../../assets/customColors";
-import { InputFieldProps } from "../../types/types";
+import { InputFieldProps } from "../../types/common/Input.types";
 
 const CFaUserAlt = chakra(FaUserAlt);
 
@@ -18,7 +18,7 @@ export default function UsernameInput({
   register,
   error,
   trigger,
-}: InputFieldProps): JSX.Element {
+}: InputFieldProps) {
   return (
     <FormControl id="Username" isInvalid={!!error}>
       <VisuallyHidden as={FormLabel}>Username</VisuallyHidden>

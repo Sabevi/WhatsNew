@@ -12,14 +12,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { FormValues } from "../types/types";
+import { FormValues } from "../types/common/Input.types";
 import { useParams } from "react-router-dom";
 import useUpdateArticle from "../services/useUpdateArticle";
 import useShowArticleDetails from "../services/useShowArticleDetails";
 
-export default function UpdateArticlePage(): JSX.Element {
+export default function UpdateArticlePage() {
   const { id } = useParams<{ id: string }>();
-  const { data, loading } = useShowArticleDetails(id as string);
+  const { data, loading } = useShowArticleDetails(id);
   const {
     register,
     handleSubmit,

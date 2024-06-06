@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import useAuth from "../../services/useAuth";
 
-export default function Menu(): JSX.Element {
+export default function Menu() {
   const { logout } = useAuth();
 
   return (

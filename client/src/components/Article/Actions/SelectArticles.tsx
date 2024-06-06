@@ -1,8 +1,10 @@
 import { Flex, Select } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { SelectArticlesProps } from "../../../types/types";
+import { SelectArticlesProps } from "../../../types/Article.types";
 
-export default function SelectArticles({ onParamsChange } : SelectArticlesProps): JSX.Element {
+export default function SelectArticles({
+  onParamsChange,
+}: SelectArticlesProps) {
   const [selectedOption, setSelectedOption] = useState("allArticles");
   const user = JSON.parse(localStorage.getItem("user") || "{}");
   const userId = user.id;

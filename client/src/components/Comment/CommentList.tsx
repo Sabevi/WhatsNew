@@ -6,10 +6,8 @@ import {
   CardBody,
 } from "@chakra-ui/react";
 import { CommentDetails } from "./CommentDetails.tsx";
-import {CommentModel} from "../../types/article.ts";
-interface CommentListProps {
-    comments: CommentModel[];
-}
+import { CommentListProps } from "../../types/Article.types.ts";
+
 export default function CommentList({ comments }: CommentListProps) {
   return (
     <Card mt="10">

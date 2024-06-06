@@ -16,12 +16,12 @@ import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
 import SmallArticleCard from "./SmallArticleCard";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
-import {ArticleDTOProps } from "../../../types/types";
+import {ArticleDTOProps } from "../../../types/Article.types";
 import useDeleteArticle from "../../../services/useDeleArticle";
 import {useLikeOrDislike} from "../../../services/useLikeOrDislike.ts";
 import {jwtDecode} from "jwt-decode";
 
-export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
+export default function ArticleCard({ article }: ArticleDTOProps) {
   const {
     id,
     title,
@@ -36,7 +36,7 @@ export default function ArticleCard({ article }: ArticleDTOProps): JSX.Element {
 
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
   const token = userConnected.token;
-  const decodedToken = jwtDecode(token) as {};
+  const decodedToken = jwtDecode(token);
   const usernameFromToken = (decodedToken as {username:string, id: string}).username;
   const itsMyArticle = usernameFromToken === username;
 

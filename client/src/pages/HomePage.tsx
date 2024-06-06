@@ -6,13 +6,17 @@ import { useCallback, useState } from "react";
 import useShowArticleList from "../services/useShowArticleList";
 import Pagination from "../components/Pagination/Pagination";
 
-export default function HomePage(): JSX.Element {
+export default function HomePage() {
   const [params, setParams] = useState<[number, boolean, string]>([
     1,
     false,
     "",
   ]);
-  const { data, loading } = useShowArticleList(...params);
+  const { data, loading } = useShowArticleList({
+    page: params[0],
+    mostLiked: params[1],
+    userId: params[2],
+  });
   const { articlesDto, pagination } = data;
   const { page, total } = pagination;
 
@@ -50,9 +54,7 @@ export default function HomePage(): JSX.Element {
           </Flex>
         ) : articlesDto.length > 0 ? (
           <>
-            <ArticleList
-              articles={articlesDto}
-            />
+            <ArticleList articles={articlesDto} />
             <Pagination
               page={page}
               total={total}
