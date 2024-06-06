@@ -21,7 +21,6 @@ const useShowArticleDetails = (
           mutation: GET_ARTICLE_BY_ID,
           variables: { articleId: id },
         });
-        console.log(response);
         if (response.getArticle.code === 200) {
           setData(response.getArticle.articleDto as ArticleModel);
         } else if (response.getArticle.code === 404) {

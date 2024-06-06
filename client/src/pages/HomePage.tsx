@@ -1,6 +1,6 @@
 import { Container, Heading, Box, Flex, Spinner } from "@chakra-ui/react";
 import ArticleList from "../components/Article/ArticleList";
-import {blue_color, grey_color} from "../assets/customColors";
+import { blue_color, grey_color } from "../assets/customColors";
 import SelectArticles from "../components/Article/Actions/SelectArticles";
 import { useCallback, useState } from "react";
 import useShowArticleList from "../services/useShowArticleList";
@@ -26,7 +26,7 @@ export default function HomePage(): JSX.Element {
   const handlePrevious = () => {
     setParams([page - 1, params[1], params[2]]);
   };
-  
+
   const handleNext = () => {
     setParams([page + 1, params[1], params[2]]);
   };
@@ -48,24 +48,24 @@ export default function HomePage(): JSX.Element {
               boxSize="100px"
             />
           </Flex>
+        ) : articlesDto.length > 0 ? (
+          <>
+            <ArticleList
+              articles={articlesDto}
+            />
+            <Pagination
+              page={page}
+              total={total}
+              hasPreviousPage={page > 1}
+              hasNextPage={page < total}
+              onPreviousPage={handlePrevious}
+              onNextPage={handleNext}
+            />
+          </>
         ) : (
-            articlesDto.length > 0 ? (
-                <>
-                  <ArticleList articles={articlesDto} />
-                  <Pagination
-                      page={page}
-                      total={total}
-                      hasPreviousPage={page > 1}
-                      hasNextPage={page < total}
-                      onPreviousPage={handlePrevious}
-                      onNextPage={handleNext}
-                  />
-                </>
-                ) : (
-                <Heading textAlign="center" as="h3" color={grey_color}>
-                    No articles found
-                </Heading>
-                )
+          <Heading textAlign="center" as="h3" color={grey_color}>
+            No articles found
+          </Heading>
         )}
       </Container>
     </Box>
