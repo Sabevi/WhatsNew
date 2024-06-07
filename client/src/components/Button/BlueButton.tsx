@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { blue_color, white_color } from "../../assets/customColors";
-import { BlueButtonProps } from "../../types/types";
+import { BlueButtonProps } from "../../types/common/Button.types";
 
 export default function BlueButton({
   text,
@@ -9,7 +9,7 @@ export default function BlueButton({
   type,
   disabled,
   style
-}: BlueButtonProps): JSX.Element {
+}: BlueButtonProps) {
   return (
     <Button
       variant="solid"

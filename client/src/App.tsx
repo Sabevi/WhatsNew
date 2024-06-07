@@ -8,8 +8,8 @@ import Layout from "./components/Layout/Layout";
 import UpdateArticlePage from "./pages/UpdateArticlePage";
 import ShowArticlePage from "./pages/ShowArticlePage";
 import AuthProvider from "./context/auth/AuthProvider";
-import RequireAuth from "./components/Auth/Requireauth";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+import RequireAuth from "./components/Auth/RequireAuth.tsx";
 
 export default function App() {
   return (

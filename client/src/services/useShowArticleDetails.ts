@@ -2,12 +2,16 @@ import { GET_ARTICLE_BY_ID } from "../apollo-client/mutations.ts";
 import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArticleModel } from "../types/article.ts";
-import { ArticleDetails } from "../types/types.ts";
+import {
+  ArticleActionProps,
+  ArticleModel,
+  UseDeleteArticleReturn,
+} from "../types/Article.types.ts";
+import { ArticleDetails } from "../types/Article.types.ts";
 
 const useShowArticleDetails = (
-  id: string
-): { data: ArticleDetails; loading: boolean } => {
+  id: ArticleActionProps
+): UseDeleteArticleReturn => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<ArticleDetails>({
     title: "",

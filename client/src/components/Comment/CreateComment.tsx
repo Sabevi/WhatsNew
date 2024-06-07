@@ -12,11 +12,9 @@ import {
 import BlueButton from "../Button/BlueButton";
 import useCommentArticle from "../../services/useCommentArticle.ts";
 import { useState } from "react";
+import { ArticleActionProps } from "../../types/Article.types.ts";
 
-type CreateCommentProps = {
-  articleId: string;
-};
-export default function CreateComment({ articleId }: CreateCommentProps) {
+export default function CreateComment({ articleId }: ArticleActionProps) {
   const { commentArticle } = useCommentArticle();
   const [commentText, setCommentText] = useState("");
 

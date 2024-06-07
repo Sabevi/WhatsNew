@@ -1,9 +1,9 @@
-import { ArticleListProps } from "../../types/types";
+import { ArticleListProps } from "../../types/Article.types";
 import ArticleCard from "./Content/ArticleCard";
 
 const ArticleList = ({
   articles,
-}: ArticleListProps): JSX.Element => {
+}: ArticleListProps) => {
   return (
     <>
       {articles.map((article) => (

@@ -5,16 +5,14 @@ import CommentList from "../components/Comment/CommentList";
 import CreateComment from "../components/Comment/CreateComment";
 import { useNavigate, useParams } from "react-router-dom";
 import useShowArticleDetails from "../services/useShowArticleDetails.ts";
-import { ArticleModel } from "../types/article.ts";
+import { ArticleModel } from "../types/Article.types.ts";
 
 export default function ShowArticlePage() {
   const { id } = useParams<{ id: string }>();
-  const { data, loading } = useShowArticleDetails(id as string);
+  const { data, loading } = useShowArticleDetails(id);
   const navigate = useNavigate();
 
   if (id === undefined || id === null) navigate("/");
-
-
 
   return (
     <Box as="main">

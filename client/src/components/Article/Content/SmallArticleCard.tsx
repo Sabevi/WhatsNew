@@ -12,7 +12,7 @@ export default function SmallArticleCard({
   children,
 }: {
   children: ReactNode;
-}): JSX.Element {
+}) {
   return (
     <Card mt={10}>
       <Flex
