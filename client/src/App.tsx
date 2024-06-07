@@ -9,7 +9,7 @@ import UpdateArticlePage from "./pages/UpdateArticlePage";
 import ShowArticlePage from "./pages/ShowArticlePage";
 import AuthProvider from "./context/auth/AuthProvider";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
-import RequireAuth from "./components/Auth/RequireAuth.tsx";
+import RequireAuth from "./components/Auth/Requireauth.tsx";
 
 export default function App() {
   return (
