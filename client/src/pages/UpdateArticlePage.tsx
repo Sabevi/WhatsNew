@@ -12,7 +12,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { FormValues } from "../types/common/Input.types";
+import { ArticleFormValues } from "../types/common/Input.types";
 import { useParams } from "react-router-dom";
 import useUpdateArticle from "../services/useUpdateArticle";
 import useShowArticleDetails from "../services/useShowArticleDetails";
@@ -26,7 +26,7 @@ export default function UpdateArticlePage() {
     formState: { errors },
     trigger,
     reset,
-  } = useForm<FormValues>({
+  } = useForm<ArticleFormValues>({
     mode: "onSubmit",
     defaultValues: {
       title: "",
@@ -68,7 +68,7 @@ export default function UpdateArticlePage() {
     },
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<ArticleFormValues> = (data) => {
       updateArticle(id, data);
   };
 

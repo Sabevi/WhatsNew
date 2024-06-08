@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import useCreateArticle from "../services/useCreateArticle";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { FormValues } from "../types/common/Input.types";
+import { ArticleFormValues } from "../types/common/Input.types";
 
 export default function CreateArticlePage() {
   const {
@@ -12,7 +12,7 @@ export default function CreateArticlePage() {
     handleSubmit,
     formState: { errors },
     trigger,
-  } = useForm<FormValues>({ mode: "onSubmit" });
+  } = useForm<ArticleFormValues>({ mode: "onSubmit" });
   const { createArticle } = useCreateArticle();
 
   const titleRegister = register("title", {
@@ -39,7 +39,7 @@ export default function CreateArticlePage() {
     },
   });
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<ArticleFormValues> = (data) => {
     createArticle(data);
   };
 

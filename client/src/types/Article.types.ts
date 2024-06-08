@@ -3,7 +3,7 @@ import {
   FieldErrorsImpl,
   UseFormRegisterReturn,
 } from "react-hook-form";
-import { FormValues } from "./common/Input.types";
+import { ArticleFormValues } from "./common/Input.types";
 
 export type ArticleDto = {
   id: string;
@@ -89,7 +89,7 @@ export interface CommentComponentProps extends ButtonProps {
 export interface ArticleInputsProps {
   titleRegister: UseFormRegisterReturn;
   articleRegister: UseFormRegisterReturn;
-  errors: FieldErrorsImpl<FormValues>;
+  errors: FieldErrorsImpl<ArticleFormValues>;
   trigger: (fieldName?: "title" | "description" | ("title" | "description")[]) => void;
 }
 

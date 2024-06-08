@@ -7,22 +7,45 @@ import {
   CardFooter,
   Flex,
   CardHeader,
-  Heading,
+  Heading, FormErrorMessage,
 } from "@chakra-ui/react";
 import BlueButton from "../Button/BlueButton";
 import useCommentArticle from "../../services/useCommentArticle.ts";
-import { useState } from "react";
-import { ArticleActionProps } from "../../types/Article.types.ts";
+import {SubmitHandler, useForm} from "react-hook-form";
 
-export default function CreateComment({ articleId }: ArticleActionProps) {
+type CreateCommentProps = {
+  articleId: string;
+};
+export default function CreateComment({ articleId }: CreateCommentProps) {
   const { commentArticle } = useCommentArticle();
-  const [commentText, setCommentText] = useState("");
 
-  const handlePublish = async () => {
-    await commentArticle({ articleId, content: commentText });
-    setCommentText("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    trigger,
+  } = useForm({ mode: "onSubmit" });
+
+
+
+
+  const onSubmit: SubmitHandler<{comment: string}> = async (data) => {
+    await commentArticle({articleId, content: data.comment});
     window.location.reload();
   };
+
+
+  const commentRegister = register("comment", {
+    required: "A Comment is required",
+    minLength: {
+      value: 5,
+      message: "The Comment must be at least 5 characters long",
+    },
+    maxLength: {
+      value: 100,
+      message: "The comment cannot be more than 100 characters long",
+    },
+  });
   return (
     <Card p="4" w="full" h="auto" mt={10}>
       <Flex
@@ -40,22 +63,25 @@ export default function CreateComment({ articleId }: ArticleActionProps) {
           </Heading>
         </CardHeader>
       </Flex>
-      <form>
-        <FormControl id="article">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl id="article" isInvalid={!!errors.comment}>
           <VisuallyHidden as={FormLabel}>Article</VisuallyHidden>
           <Textarea
+            {...commentRegister}
             id={"comment-textarea"}
             placeholder="Enter the text of your article here..."
             h="300px"
             fontSize="lg"
-            value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
+            onBlur={() => trigger("comment")}
           />
+          {errors.comment && (
+              <FormErrorMessage>{errors.comment.message as string}</FormErrorMessage>
+          )}
+
         </FormControl>
         <CardFooter>
           <BlueButton
             text="Publish comment"
-            onClickAction={handlePublish}
             margin="0 auto"
             type="submit"
           />
