@@ -28,11 +28,14 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
   const { handleLikeOrDislike } = useLikeOrDislike(id);
 
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
-  const token = userConnected.token;
-  const decodedToken = jwtDecode(token);
-  const usernameFromToken = (decodedToken as { username: string; id: string })
-    .username;
-  const itsMyArticle = usernameFromToken === username;
+
+  function itsMyArticle() {
+    const token = userConnected.token;
+    const decodedToken = jwtDecode(token);
+    const usernameFromToken = (decodedToken as { username: string; id: string })
+      .username;
+    return usernameFromToken === username;
+  }
 
   const truncateText = (text: string, length: number) => {
     return text.length > length ? text.substring(0, length) + "..." : text;
@@ -48,7 +51,7 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
   return (
     <Card m={10} p={5} shadow="lg" bgColor={light_blue_color}>
       <CardHeader>
-        {itsMyArticle && (
+        {itsMyArticle() && (
           <Flex justifyContent="flex-end" alignItems="center">
             <IconButton
               icon={<Icon as={EditIcon} color={blue_color} boxSize="1.1em" />}
@@ -75,7 +78,7 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
           {title}
         </Heading>
         <BlogAuthor
-          name={itsMyArticle ? `${username} (me)` : username}
+          name={itsMyArticle() ? `${username} (me)` : username}
           date={new Date(publishedAt)}
         />
       </CardHeader>

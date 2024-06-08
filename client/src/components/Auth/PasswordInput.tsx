@@ -23,7 +23,7 @@ export default function PasswordInput({
   placeholder,
   showPassword,
   onClickAction,
-} : PasswordInputProps) {
+}: PasswordInputProps) {
   return (
     <FormControl id={placeholder} isInvalid={!!error}>
       <VisuallyHidden as={FormLabel}>{placeholder}</VisuallyHidden>
@@ -46,7 +46,9 @@ export default function PasswordInput({
           </Button>
         </InputRightElement>
       </InputGroup>
-      {error && <FormErrorMessage>{error.message}</FormErrorMessage>}
+      {error && (
+        <FormErrorMessage>{error.message as React.ReactNode}</FormErrorMessage>
+      )}
     </FormControl>
   );
 }

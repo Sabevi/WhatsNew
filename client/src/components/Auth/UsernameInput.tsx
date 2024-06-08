@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { FaUserAlt } from "react-icons/fa";
 import { light_grey_color } from "../../assets/customColors";
-import { InputFieldProps } from "../../types/common/Input.types";
+import { InputProps } from "../../types/Auth.types";
 
 const CFaUserAlt = chakra(FaUserAlt);
 
@@ -18,7 +18,7 @@ export default function UsernameInput({
   register,
   error,
   trigger,
-}: InputFieldProps) {
+}: InputProps) {
   return (
     <FormControl id="Username" isInvalid={!!error}>
       <VisuallyHidden as={FormLabel}>Username</VisuallyHidden>
@@ -35,7 +35,9 @@ export default function UsernameInput({
           autoComplete="username"
         />
       </InputGroup>
-      {error && <FormErrorMessage>{error.message}</FormErrorMessage>}
+      {error && (
+        <FormErrorMessage>{error.message as React.ReactNode}</FormErrorMessage>
+      )}
     </FormControl>
   );
 }

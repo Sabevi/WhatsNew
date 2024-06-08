@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import useCreateArticle from "../services/useCreateArticle";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { ArticleFormValues } from "../types/common/Input.types";
+import { ArticleFormValues } from "../types/Article.types";
 
 export default function CreateArticlePage() {
   const {

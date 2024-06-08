@@ -13,6 +13,7 @@ import {
 import BlueButton from "../Button/BlueButton";
 import useCommentArticle from "../../services/useCommentArticle.ts";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { CommentFormValues } from "../../types/Article.types.ts";
 
 type CreateCommentProps = {
   articleId: string;
@@ -25,7 +26,7 @@ export default function CreateComment({ articleId }: CreateCommentProps) {
     handleSubmit,
     formState: { errors },
     trigger,
-  } = useForm({ mode: "onSubmit" });
+  } =  useForm<CommentFormValues>({ mode: "onSubmit" });
 
   const commentRegister = register("comment", {
     minLength: {
@@ -38,8 +39,8 @@ export default function CreateComment({ articleId }: CreateCommentProps) {
     },
   });
 
-  const onSubmit: SubmitHandler<{ comment: string }> = async (data) => {
-    await commentArticle({ articleId, content: data.comment });
+  const onSubmit: SubmitHandler<CommentFormValues> = (data) => {
+    commentArticle({ articleId, content: data.comment });
   };
 
   return (

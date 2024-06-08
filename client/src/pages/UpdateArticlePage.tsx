@@ -12,7 +12,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { ArticleFormValues } from "../types/common/Input.types";
+import { ArticleFormValues } from "../types/Article.types";
 import { useParams } from "react-router-dom";
 import useUpdateArticle from "../services/useUpdateArticle";
 import useShowArticleDetails from "../services/useShowArticleDetails";

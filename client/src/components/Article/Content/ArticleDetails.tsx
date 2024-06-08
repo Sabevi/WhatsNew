@@ -30,11 +30,14 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
   const { deleteArticle } = useDeleteArticle();
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const token = user.token;
-  const decodedToken = jwtDecode(token);
-  const usernameFromToken = (decodedToken as { username: string; id: string })
-    .username;
-  const itsMyArticle = usernameFromToken === articleDetails.username;
+
+  function itsMyArticle() {
+    const token = user.token;
+    const decodedToken = jwtDecode(token);
+    const usernameFromToken = (decodedToken as { username: string; id: string })
+      .username;
+    return usernameFromToken === articleDetails.username;
+  }
 
   const submitlikeorDislike = async () => {
     const { likeList } = await handleLikeOrDislike();
@@ -51,7 +54,7 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
       >
         <Flex flex="3" direction="column" justifyContent="center">
           <CardHeader>
-            {itsMyArticle && (
+            {itsMyArticle() && (
               <Flex justifyContent="flex-end" alignItems="center">
                 <IconButton
                   icon={<Icon as={EditIcon} w={10} />}
