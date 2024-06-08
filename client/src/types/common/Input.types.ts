@@ -6,7 +6,7 @@ import {
   UseFormRegisterReturn,
 } from "react-hook-form";
 
-export interface FormValues {
+export interface ArticleFormValues {
   username: string;
   title: string;
   description: string;
@@ -17,7 +17,7 @@ export interface InputFieldProps {
   register: UseFormRegisterReturn;
   error:
     | FieldError
-    | Merge<FieldError, FieldErrorsImpl<FormValues>>
+    | Merge<FieldError, FieldErrorsImpl<ArticleFormValues>>
     | undefined;
   trigger: FocusEventHandler<HTMLInputElement>;
 }
