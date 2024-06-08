@@ -34,7 +34,7 @@ export const useLikeOrDislike = (articleId: ArticleActionProps) => {
         case 404:
           console.error("Article not found.");
           toast({
-            title: `Unable to like this post, try again later.`,
+            title: `Unable to like this article, try again later.`,
             status: "error",
             duration: 10000,
             isClosable: true,
