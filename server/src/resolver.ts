@@ -20,11 +20,13 @@ export const resolvers: Resolvers = {
         deleteUser,
         createArticle,
         updateArticle,
-        getArticles,
-        getArticle,
         incrementOrDecrementLikes,
         deleteArticle,
         addComment,
         deleteComment,
+    },
+    Query: {
+        getArticles,
+        getArticle
     }
 };

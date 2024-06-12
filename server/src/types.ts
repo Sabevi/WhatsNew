@@ -89,8 +89,6 @@ export type Mutation = {
   deleteArticle: DeleteArticleResponse;
   deleteComment: DeleteCommentResponse;
   deleteUser: DeleteUserResponse;
-  getArticle: GetArticleResponse;
-  getArticles: GetArticlesResponse;
   incrementOrDecrementLikes: IncrementOrDecrementLikeResponse;
   signIn: SignInResponse;
   updateArticle: UpdateArticleResponse;
@@ -132,18 +130,6 @@ export type MutationDeleteUserArgs = {
 };
 
 
-export type MutationGetArticleArgs = {
-  articleId: Scalars['ID']['input'];
-};
-
-
-export type MutationGetArticlesArgs = {
-  mostLiked?: InputMaybe<Scalars['Boolean']['input']>;
-  page?: InputMaybe<Scalars['Int']['input']>;
-  userId?: InputMaybe<Scalars['String']['input']>;
-};
-
-
 export type MutationIncrementOrDecrementLikesArgs = {
   articleId: Scalars['ID']['input'];
 };
@@ -169,8 +155,22 @@ export type Pagination = {
 
 export type Query = {
   __typename?: 'Query';
+  getArticle: GetArticleResponse;
+  getArticles: GetArticlesResponse;
   hello: Scalars['String']['output'];
   users: Array<User>;
+};
+
+
+export type QueryGetArticleArgs = {
+  articleId: Scalars['ID']['input'];
+};
+
+
+export type QueryGetArticlesArgs = {
+  mostLiked?: InputMaybe<Scalars['Boolean']['input']>;
+  page?: InputMaybe<Scalars['Int']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SignInResponse = {
@@ -458,8 +458,6 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
   deleteArticle?: Resolver<ResolversTypes['deleteArticleResponse'], ParentType, ContextType, RequireFields<MutationDeleteArticleArgs, 'articleId'>>;
   deleteComment?: Resolver<ResolversTypes['deleteCommentResponse'], ParentType, ContextType, RequireFields<MutationDeleteCommentArgs, 'articleId' | 'commentId' | 'userId'>>;
   deleteUser?: Resolver<ResolversTypes['deleteUserResponse'], ParentType, ContextType, RequireFields<MutationDeleteUserArgs, 'userId'>>;
-  getArticle?: Resolver<ResolversTypes['getArticleResponse'], ParentType, ContextType, RequireFields<MutationGetArticleArgs, 'articleId'>>;
-  getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType, Partial<MutationGetArticlesArgs>>;
   incrementOrDecrementLikes?: Resolver<ResolversTypes['incrementOrDecrementLikeResponse'], ParentType, ContextType, RequireFields<MutationIncrementOrDecrementLikesArgs, 'articleId'>>;
   signIn?: Resolver<ResolversTypes['SignInResponse'], ParentType, ContextType, RequireFields<MutationSignInArgs, 'password' | 'username'>>;
   updateArticle?: Resolver<ResolversTypes['UpdateArticleResponse'], ParentType, ContextType, RequireFields<MutationUpdateArticleArgs, 'articleId' | 'description' | 'title'>>;
@@ -472,6 +470,8 @@ export type PaginationResolvers<ContextType = Context, ParentType extends Resolv
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  getArticle?: Resolver<ResolversTypes['getArticleResponse'], ParentType, ContextType, RequireFields<QueryGetArticleArgs, 'articleId'>>;
+  getArticles?: Resolver<ResolversTypes['getArticlesResponse'], ParentType, ContextType, Partial<QueryGetArticlesArgs>>;
   hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
 };
