@@ -1,4 +1,4 @@
-import { getUser } from "../module/auth";
+import { getUser } from "../module/auth.js";
 import { QueryResolvers, Article, ArticleDto } from "../types";
 
 export const getArticles: QueryResolvers["getArticles"] = async (
