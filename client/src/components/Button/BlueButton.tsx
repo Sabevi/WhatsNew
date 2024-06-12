@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { blue_color, white_color } from "../../assets/customColors";
-import { BlueButtonProps } from "../../types/common/Button.types";
+import { BlueButtonProps } from "../../types/Button.types";
 
 export default function BlueButton({
   text,

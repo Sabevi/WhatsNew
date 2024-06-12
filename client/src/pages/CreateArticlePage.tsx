@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import useCreateArticle from "../services/useCreateArticle";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { ArticleFormValues } from "../types/common/Input.types";
+import { ArticleFormValues } from "../types/Article.types";
 
 export default function CreateArticlePage() {
   const {
@@ -18,24 +18,24 @@ export default function CreateArticlePage() {
   const titleRegister = register("title", {
     required: "A title is required",
     minLength: {
-      value: 5,
-      message: "The title must be at least 5 characters long",
+      value: 10,
+      message: "Your title is too short. It must be at least 10 characters long",
     },
     maxLength: {
-      value: 50,
-      message: "The title cannot be more than 50 characters long",
+      value: 130,
+      message: "The title cannot be more than 130 characters long",
     },
   });
 
   const articleRegister = register("description", {
-    required: "An description is required",
+    required: "An article is required",
     minLength: {
-      value: 50,
-      message: "The article must be at least 50 characters long",
+      value: 1000,
+      message: "The article must be at least 300 characters long",
     },
     maxLength: {
-      value: 500,
-      message: "The article cannot be more than 500 characters long",
+      value: 3000,
+      message: "The article cannot be more than 2000 characters long",
     },
   });
 
@@ -46,10 +46,10 @@ export default function CreateArticlePage() {
   return (
     <Box as="main">
       <Container maxW="7xl" p="12">
-        <Heading textAlign="center" as="h1" color={blue_color}>
+        <Heading textAlign="center" as="h1" color={blue_color} marginBottom="20px">
           What's New - Create Article{" "}
         </Heading>
-        <Card p="4" w="full" h="auto">
+        <Card p="4" w="full" shadow="lg">
           <form onSubmit={handleSubmit(onSubmit)}>
             <ArticleInputs 
             titleRegister={titleRegister}

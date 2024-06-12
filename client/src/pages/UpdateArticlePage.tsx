@@ -12,7 +12,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
-import { ArticleFormValues } from "../types/common/Input.types";
+import { ArticleFormValues } from "../types/Article.types";
 import { useParams } from "react-router-dom";
 import useUpdateArticle from "../services/useUpdateArticle";
 import useShowArticleDetails from "../services/useShowArticleDetails";
@@ -47,29 +47,29 @@ export default function UpdateArticlePage() {
   const titleRegister = register("title", {
     required: "A title is required",
     minLength: {
-      value: 5,
-      message: "The title must be at least 5 characters long",
+      value: 10,
+      message: "Your title is too short. It must be at least 10 characters long",
     },
     maxLength: {
-      value: 50,
-      message: "The title cannot be more than 50 characters long",
+      value: 130,
+      message: "The title cannot be more than 130 characters long",
     },
   });
 
   const articleRegister = register("description", {
-    required: "A description is required",
+    required: "An article is required",
     minLength: {
-      value: 50,
-      message: "The article must be at least 50 characters long",
+      value: 1000,
+      message: "The article must be at least 300 characters long",
     },
     maxLength: {
-      value: 500,
-      message: "The article cannot be more than 500 characters long",
+      value: 3000,
+      message: "The article cannot be more than 2000 characters long",
     },
   });
 
   const onSubmit: SubmitHandler<ArticleFormValues> = (data) => {
-      updateArticle(id, data);
+    id !== undefined && updateArticle(id, data);
   };
 
   return (
@@ -89,7 +89,7 @@ export default function UpdateArticlePage() {
             />
           </Flex>
         ) : (
-          <Card p="4" w="full" h="auto">
+          <Card p="4" w="full" h="auto" shadow="lg">
             <form onSubmit={handleSubmit(onSubmit)}>
               <ArticleInputs
                 titleRegister={titleRegister}

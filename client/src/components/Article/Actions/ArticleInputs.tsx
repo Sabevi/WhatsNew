@@ -7,6 +7,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { ArticleInputsProps } from "../../../types/Article.types";
+import { light_blue_color } from "../../../assets/customColors";
 
 export default function ArticleInputs({
   titleRegister,
@@ -24,6 +25,7 @@ export default function ArticleInputs({
           placeholder="Enter the title of the article..."
           fontSize="lg"
           onBlur={() => trigger("title")}
+          bg={light_blue_color}
         />
         {errors.title && (
           <FormErrorMessage>{errors.title.message as string}</FormErrorMessage>
@@ -37,6 +39,8 @@ export default function ArticleInputs({
           h="300px"
           fontSize="lg"
           onBlur={() => trigger("description")}
+          bg={light_blue_color}
+          style={{height: "650px"}}
         />
         {errors.description && (
           <FormErrorMessage>

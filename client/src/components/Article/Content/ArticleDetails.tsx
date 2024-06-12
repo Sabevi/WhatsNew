@@ -1,26 +1,43 @@
 import {
-  Image,
   Text,
   Flex,
-  AspectRatio,
   Card,
   CardHeader,
   CardBody,
   CardFooter,
   Heading,
+  IconButton,
+  Icon,
 } from "@chakra-ui/react";
 import BlogAuthor from "./ArticleAuthor";
-import { grey_color } from "../../../assets/customColors";
+import {
+  blue_color,
+  grey_color,
+  light_blue_color,
+} from "../../../assets/customColors";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
 import { useLikeOrDislike } from "../../../services/useLikeOrDislike.ts";
 import { ArticleCardProps } from "../../../types/Article.types.ts";
+import { jwtDecode } from "jwt-decode";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
+import useDeleteArticle from "../../../services/useDeleArticle.ts";
 
-export default function ArticleCard({ articleDetails }: ArticleCardProps) {
-  const { handleLikeOrDislike } = useLikeOrDislike({
-    articleId: articleDetails.id,
-  });
+export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
+  const { handleLikeOrDislike } = useLikeOrDislike(articleDetails.id);
+  const navigate = useNavigate();
+  const { deleteArticle } = useDeleteArticle();
+
   const user = JSON.parse(localStorage.getItem("user") || "{}");
+
+  function itsMyArticle() {
+    const token = user.token;
+    const decodedToken = jwtDecode(token);
+    const usernameFromToken = (decodedToken as { username: string; id: string })
+      .username;
+    return usernameFromToken === articleDetails.username;
+  }
 
   const submitlikeorDislike = async () => {
     const { likeList } = await handleLikeOrDislike();
@@ -30,43 +47,56 @@ export default function ArticleCard({ articleDetails }: ArticleCardProps) {
   };
 
   return (
-    <Card mt={10}>
+    <Card mt={10} bg={light_blue_color} p="5">
       <Flex
         direction={{ base: "column", sm: "row" }}
         justifyContent="space-between"
       >
         <Flex flex="3" direction="column" justifyContent="center">
           <CardHeader>
-            <BlogAuthor
-              name={articleDetails.username}
-              date={new Date(articleDetails.publishedAt)}
-            />
+            {itsMyArticle() && (
+              <Flex justifyContent="flex-end" alignItems="center">
+                <IconButton
+                  icon={<Icon as={EditIcon} w={10} />}
+                  variant="ghost"
+                  aria-label="Edit"
+                  color={blue_color}
+                  boxSize="1.1em"
+                  onClick={() => navigate(`/article/${articleDetails.id}/edit`)}
+                />
+                <IconButton
+                  icon={<Icon as={DeleteIcon} w={10} />}
+                  variant="ghost"
+                  aria-label="Delete"
+                  color={blue_color}
+                  boxSize="1.1em"
+                  onClick={() =>
+                    deleteArticle({ articleId: articleDetails.id })
+                  }
+                />
+              </Flex>
+            )}
             <Heading
               textDecoration="none"
               _hover={{ textDecoration: "none" }}
               fontSize="3xl"
               mt="10"
+              mb="10"
             >
               {articleDetails.title}
             </Heading>
+            <BlogAuthor
+              name={articleDetails.username}
+              date={new Date(articleDetails.publishedAt)}
+            />
           </CardHeader>
           <CardBody>
-            <Flex justifyContent="center">
-              <AspectRatio width={{ sm: "40%" }}>
-                <Image
-                  borderRadius="lg"
-                  src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-                  alt="some good alt text"
-                  objectFit="cover"
-                />
-              </AspectRatio>
-            </Flex>
             <Text
               as="p"
-              marginTop="2"
               fontSize="lg"
-              padding="10"
               color={grey_color}
+              whiteSpace="pre-wrap"
+              textAlign="justify"
             >
               {articleDetails.description}
             </Text>

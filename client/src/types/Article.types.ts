@@ -1,4 +1,4 @@
-import { ButtonProps } from "./common/Button.types";
+import { ButtonProps } from "./Button.types";
 import {
   FieldErrorsImpl,
   UseFormRegisterReturn,
@@ -120,4 +120,16 @@ export interface UseShowArticleListProps {
   page: number;
   mostLiked: boolean;
   userId: string;
+}
+
+export interface CommentFormValues {
+  articleId: string;
+  comment: string;
+}
+
+export interface ArticleFormValues {
+  username: string;
+  title: string;
+  description: string;
+  id: string | undefined;
 }

@@ -63,7 +63,12 @@ export default function SignupPage() {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const user = data as User;
-    signup(user, showGenericSubmitError, showExistingAccountError, showServerError);
+    signup(
+      user,
+      showGenericSubmitError,
+      showExistingAccountError,
+      showServerError
+    );
   };
 
   return (

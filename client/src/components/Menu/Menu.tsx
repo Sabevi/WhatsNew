@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import useAuth from "../../services/useAuth";
+import { light_blue_color } from "../../assets/customColors";
 
 export default function Menu() {
   const { logout } = useAuth();
@@ -26,6 +27,7 @@ export default function Menu() {
         variant="outline"
         fontSize="2xl"
         p={6}
+        bg={light_blue_color}
       />
       <MenuList>
         <MenuItem as={Link} to="/" icon={<StarIcon />} fontSize="lg">
