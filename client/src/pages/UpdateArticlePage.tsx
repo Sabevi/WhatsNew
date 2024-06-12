@@ -69,7 +69,7 @@ export default function UpdateArticlePage(): JSX.Element {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-      updateArticle(id, data);
+      updateArticle(id!, data);
   };
 
   return (

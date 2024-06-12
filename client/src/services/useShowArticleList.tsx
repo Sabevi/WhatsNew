@@ -1,4 +1,4 @@
-import { GET_ARTICLES } from "../apollo-client/mutations.ts";
+import { GET_ARTICLES } from "../apollo-client/queries.ts";
 import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useEffect, useState } from "react";
 
@@ -19,8 +19,8 @@ const useShowArticleList = (
   useEffect(() => {
     const getArticleList = async () => {
       try {
-        const { data: response } = await privateClient.mutate({
-          mutation: GET_ARTICLES,
+        const { data: response } = await privateClient.query({
+          query: GET_ARTICLES,
           variables: { page: page, mostLiked: mostLiked, userId: userId },
         });
         if (response.getArticles.code === 200) {

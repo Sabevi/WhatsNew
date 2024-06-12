@@ -80,62 +80,6 @@ export const COMMENT_ARTICLE = gql`
   }
 `;
 
-export const GET_ARTICLE_BY_ID = gql`
-  mutation GetArticle($articleId: ID!) {
-    getArticle(articleId: $articleId) {
-      articleDto {
-        title
-        username
-        id
-        publishedAt
-        likes {
-          articleId
-          id
-          userId
-        }
-        comments {
-          id
-          username
-          content
-          publishedAt
-        }
-        description
-      }
-      code
-      message
-      success
-    }
-  }
-`;
-
-export const GET_ARTICLES = gql`
-  mutation GetArticles($page: Int, $mostLiked: Boolean, $userId: String) {
-    getArticles(page: $page, mostLiked: $mostLiked, userId: $userId) {
-      articlesDto {
-        description
-        id
-        likes {
-          articleId
-          id
-          userId
-        }
-        nbComments
-        publishedAt
-        title
-        username
-        userId
-      }
-      code
-      message
-      pagination {
-        page
-        total
-      }
-      success
-    }
-  }
-`;
-
 export const DELETE_ARTICLE = gql`
   mutation DeleteArticle($articleId: ID!) {
     deleteArticle(articleId: $articleId) {

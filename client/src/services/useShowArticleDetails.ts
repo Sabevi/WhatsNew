@@ -1,4 +1,4 @@
-import { GET_ARTICLE_BY_ID } from "../apollo-client/mutations.ts";
+import { GET_ARTICLE_BY_ID } from "../apollo-client/queries.ts";
 import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,8 +17,8 @@ const useShowArticleDetails = (
   useEffect(() => {
     const getArticle = async () => {
       try {
-        const { data: response } = await privateClient.mutate({
-          mutation: GET_ARTICLE_BY_ID,
+        const { data: response } = await privateClient.query({
+          query: GET_ARTICLE_BY_ID,
           variables: { articleId: id },
         });
         console.log(response);
