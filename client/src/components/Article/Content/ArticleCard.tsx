@@ -66,7 +66,10 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
               icon={<Icon as={DeleteIcon} color={blue_color} boxSize="1.1em" />}
               variant="ghost"
               aria-label="Delete"
-              onClick={() => deleteArticle({ articleId: id })}
+              onClick={() => {
+                deleteArticle({ articleId: id });
+                window.location.reload();
+              }}
             />
           </Flex>
         )}

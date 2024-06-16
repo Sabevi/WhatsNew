@@ -24,7 +24,6 @@ const useDeleteArticle = () => {
             duration: 10000,
             isClosable: true,
           });
-          window.location.reload();
           break;
         case 404:
           toast({
@@ -37,7 +36,6 @@ const useDeleteArticle = () => {
           break;
       }
     } catch (error) {
-      console.error(error);
       toast({
         title: "Article not deleted.",
         description: "Oops! An error occurred while deleting the article.",

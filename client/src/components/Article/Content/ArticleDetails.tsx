@@ -73,9 +73,10 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
                   aria-label="Delete"
                   color={blue_color}
                   boxSize="1.1em"
-                  onClick={() =>
-                    deleteArticle({ articleId: articleDetails.id })
-                  }
+                  onClick={() => {
+                    deleteArticle({ articleId: articleDetails.id });
+                    navigate("/");
+                  }}
                 />
               </Flex>
             )}
