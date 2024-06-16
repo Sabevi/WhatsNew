@@ -69,10 +69,26 @@ export const getArticle: QueryResolvers["getArticle"] = async (
     commentsDto.push(commentToAdd);
   }
 
+  //rechercher l'auteur de l'article
+  const author = await dataSources.db.user.findUnique({
+    where: {
+      id: article.userId,
+    },
+  });
+
+  if (!author) {
+    return {
+      code: 404,
+      message: "Author not found",
+      success: false,
+      articleDto: null,
+    };
+  }
+
   //l'objet pour stocker les informations de l'article
   const articleDtoBis: ArticleDtoBis = {
     id: article.id,
-    username: user.username,
+    username: author.username,
     publishedAt: article.publishedAt.toISOString(),
     title: article.title,
     description: article.description,
