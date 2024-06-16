@@ -1,7 +1,6 @@
 import { getUser } from "../module/auth.js";
 import { ArticleDtoBis, QueryResolvers, Comment } from "../types";
 
-
 export const getArticle: QueryResolvers["getArticle"] = async (
     _,
     { articleId },
