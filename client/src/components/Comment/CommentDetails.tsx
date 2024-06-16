@@ -1,6 +1,6 @@
 import { Text, Flex, Card, CardHeader, CardBody } from "@chakra-ui/react";
 import BlogAuthor from "../Article/Content/ArticleAuthor";
-import { grey_color, light_blue_color } from "../../assets/customColors";
+import { light_blue_color } from "../../assets/customColors";
 import { CommentProps } from "../../types/Article.types";
 
 export function CommentDetails({ comment }: CommentProps) {
@@ -21,7 +21,6 @@ export function CommentDetails({ comment }: CommentProps) {
           <Text
             marginTop="2"
             fontSize="lg"
-            color={grey_color}
             whiteSpace="pre-wrap"
           >
             {comment.content}

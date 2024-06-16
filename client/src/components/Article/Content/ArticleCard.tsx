@@ -27,7 +27,6 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
   const navigate = useNavigate();
   const { deleteArticle } = useDeleteArticle();
   const { handleLikeOrDislike } = useLikeOrDislike(id);
-
   const [currentArticle, setCurrentArticle] = useState(article);
 
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
