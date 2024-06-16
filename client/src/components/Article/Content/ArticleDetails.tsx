@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Text,
   Flex,
@@ -31,6 +32,8 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
+  const [likes, setLikes] = useState(articleDetails.likes);
+
   function itsMyArticle() {
     const token = user.token;
     const decodedToken = jwtDecode(token);
@@ -42,7 +45,7 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
   const submitlikeorDislike = async () => {
     const { likeList } = await handleLikeOrDislike();
     if (likeList != null) {
-      articleDetails.likes = likeList;
+      setLikes(likeList);
     }
   };
 
@@ -111,8 +114,8 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
               />
               <LikeButton
                 onClickAction={submitlikeorDislike}
-                number={articleDetails.likes.length ?? 0}
-                liked={articleDetails.likes.some(
+                number={likes.length ?? 0}
+                liked={likes.some(
                   (like) => like.userId === user.id
                 )}
               />

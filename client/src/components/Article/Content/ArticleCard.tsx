@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Text,
   Flex,
@@ -27,13 +28,14 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
   const { deleteArticle } = useDeleteArticle();
   const { handleLikeOrDislike } = useLikeOrDislike(id);
 
+  const [currentArticle, setCurrentArticle] = useState(article);
+
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
 
   function itsMyArticle() {
     const token = userConnected.token;
     const decodedToken = jwtDecode(token);
-    const usernameFromToken = (decodedToken as { username: string; id: string })
-      .username;
+    const usernameFromToken = (decodedToken as { username: string; id: string }).username;
     return usernameFromToken === username;
   }
 
@@ -44,7 +46,8 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
   const submitlikeorDislike = async () => {
     const { likeList } = await handleLikeOrDislike();
     if (likeList != null) {
-      article.likes = likeList;
+      const updatedArticle = { ...currentArticle, likes: likeList };
+      setCurrentArticle(updatedArticle);
     }
   };
 
@@ -100,8 +103,8 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
             />
             <LikeButton
               onClickAction={submitlikeorDislike}
-              number={article.likes.length}
-              liked={article.likes.some(
+              number={currentArticle.likes.length}
+              liked={currentArticle.likes.some(
                 (like) => like.userId === userConnected.id
               )}
             />
