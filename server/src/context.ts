@@ -1,9 +1,8 @@
-import { PrismaClient } from "@prisma/client"
-
+import { PrismaClient } from "@prisma/client";
 
 export type Context = {
-  token: string
+  token: string;
   dataSources: {
-    db: PrismaClient
-  }
-}
+    db: PrismaClient;
+  };
+};

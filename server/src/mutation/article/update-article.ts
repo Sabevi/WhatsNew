@@ -1,4 +1,4 @@
-import {Article, MutationResolvers} from "../../types.js";
+import { Article, MutationResolvers } from "../../types.js";
 import { getUser } from "../../module/auth.js";
 
 export const updateArticle: MutationResolvers["updateArticle"] = async (
@@ -7,7 +7,7 @@ export const updateArticle: MutationResolvers["updateArticle"] = async (
   { dataSources, token }
 ) => {
   // Check if token :
-  const actualToken = token.split(' ')[1];
+  const actualToken = token.split(" ")[1];
 
   const user = getUser(actualToken);
 
@@ -34,16 +34,12 @@ export const updateArticle: MutationResolvers["updateArticle"] = async (
     });
 
     const updatedArticle: Article = {
-        id: article.id,
-        title: article.title,
-        description: article.description,
-        userId: article.userId,
-        publishedAt: article.publishedAt.toISOString(),
-    }
-
-
-
-
+      id: article.id,
+      title: article.title,
+      description: article.description,
+      userId: article.userId,
+      publishedAt: article.publishedAt.toISOString(),
+    };
 
     return {
       code: 201,

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Text,
   Flex,
@@ -11,11 +11,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import BlogAuthor from "./ArticleAuthor";
-import {
-  blue_color,
-  grey_color,
-  light_blue_color,
-} from "../../../assets/customColors";
+import { blue_color, light_blue_color } from "../../../assets/customColors";
 import CommentButton from "../../Button/CommentButton";
 import LikeButton from "../../Button/LikeButton";
 import { useLikeOrDislike } from "../../../services/useLikeOrDislike.ts";
@@ -29,10 +25,9 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
   const { handleLikeOrDislike } = useLikeOrDislike(articleDetails.id);
   const navigate = useNavigate();
   const { deleteArticle } = useDeleteArticle();
+  const [likes, setLikes] = useState(articleDetails.likes);
 
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-  const [likes, setLikes] = useState(articleDetails.likes);
 
   function itsMyArticle() {
     const token = user.token;
@@ -73,9 +68,10 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
                   aria-label="Delete"
                   color={blue_color}
                   boxSize="1.1em"
-                  onClick={() =>
-                    deleteArticle({ articleId: articleDetails.id })
-                  }
+                  onClick={() => {
+                    deleteArticle({ articleId: articleDetails.id });
+                    navigate("/");
+                  }}
                 />
               </Flex>
             )}
@@ -97,7 +93,6 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
             <Text
               as="p"
               fontSize="lg"
-              color={grey_color}
               whiteSpace="pre-wrap"
               textAlign="justify"
             >
@@ -106,18 +101,11 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
           </CardBody>
           <CardFooter>
             <Flex width="100%" justifyContent="flex-end" gap="20px">
-              <CommentButton
-                onClickAction={() =>
-                  console.log("CommentDetails button clicked")
-                }
-                number={articleDetails.comments.length ?? 0}
-              />
+              <CommentButton number={articleDetails.comments.length ?? 0} />
               <LikeButton
                 onClickAction={submitlikeorDislike}
                 number={likes.length ?? 0}
-                liked={likes.some(
-                  (like) => like.userId === user.id
-                )}
+                liked={likes.some((like) => like.userId === user.id)}
               />
             </Flex>
           </CardFooter>

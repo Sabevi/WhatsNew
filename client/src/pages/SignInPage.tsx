@@ -23,10 +23,6 @@ export default function SignInPage() {
 
   const usernameRegister = register("username", {
     required: "Username is required",
-    maxLength: {
-      value: 15,
-      message: "Username cannot be more than 15 characters long",
-    },
   });
 
   const passwordRegister = register("password", {
