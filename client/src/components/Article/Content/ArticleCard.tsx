@@ -77,7 +77,6 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
           _hover={{ textDecoration: "none" }}
           fontSize="3xl"
           as="h2"
-          mt="4"
           mb="4"
         >
           {title}

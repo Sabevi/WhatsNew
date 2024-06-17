@@ -79,7 +79,7 @@ export default function ArticleDetails({ articleDetails }: ArticleCardProps) {
               textDecoration="none"
               _hover={{ textDecoration: "none" }}
               fontSize="3xl"
-              mt="10"
+              mt="5"
               mb="10"
             >
               {articleDetails.title}
