@@ -130,6 +130,14 @@ async function generateData() {
     userPromises.push(userPromise);
   }
 
+  // Create a new Date object with the date
+  const date = new Date('2024-06-13');
+
+// Get the timestamp in milliseconds
+  const timestamp = date.getTime();
+
+  console.log(timestamp); // Outputs: 1718649600000
+
   // Wait for all user insert operations to complete
   await Promise.all(userPromises);
   console.log(`Generating ${articles.length} articles, likes and comments...`);
@@ -137,10 +145,11 @@ async function generateData() {
     const id = faker.datatype.uuid();
     const title = articles[i].title;
     const description = articles[i].description;
+    const publishedAt = articles[i].date;
     const userId = users[Math.floor(Math.random() * users.length)].id;
     db.run(
-      `INSERT INTO Article (id, title, description, userId) VALUES (?, ?, ?, ?)`,
-      [id, title, description, userId]
+      `INSERT INTO Article (id, title, description, userId, publishedAt) VALUES (?, ?, ?, ?, ?)`,
+      [id, title, description, userId, publishedAt]
     );
 
     const likes = Math.floor(Math.random() * 6);

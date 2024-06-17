@@ -2,6 +2,7 @@
   {
     "title": "The Impact of Climate Change on Coastal Cities",
     "description": "Rising sea levels are posing a significant threat to coastal cities worldwide. This article explores the implications and potential solutions. From Miami to Mumbai, coastal areas are grappling with the reality of more frequent and severe flooding. We delve into scientific data, expert opinions, and case studies of cities that are leading the way in adaptation efforts.",
+    "date": 1590969600000,
     "comments": [
       "This is a wake-up call for all of us. We need to take immediate action.",
       "Great article! Very informative and well-researched."
@@ -10,6 +11,7 @@
   {
     "title": "The Future of Renewable Energy",
     "description": "With the push towards sustainable energy sources, this article discusses the advancements and challenges in the renewable energy sector. We examine the latest innovations in solar, wind, and hydro power, as well as the economic and political hurdles that must be overcome to make these technologies more widespread.",
+    "date": 1703308800000,
     "comments": [
       "It's amazing to see how far we've come with renewable energy technology.",
       "I hope governments will invest more in this area."
@@ -18,6 +20,7 @@
   {
     "title": "A Day in the Life of a Remote Worker",
     "description": "Remote work has become the new norm for many. This article takes a humorous look at a typical day for a remote worker. From the struggle to maintain work-life balance to the quirks of virtual meetings, we highlight the highs and lows of working from home with anecdotes and tips from seasoned remote employees.",
+    "date": 1625097600000,
     "comments": [
       "This is so relatable! Especially the part about Zoom meetings.",
       "Haha, loved the bit about working in pajamas!"
@@ -26,6 +29,7 @@
   {
     "title": "The Debate Over Universal Basic Income",
     "description": "Universal Basic Income (UBI) is a controversial topic. This article delves into the pros and cons of implementing UBI. We explore the potential economic impact, its effects on poverty and unemployment, and real-world examples from pilot programs around the globe. Experts from various fields weigh in on the feasibility and implications of UBI.",
+    "date": 1583020800000,
     "comments": [
       "UBI could really help reduce poverty, but it's important to consider the economic impact.",
       "Interesting read. I'm still on the fence about UBI."
@@ -34,6 +38,7 @@
   {
     "title": "Plastic Pollution in Our Oceans",
     "description": "Our oceans are drowning in plastic waste. This article examines the sources and solutions to this growing problem. We trace the journey of plastic from production to disposal, its devastating impact on marine life, and innovative initiatives aiming to clean up the oceans and reduce plastic use. Interviews with environmental activists and researchers provide a comprehensive view.",
+    "date": 1680393600000,
     "comments": [
       "It's heartbreaking to see the damage we're doing to our oceans.",
       "We need stricter regulations on plastic use."
@@ -42,6 +47,7 @@
   {
     "title": "The Rise of Electric Vehicles",
     "description": "Electric vehicles are becoming more popular as we move towards a greener future. This article looks at the benefits and challenges of EV adoption. We discuss the latest models, advancements in battery technology, and the growing network of charging stations. Additionally, we address the environmental impact of EVs compared to traditional vehicles.",
+    "date": 1717363200000,
     "comments": [
       "Electric vehicles are the future! Can't wait to see more on the roads.",
       "The infrastructure needs to catch up, though."
@@ -50,6 +56,7 @@
   {
     "title": "The Funniest Political Memes of 2024",
     "description": "Political memes have taken over social media. Here are some of the funniest and most viral political memes of 2024. We analyze the humor, context, and impact of these memes on public discourse and political engagement, highlighting how satire and humor are used to comment on current events.",
+    "date": 1718642147280,
     "comments": [
       "These memes are hilarious! Thanks for the laugh.",
       "Political satire at its finest."
@@ -58,6 +65,7 @@
   {
     "title": "The Importance of Voting in Local Elections",
     "description": "Local elections often don't get the attention they deserve. This article explains why voting in local elections is crucial. We detail how local governments influence daily life through policies on education, policing, housing, and more. Insights from political scientists and community leaders underscore the power of local votes.",
+    "date": 1693651200000,
     "comments": [
       "Local elections impact our daily lives more than we realize.",
       "Great reminder to stay informed and vote!"
@@ -66,6 +74,7 @@
   {
     "title": "How to Start a Community Garden",
     "description": "Community gardens are a great way to bring people together and promote sustainability. This article provides a step-by-step guide to starting one. From selecting a site and getting community buy-in to planting and maintenance tips, we cover all the bases. Success stories from thriving community gardens offer inspiration and practical advice.",
+    "date": 1601510400000,
     "comments": [
       "I've always wanted to start a community garden. This guide is super helpful!",
       "Great tips! Can't wait to get started."
@@ -74,6 +83,7 @@
   {
     "title": "The Global Water Crisis",
     "description": "Access to clean water is a growing concern worldwide. This article highlights the severity of the water crisis and potential solutions. We explore the causes, including climate change, pollution, and overuse, and present innovative technologies and policies aimed at ensuring water security. Case studies from affected regions illustrate the human impact.",
+    "date": 1656633600000,
     "comments": [
       "Water scarcity is a huge issue that needs more attention.",
       "Informative article. We all need to do our part to conserve water."
@@ -82,6 +92,7 @@
   {
     "title": "Top 10 Funniest Animal Videos of the Year",
     "description": "Everyone loves a good laugh. Here are the top 10 funniest animal videos that went viral this year. From playful puppies to mischievous monkeys, these videos are guaranteed to bring a smile to your face. We also explore why these videos are so popular and the positive effects they have on our mood and stress levels.",
+    "date": 1714416000000,
     "comments": [
       "These videos made my day! So cute and funny.",
       "Animals are the best. Thanks for sharing!"
@@ -90,6 +101,7 @@
   {
     "title": "The Role of Technology in Modern Politics",
     "description": "Technology is transforming politics in unprecedented ways. This article explores how digital tools are changing the political landscape. We examine the role of social media in election campaigns, the rise of digital activism, and the impact of data analytics on voter behavior. Experts discuss both the opportunities and risks associated with these technological advancements.",
+    "date": 1664601600000,
     "comments": [
       "Technology has both positive and negative impacts on politics.",
       "Interesting read. Technology is definitely a game-changer."
@@ -98,6 +110,7 @@
   {
     "title": "Recycling Myths Debunked",
     "description": "There are many misconceptions about recycling. This article aims to debunk common recycling myths and provide accurate information. We clarify what can and cannot be recycled, the truth about recycling symbols, and the impact of contamination on recycling efforts. Practical tips and expert insights help readers become better recyclers.",
+    "date": 1622505600000,
     "comments": [
       "I learned so much from this article. Thanks for clearing up the confusion!",
       "Recycling is so important, but it's good to know the facts."
@@ -106,9 +119,28 @@
   {
     "title": "How Social Media Influences Public Opinion",
     "description": "Social media has a powerful impact on public opinion. This article examines the ways in which social media shapes our views and behaviors. We discuss the role of algorithms, echo chambers, and misinformation in influencing perceptions. Interviews with psychologists and social media experts provide a deep dive into the effects of online engagement on societal norms.",
+    "date": 1672444800000,
     "comments": [
       "Social media is a double-edged sword. It can inform but also mislead.",
       "Great insights. We need to be more critical of the information we see online."
+    ]
+  },
+  {
+    "title": "The Rise of the Internet: Changing the World in the 90s",
+    "description": "The 1990s saw the explosive growth of the Internet, transforming how we communicate, access information, and conduct business. This article explores the early days of the Internet, the development of key technologies like the World Wide Web, and the initial public reactions. We also discuss the impact on industries and the significant milestones that marked the Internet's rise as a global phenomenon.",
+    "date": 866630400000,
+    "comments": [
+      "It's fascinating to look back at how the Internet started and see how far we've come.",
+      "This really brings back memories of the early days of going online. So much has changed since then!"
+    ]
+  },
+  {
+    "title": "The Importance of Voting in the Legislative Elections on June 30 and July 7 After Macron's Dissolution of Parliament",
+    "description": "Following President Emmanuel Macron's dissolution of the French Parliament, early legislative elections will be held on June 30 and July 7, 2024. This significant decision has triggered a major political upheaval and unprecedented voter mobilization. This article emphasizes the importance of participating in these crucial elections, which will determine the composition of the National Assembly and influence France's political future. We examine the reasons behind this dissolution, the key issues at stake in the elections, and how citizens can engage in the democratic process.",
+    "date": 1718236800000,
+    "comments": [
+      "It is crucial to vote in these elections to ensure a representative government.",
+      "I hope this situation encourages more people to participate in the democratic process."
     ]
   }
 ]
