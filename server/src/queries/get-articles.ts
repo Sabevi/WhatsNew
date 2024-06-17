@@ -28,7 +28,7 @@ export const getArticles: QueryResolvers["getArticles"] = async (
         userId: userId,
       },
       orderBy: {
-        publishedAt: "asc",
+        publishedAt: "desc",
       },
     });
     articles = articlesList.map((article) => ({
@@ -38,7 +38,7 @@ export const getArticles: QueryResolvers["getArticles"] = async (
   } else {
     let articlesList = await dataSources.db.article.findMany({
       orderBy: {
-        publishedAt: "asc",
+        publishedAt: "desc",
       },
     });
     articles = articlesList.map((article) => ({
