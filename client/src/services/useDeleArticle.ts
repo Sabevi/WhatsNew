@@ -24,6 +24,7 @@ const useDeleteArticle = () => {
             duration: 10000,
             isClosable: true,
           });
+          window.location.reload();
           break;
         case 404:
           toast({

@@ -67,7 +67,6 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
               aria-label="Delete"
               onClick={() => {
                 deleteArticle({ articleId: id });
-                window.location.reload();
               }}
             />
           </Flex>
