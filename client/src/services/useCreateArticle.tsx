@@ -3,10 +3,15 @@ import { CREATE_ARTICLE } from "../apollo-client/mutations.ts";
 import { privateClient } from "../apollo-client/apolloClient.ts";
 import { useToast } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import { GET_ARTICLES } from "../apollo-client/queries.ts";
 
 const useCreateArticle = () => {
   const [articleCreate] = useMutation(CREATE_ARTICLE, {
     client: privateClient,
+    refetchQueries: [{
+      query: GET_ARTICLES,
+      variables: { page: 1, mostLiked: false, userId: "" },
+    }],
   });
   const toast = useToast();
   const navigate = useNavigate();

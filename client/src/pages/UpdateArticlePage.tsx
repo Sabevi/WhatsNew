@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import ArticleInputs from "../components/Article/Actions/ArticleInputs";
 import BlueButton from "../components/Button/BlueButton";
 import { ArticleFormValues } from "../types/Article.types";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useUpdateArticle from "../services/useUpdateArticle";
 import useShowArticleDetails from "../services/useShowArticleDetails";
 
@@ -34,6 +34,7 @@ export default function UpdateArticlePage() {
     },
   });
   const { updateArticle } = useUpdateArticle();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data && data.title && data.description) {
@@ -70,6 +71,7 @@ export default function UpdateArticlePage() {
 
   const onSubmit: SubmitHandler<ArticleFormValues> = (data) => {
     id !== undefined && updateArticle(id, data);
+    navigate(`/article/${id}`);
   };
 
   return (

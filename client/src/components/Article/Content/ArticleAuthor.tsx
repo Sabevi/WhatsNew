@@ -11,7 +11,7 @@ export default function BlogAuthor({ name, date }: BlogAuthorProps) {
       alignItems="center"
       justifyContent="start"
     >
-      <Avatar src="https://bit.ly/broken-link" size="sm" />
+      <Avatar size="sm" />
       <Text fontWeight="medium" color={grey_color}>
         {name} - {date.toLocaleDateString()}
       </Text>

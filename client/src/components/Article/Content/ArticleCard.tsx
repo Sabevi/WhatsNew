@@ -27,7 +27,6 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
   const navigate = useNavigate();
   const { deleteArticle } = useDeleteArticle();
   const { handleLikeOrDislike } = useLikeOrDislike(id);
-
   const [currentArticle, setCurrentArticle] = useState(article);
 
   const userConnected = JSON.parse(localStorage.getItem("user") || "{}");
@@ -66,7 +65,9 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
               icon={<Icon as={DeleteIcon} color={blue_color} boxSize="1.1em" />}
               variant="ghost"
               aria-label="Delete"
-              onClick={() => deleteArticle({ articleId: id })}
+              onClick={() => {
+                deleteArticle({ articleId: id });
+              }}
             />
           </Flex>
         )}
@@ -75,7 +76,6 @@ export default function ArticleCard({ article }: ArticleDTOProps) {
           _hover={{ textDecoration: "none" }}
           fontSize="3xl"
           as="h2"
-          mt="4"
           mb="4"
         >
           {title}

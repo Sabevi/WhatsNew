@@ -10,8 +10,6 @@ export const createUser: MutationResolvers["createUser"] = async (
     where: { username },
   });
 
-
-
   if (existingUser) {
     return {
       code: 409,

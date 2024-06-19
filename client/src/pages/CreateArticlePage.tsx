@@ -30,12 +30,12 @@ export default function CreateArticlePage() {
   const articleRegister = register("description", {
     required: "An article is required",
     minLength: {
-      value: 1000,
-      message: "The article must be at least 300 characters long",
+      value: 750,
+      message: "The article must be at least 750 characters long",
     },
     maxLength: {
       value: 3000,
-      message: "The article cannot be more than 2000 characters long",
+      message: "The article cannot be more than 3000 characters long",
     },
   });
 

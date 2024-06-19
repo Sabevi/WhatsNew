@@ -17,7 +17,7 @@ export default function CommentList({ comments }: CommentListProps) {
               fontSize="3xl"
               as="h2"
             >
-              Comments :
+              {reversedComments.length > 1 ? "Comments :" : "Comment :"}
             </Heading>
           </CardHeader>
           <CardBody>
