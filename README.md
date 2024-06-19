@@ -42,6 +42,7 @@ This is a **social network for sharing articles**. It's built with **TypeScript*
 - **React Hook Form**: a library providing an API for handling and validating form data
 
 ## Getting Started
+💡 **You can find a video  [preview.mp4](preview.mp4) in the root to watch a preview of the app**
 
 ### Requirements
 
